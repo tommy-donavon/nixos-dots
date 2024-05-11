@@ -155,14 +155,30 @@
   };
   services.xserver.desktopManager.gnome.enable = false;
   # Disable bluetooth, enable pulseaudio, enable opengl (for Wayland)
+  
+  services.xserver.videoDrivers = ["nvidia"];
   hardware = {
     bluetooth.enable = true;
     pulseaudio.enable = true;
     opengl = {
       enable = true;
       driSupport = true;
+          driSupport32Bit = true;
+    };
+
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+          open = false;
+
+    # Enable the Nvidia settings menu,
+	# accessible via `nvidia-settings`.
+    nvidiaSettings = true;
     };
   };
+
+
+  
 
   # Do not touch
   system.stateVersion = "20.09";
