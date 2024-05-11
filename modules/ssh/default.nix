@@ -1,7 +1,7 @@
 { inputs, lib, config, pkgs, ... }:
 with lib;
 let
-  cfg = config.modules.firefox;
+  cfg = config.modules.ssh;
 
 in
 {

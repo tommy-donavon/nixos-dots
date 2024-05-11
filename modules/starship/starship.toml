@@ -1,0 +1,23 @@
+add_newline = false
+
+command_timeout = 1000
+
+# 30 percent battery left
+[[battery.display]]
+threshold = 30
+style = "bold yellow"
+
+# 10 percent battery left
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+# character customization
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✖](bold red)"
+
+# terraform configuration
+[terraform]
+format = "[$symbol$version]($style) "
+style = "105"

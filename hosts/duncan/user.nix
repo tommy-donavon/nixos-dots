@@ -15,5 +15,6 @@
     xdg.enable = true;
     zsh.enable = true;
     ssh.enable = true;
+    starship.enable = true;
   };
 }

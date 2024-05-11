@@ -15,5 +15,6 @@
     ./xdg
     ./zsh
     ./ssh
+    ./starship
   ];
 }

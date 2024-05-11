@@ -16,7 +16,7 @@ in {
             imagemagick age libnotify
             git python3 lua zig 
             mpv firefox pqiv
-            wf-recorder anki-bin 
+            wf-recorder anki-bin appflowy
         ];
     };
 }

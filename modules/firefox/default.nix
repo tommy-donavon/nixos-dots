@@ -14,19 +14,19 @@ in
       # Privacy about:config settings
       profiles.tommy = {
         settings = {
-          "browser.send_pings" = false;
-          "browser.urlbar.speculativeConnect.enabled" = false;
+          # "browser.send_pings" = false;
+          # "browser.urlbar.speculativeConnect.enabled" = false;
           "dom.event.clipboardevents.enabled" = true;
-          "media.navigator.enabled" = false;
+          # "media.navigator.enabled" = false;
           # "network.cookie.cookieBehavior" = 1;
           # "network.http.referer.XOriginPolicy" = 2;
           # "network.http.referer.XOriginTrimmingPolicy" = 2;
           "beacon.enabled" = false;
-          "browser.safebrowsing.downloads.remote.enabled" = false;
-          "network.IDN_show_punycode" = true;
+          # "browser.safebrowsing.downloads.remote.enabled" = false;
+          # "network.IDN_show_punycode" = true;
           "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
           "app.shield.optoutstudies.enabled" = false;
-          "dom.security.https_only_mode_ever_enabled" = true;
+          # "dom.security.https_only_mode_ever_enabled" = true;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "geo.enabled" = false;
 
@@ -48,7 +48,7 @@ in
 
 
           # Harden SSL 
-          "security.ssl.require_safe_negotiation" = true;
+          # "security.ssl.require_safe_negotiation" = true;
 
           # Extra
           "identity.fxaccounts.enabled" = false;
@@ -61,12 +61,12 @@ in
           "browser.urlbar.suggest.history" = false;
           "browser.urlbar.suggest.openpage" = false;
           "browser.urlbar.suggest.topsites" = false;
-          "browser.uidensity" = 1;
+          # "browser.uidensity" = 1;
           "media.autoplay.enabled" = false;
           "toolkit.zoomManager.zoomValues" = ".8,.90,.95,1,1.1,1.2";
 
-          "privacy.firstparty.isolate" = true;
-          "network.http.sendRefererHeader" = 0;
+          # "privacy.firstparty.isolate" = true;
+          # "network.http.sendRefererHeader" = 0;
         };
 
         # userChome.css to make it look better
