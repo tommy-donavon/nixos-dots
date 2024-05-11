@@ -14,5 +14,6 @@
     wofi.enable = true;
     xdg.enable = true;
     zsh.enable = true;
+    ssh.enable = true;
   };
 }

@@ -1,7 +1,7 @@
 { inputs, lib, config, pkgs, ... }:
 with lib;
 let
-  cfg = config.modules.eww;
+  cfg = config.modules.firefox;
 
 in
 {
@@ -11,17 +11,6 @@ in
     programs.firefox = {
       enable = true;
 
-      # Install extensions from NUR
-      # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      #    decentraleyes
-      #   ublock-origin
-      #   clearurls
-      #   sponsorblock
-      #   darkreader
-      #   h264ify
-      #   df-youtube
-      #];
-
       # Privacy about:config settings
       profiles.tommy = {
         settings = {
@@ -29,9 +18,9 @@ in
           "browser.urlbar.speculativeConnect.enabled" = false;
           "dom.event.clipboardevents.enabled" = true;
           "media.navigator.enabled" = false;
-          "network.cookie.cookieBehavior" = 1;
-          "network.http.referer.XOriginPolicy" = 2;
-          "network.http.referer.XOriginTrimmingPolicy" = 2;
+          # "network.cookie.cookieBehavior" = 1;
+          # "network.http.referer.XOriginPolicy" = 2;
+          # "network.http.referer.XOriginTrimmingPolicy" = 2;
           "beacon.enabled" = false;
           "browser.safebrowsing.downloads.remote.enabled" = false;
           "network.IDN_show_punycode" = true;
@@ -39,7 +28,6 @@ in
           "app.shield.optoutstudies.enabled" = false;
           "dom.security.https_only_mode_ever_enabled" = true;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "browser.toolbars.bookmarks.visibility" = "never";
           "geo.enabled" = false;
 
           # Disable telemetry

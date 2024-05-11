@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   environment.defaultPackages = [ ];
@@ -92,7 +92,7 @@
     };
   };
 
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/Denver";
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
@@ -120,6 +120,22 @@
 
     # Extra security
     protectKernelImage = true;
+  };
+
+  nixpkgs.config.allowUnfree = true;
+
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+  };
+
+  environment.etc = {
+    "1password/custom_allowed_browsers" = {
+      text = ''
+        firefox
+      '';
+      mode = "0755";
+    };
   };
 
   # Sound

@@ -14,5 +14,6 @@
     ./wofi
     ./xdg
     ./zsh
+    ./ssh
   ];
 }
