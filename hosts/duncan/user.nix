@@ -3,16 +3,16 @@
 {
   imports = [ ../../modules/default.nix ];
   config.modules = {
+    dunst.enable = true;
+    firefox.enable = true;
     foot.enable = true; 
     git.enable = true;
-    zsh.enable = true;
-    eww.enable = true;
-    dunst.enable = true;
+    helix.enable = true;
     hyprland.enable = true;
+    packages.enable = true;
+    waybar.enable = true;
     wofi.enable = true;
     xdg.enable = true;
-    firefox.enable = true;
-    packages.enable = true;
-    helix.enable = true;
+    zsh.enable = true;
   };
 }

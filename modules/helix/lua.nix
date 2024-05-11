@@ -14,7 +14,7 @@
           tab-width = 2;
           unit = "\t";
         };
-
+        auto-format = true;
         formatter = {
           command = "${pkgs.stylua}/bin/stylua";
           args = lib.flatten [

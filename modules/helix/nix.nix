@@ -12,7 +12,7 @@
 
       config.nil = {
         formatting.command = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
-
+        auto-format = true;
         nix = {
           binary = "${pkgs.nix}/bin/nix";
           flake = {

@@ -9,7 +9,7 @@ in {
     config = mkIf cfg.enable {
     	home.packages = with pkgs; [
             ripgrep ffmpeg tealdeer
-            htop fzf
+            htop fzf tidal-hifi
             pass gnupg bat
             unzip lowdown zk
             grim slurp slop

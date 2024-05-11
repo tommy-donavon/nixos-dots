@@ -6,6 +6,7 @@ let
       tab-width = 2;
       unit = "\t";
     };
+    auto-format = true;
 
     language-servers = [
       "typescript-language-server"
@@ -35,6 +36,10 @@ in
       })
       (cfg // {
         name = "css";
+        language-servers = [ "vscode-css-language-server" ];
+      })
+      (cfg // {
+        name = "scss";
         language-servers = [ "vscode-css-language-server" ];
       })
       (cfg // {
