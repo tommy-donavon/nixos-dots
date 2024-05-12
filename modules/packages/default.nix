@@ -1,23 +1,46 @@
 { pkgs, lib, config, ... }:
 
 with lib;
-let cfg = 
+let
+  cfg =
     config.modules.packages;
-
-in {
-    options.modules.packages = { enable = mkEnableOption "packages"; };
-    config = mkIf cfg.enable {
-    	home.packages = with pkgs; [
-            ripgrep ffmpeg tealdeer
-            htop fzf tidal-hifi
-            pass gnupg bat
-            unzip lowdown zk
-            grim slurp slop
-            imagemagick age libnotify
-            git python3 lua zig 
-            mpv firefox pqiv
-            wf-recorder anki-bin appflowy
-            obsidian
-        ];
-    };
+in
+{
+  imports = [
+    ./foot.nix
+    ./xdg.nix
+  ];
+  
+  options.modules.packages = { enable = mkEnableOption "packages"; };
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      age
+      anki-bin
+      bat
+      ffmpeg
+      fzf
+      git
+      gnupg
+      grim
+      htop
+      imagemagick
+      libnotify
+      lowdown
+      mpv
+      obsidian
+      pass
+      pqiv
+      python3
+      lua
+      ripgrep
+      slop
+      slurp
+      tealdeer
+      tidal-hifi
+      unzip
+      wf-recorder
+      zig
+      zk
+    ];
+  };
 }

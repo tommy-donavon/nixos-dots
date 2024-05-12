@@ -1,7 +1,7 @@
-{ inputs, lib, config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 with lib;
 let
-  cfg = config.modules.waybar;
+  cfg = config.modules.apps.waybar;
 
   custom = {
     font = "JetBrains Mono";
@@ -16,7 +16,7 @@ let
   };
 in
 {
-  options.modules.waybar = { enable = mkEnableOption "waybar"; };
+  options.modules.apps.waybar = { enable = mkEnableOption "waybar"; };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

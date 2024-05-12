@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.helix;
+let cfg = config.modules.apps.helix;
 in {
   imports = [
     ./lua.nix
@@ -9,7 +9,7 @@ in {
     ./typescript.nix
   ];
 
-  options.modules.helix = { enable = mkEnableOption "helix"; };
+  options.modules.apps.helix = { enable = mkEnableOption "helix"; };
 
   config = mkIf cfg.enable {
     home.packages = [
@@ -37,6 +37,11 @@ in {
             insert = "bar";
             normal = "block";
             select = "underline";
+          };
+
+          file-picker = {
+            hidden = false;
+            git-ignore = false;
           };
 
           statusline = {

@@ -1,12 +1,9 @@
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, ... }:
 
 {
-  environment.defaultPackages = [ ];
   services.xserver.desktopManager.xterm.enable = false;
-
   programs.zsh.enable = true;
 
-  # Laptop-specific packages (the other ones are installed in `packages.nix`)
   environment.systemPackages = with pkgs; [
     acpi
     tlp
@@ -32,7 +29,6 @@
 
   xdg = {
     portal = {
-
       enable = true;
       xdgOpenUsePortal = true;
       extraPortals = with pkgs; [
@@ -47,7 +43,7 @@
     ANKI_WAYLAND = "1";
     DIRENV_LOG_FORMAT = "";
     DISABLE_QT5_COMPAT = "0";
-    EDITOR = "nvim";
+    EDITOR = "hx";
     GTK2_RC_FILES = "$HOME/.local/share/gtk-2.0/gtkrc";
     GTK_RC_FILES = "$HOME/.local/share/gtk-1.0/gtkrc";
     MOZ_ENABLE_WAYLAND = "1";
@@ -128,7 +124,7 @@
   programs._1password-gui = {
     enable = true;
 
-        polkitPolicyOwners = [ "tommy" ];
+    polkitPolicyOwners = [ "tommy" ];
   };
 
   environment.etc = {
@@ -138,6 +134,14 @@
       '';
       mode = "0755";
     };
+  };
+
+  programs.ssh = {
+    # enable = true;
+    extraConfig = ''
+      Host *
+        IdentityAgent ~/.1password/agent.sock
+    '';
   };
 
   # Sound
@@ -155,30 +159,30 @@
   };
   services.xserver.desktopManager.gnome.enable = false;
   # Disable bluetooth, enable pulseaudio, enable opengl (for Wayland)
-  
-  services.xserver.videoDrivers = ["nvidia"];
+
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     bluetooth.enable = true;
     pulseaudio.enable = true;
     opengl = {
       enable = true;
       driSupport = true;
-          driSupport32Bit = true;
+      driSupport32Bit = true;
     };
 
     nvidia = {
       modesetting.enable = true;
       powerManagement.enable = false;
-          open = false;
+      open = false;
 
-    # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
-    nvidiaSettings = true;
+      # Enable the Nvidia settings menu,
+      # accessible via `nvidia-settings`.
+      nvidiaSettings = true;
     };
   };
 
 
-  
+
 
   # Do not touch
   system.stateVersion = "20.09";
