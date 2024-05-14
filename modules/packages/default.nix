@@ -39,6 +39,7 @@ in
       tidal-hifi
       unzip
       wf-recorder
+      upower
       zig
       zk
     ];

@@ -34,76 +34,40 @@ in
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
+
         modules-left = [
-          "custom/launcher"
-          "custom/playerctl#backward"
-          "custom/playerctl#play"
-          "custom/playerctl#foward"
-          "custom/playerlabel"
-        ];
-        modules-center = [
           "hyprland/workspaces"
         ];
-        modules-right = [
-          "tray"
-          "battery"
-          "pulseaudio"
-          "network"
+
+        modules-center = [
           "clock"
         ];
-        clock = {
-          format = " {:%a, %d %b, %I:%M %p}";
-          tooltip = "true";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format-alt = " {:%d/%m}";
+
+        modules-right = [
+          "battery"
+          "network"
+          "pulseaudio"
+        ];
+
+        # clock = {
+        #   format = "{:%a, %d %b}";
+        #   tooltip = "true";
+        #   tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+        # };
+
+        network = {
+          format-wifi = "  {essid}";
+          format-ethernet = "{ifname} ";
+          format-disconnected = "";
+          max-length = 50;
+          on-click = "foot -e 'nmtui'";
         };
-        "wlr/workspaces" = {
-          active-only = false;
-          all-outputs = false;
-          disable-scroll = false;
-          on-scroll-up = "hyprctl dispatch workspace e-1";
-          on-scroll-down = "hyprctl dispatch workspace e+1";
-          format = "{name}";
-          on-click = "activate";
-          format-icons = {
-            urgent = "";
-            active = "";
-            default = "";
-            sort-by-number = true;
-          };
+
+        tray = {
+          icon-size = 15;
+          spacing = 10;
         };
-        "custom/playerctl#backward" = {
-          format = "󰙣 ";
-          on-click = "playerctl previous";
-          on-scroll-up = "playerctl volume .05+";
-          on-scroll-down = "playerctl volume .05-";
-        };
-        "custom/playerctl#play" = {
-          format = "{icon}";
-          return-type = "json";
-          exec = "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
-          on-click = "playerctl play-pause";
-          on-scroll-up = "playerctl volume .05+";
-          on-scroll-down = "playerctl volume .05-";
-          format-icons = {
-            Playing = "<span>󰏥 </span>";
-            Paused = "<span> </span>";
-            Stopped = "<span> </span>";
-          };
-        };
-        "custom/playerctl#foward" = {
-          format = "󰙡 ";
-          on-click = "playerctl next";
-          on-scroll-up = "playerctl volume .05+";
-          on-scroll-down = "playerctl volume .05-";
-        };
-        "custom/playerlabel" = {
-          format = "<span>󰎈 {} 󰎈</span>";
-          return-type = "json";
-          max-length = 40;
-          exec = "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
-          on-click = "";
-        };
+
         battery = {
           states = {
             good = 95;
@@ -117,178 +81,277 @@ in
           format-icons = [ "" "" "" "" "" ];
         };
 
-        memory = {
-          format = "󰍛 {}%";
-          format-alt = "󰍛 {used}/{total} GiB";
-          interval = 5;
-        };
-        cpu = {
-          format = "󰻠 {usage}%";
-          format-alt = "󰻠 {avg_frequency} GHz";
-          interval = 5;
-        };
-        network = {
-          format-wifi = "  {signalStrength}%";
-          format-ethernet = "󰈀 100% ";
-          tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
-          format-linked = "{ifname} (No IP)";
-          format-disconnected = "󰖪 0% ";
-        };
-        tray = {
-          icon-size = 20;
-          spacing = 8;
-        };
         pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = "󰝟";
+          format = "{volume}% {icon} ";
+          format-bluetooth = "{volume}% {icon} {format_source}";
+          format-bluetooth-muted = " {icon} {format_source}";
+          format-muted = "0% {icon} ";
+          format-source = "{volume}% ";
+          format-source-muted = "";
           format-icons = {
-            default = [ "󰕿" "󰖀" "󰕾" ];
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" "" "" ];
           };
-          # on-scroll-up= "bash ~/.scripts/volume up";
-          # on-scroll-down= "bash ~/.scripts/volume down";
-          scroll-step = 5;
           on-click = "pavucontrol";
         };
-        "custom/randwall" = {
-          format = "󰏘";
-          # on-click= "bash $HOME/.config/hypr/randwall.sh";
-          # on-click-right= "bash $HOME/.config/hypr/wall.sh";
+        "custom/power" = {
+          "format" = " ";
+          # "on-click" = "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Restart' 'shutdown -r now' -b 'Shutdown'  'shutdown -h now' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33";
         };
-        "custom/launcher" = {
-          format = "";
-          
-          # on-click = "wofi --show run --xoffset=1670 --yoffset=12 --width=230px --height=984 --style=$HOME/.config/wofi.css --term=footclient --prompt=Run &";
-          tooltip = "false";
-        };
+
       };
       style = ''
         * {
-            border: none;
-            border-radius: 0px;
-            font-family: ${custom.font};
-            font-size: 14px;
-            min-height: 0;
+        	border: none;
+        	border-radius: 10;
+          font-family: "JetbrainsMono Nerd Font" ;
+        	font-size: 15px;
+        	min-height: 10px;
         }
 
         window#waybar {
-            background: ${custom.palette.primary_background_rgba};
+        	background: transparent;
         }
 
-        #cava.left, #cava.right {
-            background: #${custom.palette.tertiary_background_hex};
-            margin: 5px; 
-            padding: 8px 16px;
-            color: #${custom.primary_accent};
+        window#waybar.hidden {
+        	opacity: 0.2;
         }
-        #cava.left {
-            border-radius: 24px 10px 24px 10px;
-        }
-        #cava.right {
-            border-radius: 10px 24px 10px 24px;
+
+        #window {
+        	margin-top: 6px;
+        	padding-left: 10px;
+        	padding-right: 10px;
+        	border-radius: 10px;
+        	transition: none;
+          color: transparent;
+        	background: transparent;
         }
         #workspaces {
-            background: #${custom.palette.tertiary_background_hex};
-            margin: 5px 5px;
-            padding: 8px 5px;
-            border-radius: 16px;
-            color: #${custom.primary_accent}
+        	margin-top: 6px;
+        	margin-left: 12px;
+        	font-size: 4px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	background: #161320;
+        	transition: none;
         }
+
         #workspaces button {
-            padding: 0px 5px;
-            margin: 0px 3px;
-            border-radius: 16px;
-            color: transparent;
-            background: ${custom.palette.primary_background_rgba};
-            transition: all 0.3s ease-in-out;
+        	transition: none;
+        	color: #B5E8E0;
+        	background: transparent;
+        	font-size: 16px;
+        	border-radius: 2px;
         }
 
-        #workspaces button.active {
-            background-color: #${custom.secondary_accent};
-            color: #${custom.background};
-            border-radius: 16px;
-            min-width: 50px;
-            background-size: 400% 400%;
-            transition: all 0.3s ease-in-out;
+        #workspaces button.occupied {
+        	transition: none;
+        	color: #F28FAD;
+        	background: transparent;
+        	font-size: 4px;
         }
 
-        #workspaces button:hover {
-            background-color: #${custom.tertiary_accent};
-            color: #${custom.background};
-            border-radius: 16px;
-            min-width: 50px;
-            background-size: 400% 400%;
+        #tags button.focused {
+        	color: #ABE9B3;
+            border-top: 2px solid #ABE9B3;
+            border-bottom: 2px solid #ABE9B3;
         }
 
-        #tray, #pulseaudio, #network, #battery,
-        #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward{
-            background: #${custom.palette.tertiary_background_hex};
-            font-weight: bold;
-            margin: 5px 0px;
+        #tags button:hover {
+        	transition: none;
+        	box-shadow: inherit;
+        	text-shadow: inherit;
+        	color: #FAE3B0;
+            border-color: #E8A2AF;
+            color: #E8A2AF;
         }
-        #tray, #pulseaudio, #network, #battery{
-            color: #${custom.tertiary_accent};
-            border-radius: 10px 24px 10px 24px;
-            padding: 0 20px;
-            margin-left: 7px;
+
+        #tags button.focused:hover {
+            color: #E8A2AF;
+        }
+
+        #network {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	padding-right: 10px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #bd93f9;
+        }
+
+        #pulseaudio {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	padding-right: 10px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #1A1826;
+        	background: #FAE3B0;
+        }
+
+        #battery {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	padding-right: 10px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #B5E8E0;
+        }
+
+        #battery.charging, #battery.plugged {
+        	color: #161320;
+            background-color: #B5E8E0;
+        }
+
+        #battery.critical:not(.charging) {
+            background-color: #B5E8E0;
+            color: #161320;
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        @keyframes blink {
+            to {
+                background-color: #BF616A;
+                color: #B5E8E0;
+            }
+        }
+
+        #backlight {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	padding-right: 10px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #F8BD96;
         }
         #clock {
-            color: #${custom.tertiary_accent};
-            background: #${custom.palette.tertiary_background_hex};
-            border-radius: 0px 0px 0px 40px;
-            padding: 10px 10px 15px 25px;
-            margin-left: 7px;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        #custom-launcher {
-            color: #${custom.secondary_accent};
-            background: #${custom.palette.tertiary_background_hex};
-            border-radius: 0px 0px 40px 0px;
-            margin: 0px;
-            padding: 0px 35px 0px 15px;
-            font-size: 28px;
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	padding-right: 10px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #ABE9B3;
+        	/*background: #1A1826;*/
         }
 
-        #custom-playerctl.backward, #custom-playerctl.play, #custom-playerctl.foward {
-            background: #${custom.palette.tertiary_background_hex};
-            font-size: 22px;
+        #memory {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	margin-bottom: 0px;
+        	padding-right: 10px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #DDB6F2;
         }
-        #custom-playerctl.backward:hover, #custom-playerctl.play:hover, #custom-playerctl.foward:hover{
-            color: #${custom.tertiary_accent};
+        #cpu {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	margin-bottom: 0px;
+        	padding-right: 10px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #96CDFB;
         }
-        #custom-playerctl.backward {
-            color: #${custom.primary_accent};
-            border-radius: 24px 0px 0px 10px;
-            padding-left: 16px;
-            margin-left: 7px;
+
+        #tray {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	margin-bottom: 0px;
+        	padding-right: 10px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #B5E8E0;
+        	background: #161320;
         }
-        #custom-playerctl.play {
-            color: #${custom.secondary_accent};
-            padding: 0 5px;
+
+        #custom-launcher {
+        	font-size: 24px;
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	padding-right: 5px;
+        	border-radius: 10px;
+        	transition: none;
+            color: #89DCEB;
+            background: #161320;
         }
-        #custom-playerctl.foward {
-            color: #${custom.primary_accent};
-            border-radius: 0px 10px 24px 0px;
-            padding-right: 12px;
-            margin-right: 7px
+
+        #custom-power {
+        	font-size: 20px;
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	margin-right: 8px;
+        	padding-left: 10px;
+        	padding-right: 5px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #F28FAD;
         }
-        #custom-playerlabel {
-            background: #${custom.palette.tertiary_background_hex};
-            color: #${custom.tertiary_accent};
-            padding: 0 20px;
-            border-radius: 24px 10px 24px 10px;
-            margin: 5px 0;
-            font-weight: bold;
+
+        #custom-wallpaper {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	padding-right: 10px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #C9CBFF;
         }
-        #window{
-            background: #${custom.palette.tertiary_background_hex};
-            padding-left: 15px;
-            padding-right: 15px;
-            border-radius: 16px;
-            margin-top: 5px;
-            margin-bottom: 5px;
-            font-weight: normal;
-            font-style: normal;
+
+        #custom-updates {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	padding-right: 10px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #E8A2AF;
+        }
+
+        #custom-media {
+        	margin-top: 6px;
+        	margin-left: 8px;
+        	padding-left: 10px;
+        	padding-right: 10px;
+        	margin-bottom: 0px;
+        	border-radius: 10px;
+        	transition: none;
+        	color: #161320;
+        	background: #F2CDCD;
         }
       '';
     };

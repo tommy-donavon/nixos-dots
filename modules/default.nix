@@ -5,5 +5,6 @@
     ./cli
     ./packages
     ./shells
+    ./languages
   ];
 }

@@ -17,12 +17,17 @@
       };
       nnn.enable = true;
       starship.enable = true;
+      terraform.enable = true;
     };
     
     packages = {
       enable = true;
       foot.enable = true;
       xdg.enable = true;
+    };
+
+    langs = {
+      rust.enable = true;
     };
     
     shells.zsh.enable = true;

@@ -76,6 +76,8 @@
 
   networking = {
     wireless.iwd.enable = true;
+
+    networkmanager.enable = true;
   };
 
   boot = {
@@ -86,6 +88,8 @@
       efi.canTouchEfiVariables = true;
       timeout = 0;
     };
+
+    initrd.availableKernelModules = [ "hid_cherry" ];
   };
 
   time.timeZone = "America/Denver";
@@ -168,6 +172,11 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
+    };
+
+    logitech = {
+      wireless.enable = true;
+      wireless.enableGraphical = true;
     };
 
     nvidia = {
