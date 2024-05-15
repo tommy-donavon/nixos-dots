@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   services.xserver.desktopManager.xterm.enable = false;
   programs.zsh.enable = true;
@@ -8,6 +7,7 @@
     acpi
     tlp
     git
+    adobe-reader
   ];
 
   fonts = {
@@ -123,6 +123,10 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "adobe-reader-9.5.5"
+  ];
 
   programs._1password.enable = true;
   programs._1password-gui = {

@@ -19,7 +19,7 @@
       starship.enable = true;
       terraform.enable = true;
     };
-    
+
     packages = {
       enable = true;
       foot.enable = true;
@@ -27,9 +27,10 @@
     };
 
     langs = {
+      r.enable = true;
       rust.enable = true;
     };
-    
+
     shells.zsh.enable = true;
   };
 }

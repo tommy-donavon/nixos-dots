@@ -42,6 +42,7 @@ in
       upower
       zig
       zk
+      libsForQt5.dolphin
     ];
   };
 }
