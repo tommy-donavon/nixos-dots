@@ -2,18 +2,7 @@
 with lib;
 let
   cfg = config.modules.apps.waybar;
-
-  custom = {
-    font = "JetBrains Mono";
-    fontsize = "12";
-    primary_accent = "cba6f7";
-    secondary_accent = "89b4fa";
-    tertiary_accent = "f5f5f5";
-    background = "11111B";
-    opacity = ".85";
-    cursor = "Numix-Cursor";
-    palette = import ./colors.nix;
-  };
+  palette = import ./colors.nix;
 in
 {
   options.modules.apps.waybar = { enable = mkEnableOption "waybar"; };
@@ -36,24 +25,51 @@ in
         margin-right = 0;
 
         modules-left = [
+          "custom/power"
           "hyprland/workspaces"
+          "clock#time"
+          "clock#date"
+          "battery"
         ];
 
         modules-center = [
-          "clock"
+          "custom/playerctl#backward"
+          "custom/playerlabel"
+          "custom/playerctl#forward"
         ];
 
         modules-right = [
-          "battery"
+          "tray"
+          "temperature"
+          # "cpu"
+          # "memory"
           "network"
           "pulseaudio"
         ];
 
-        # clock = {
-        #   format = "{:%a, %d %b}";
-        #   tooltip = "true";
-        #   tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-        # };
+        "clock#time" = {
+          "format" = "<span color=\"#7aa2f7\"> </span>{:%H:%M:%S}";
+          "interval" = 1;
+        };
+        "clock#date" = {
+          "format" = "<span color=\"#7aa2f7\"> </span>{:%d/%m/%Y}";
+          "tooltip-format" = "<tt>{calendar}</tt>";
+          "interval" = 360;
+          "calendar" = {
+            "mode" = "month";
+            "mode-mon-col" = 4;
+            "weeks-pos" = "right";
+            "on-scroll" = 1;
+            "on-click-right" = "mode";
+            "format" = {
+              "months" = "<span color='#c0caf5'><b>{}</b></span>";
+              "days" = "<span color='#c0caf5'><b>{}</b></span>";
+              "weeks" = "<span color='#7dcfff'><b>W{}</b></span>";
+              "weekdays" = "<span color='#ff9e64'><b>{}</b></span>";
+              "today" = "<span color='#f7768e'><b><u>{}</u></b></span>";
+            };
+          };
+        };
 
         network = {
           format-wifi = "  {essid}";
@@ -61,6 +77,7 @@ in
           format-disconnected = "";
           max-length = 50;
           on-click = "foot -e 'nmtui'";
+          tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
         };
 
         tray = {
@@ -79,6 +96,24 @@ in
           format-plugged = " {capacity}% ";
           format-alt = "{icon} {time}";
           format-icons = [ "" "" "" "" "" ];
+        };
+
+        # cpu = {
+        #   format = "<span>color=\"#7aa2f7\"> </span>{usage}%";
+        #   interval = 4;
+        # };
+
+        # memory = {
+        #   format = "<span color=\"#7aa2f7\">🧠 </span>{used}GiB";
+        #   internal = 4;
+        # };
+
+        temperature = {
+          hwmon-path = "/sys/class/hwmon/hwmon0/temp1_input";
+          critical-threshold = 80;
+          format = "<span color=\"#7aa2f7\">🌡 </span>{temperatureC}°C";
+          format-critical = "<span color=\"#f7768e\"> </span>{temperatureC}°C";
+          interval = 4;
         };
 
         pulseaudio = {
@@ -100,259 +135,134 @@ in
           on-click = "pavucontrol";
         };
         "custom/power" = {
-          "format" = " ";
+          "format" = "";
+          "on-click" = "powermenu";
           # "on-click" = "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Restart' 'shutdown -r now' -b 'Shutdown'  'shutdown -h now' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33";
         };
 
+        "custom/playerctl#play" = {
+          format = "{icon}";
+          return-type = "json";
+          exec = "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+          on-click = "playerctl play-pause";
+          on-scroll-up = "playerctl volume .05+";
+          on-scroll-down = "playerctl volume .05-";
+          format-icons = {
+            Playing = "<span>󰏥 </span>";
+            Paused = "<span> </span>";
+            Stopped = "<span> </span>";
+          };
+        };
+
+        "custom/playerctl#forward" = {
+          format = " 󰙡 ";
+          on-click = "playerctl next";
+          on-scroll-up = "playerctl volume .05+";
+          on-scroll-down = "playerctl volume .05-";
+        };
+
+        "custom/playerctl#backward" = {
+          format = "󰙣 ";
+          on-click = "playerctl previous";
+          on-scroll-up = "playerctl volume .05+";
+          on-scroll-down = "playerctl volume .05-";
+        };
+
+        "custom/playerlabel" = {
+          format = "<span>{}</span>";
+          return-type = "json";
+          max-length = 45;
+          exec = "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+          on-click = "playerctl play-pause";
+        };
+
       };
-      style = ''
-        * {
-        	border: none;
-        	border-radius: 10;
-          font-family: "JetbrainsMono Nerd Font" ;
-        	font-size: 15px;
-        	min-height: 10px;
-        }
-
-        window#waybar {
-        	background: transparent;
-        }
-
-        window#waybar.hidden {
-        	opacity: 0.2;
-        }
-
-        #window {
-        	margin-top: 6px;
-        	padding-left: 10px;
-        	padding-right: 10px;
-        	border-radius: 10px;
-        	transition: none;
-          color: transparent;
-        	background: transparent;
-        }
-        #workspaces {
-        	margin-top: 6px;
-        	margin-left: 12px;
-        	font-size: 4px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	background: #161320;
-        	transition: none;
-        }
-
-        #workspaces button {
-        	transition: none;
-        	color: #B5E8E0;
-        	background: transparent;
-        	font-size: 16px;
-        	border-radius: 2px;
-        }
+      style = ''        
+       * {
+       	font-family:
+           SpaceMono Nerd Font,
+           feather;
+       	font-weight: 600;
+       	font-size: 12px;
+       	color: #${palette.text};
+       }
+      
+       window#waybar {
+       	background: none;
+       }
+      
+       tooltip {
+       	background: #${palette.mauve};
+       	border-radius: 5%;
+       }
+       
+       #workspaces button {
+       	padding: 2px;
+       }
 
         #workspaces button.occupied {
-        	transition: none;
-        	color: #F28FAD;
-        	background: transparent;
-        	font-size: 4px;
+          transition: none;
+          color: #${palette.subtext1};
+          background: transparent;
+      }
+        #workspaces button.focused {
+          color: #${palette.subtext1};
+          border-top: 2px solid #${palette.mantle};
+          border-bottom: 2px solid #${palette.mantle};
         }
 
-        #tags button.focused {
-        	color: #ABE9B3;
-            border-top: 2px solid #ABE9B3;
-            border-bottom: 2px solid #ABE9B3;
+        #workspaces button.active {
+          border-bottom: 2px solid #${palette.sapphire};
         }
 
-        #tags button:hover {
-        	transition: none;
-        	box-shadow: inherit;
-        	text-shadow: inherit;
-        	color: #FAE3B0;
-            border-color: #E8A2AF;
-            color: #E8A2AF;
+        #workspaces button.urgent {
+          color: #f7768e;
         }
 
-        #tags button.focused:hover {
-            color: #E8A2AF;
+        #workspaces button:hover {
+          background: #${palette.surface1};
+          color: #${palette.subtext1};
         }
 
-        #network {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	padding-right: 10px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #bd93f9;
-        }
-
-        #pulseaudio {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	padding-right: 10px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #1A1826;
-        	background: #FAE3B0;
-        }
-
+        #workspaces,
+        #clock,
+        #window,
+        #temperature,
+        #cpu,
+        #memory,
+        #pulseaudio,
+        #network,
+        #tray,
+        #custom-power,
         #battery {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	padding-right: 10px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #B5E8E0;
-        }
-
-        #battery.charging, #battery.plugged {
-        	color: #161320;
-            background-color: #B5E8E0;
-        }
-
-        #battery.critical:not(.charging) {
-            background-color: #B5E8E0;
-            color: #161320;
-            animation-name: blink;
-            animation-duration: 0.5s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
-
-        @keyframes blink {
-            to {
-                background-color: #BF616A;
-                color: #B5E8E0;
-            }
-        }
-
-        #backlight {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	padding-right: 10px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #F8BD96;
-        }
-        #clock {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	padding-right: 10px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #ABE9B3;
-        	/*background: #1A1826;*/
-        }
-
-        #memory {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	margin-bottom: 0px;
-        	padding-right: 10px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #DDB6F2;
-        }
-        #cpu {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	margin-bottom: 0px;
-        	padding-right: 10px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #96CDFB;
-        }
-
-        #tray {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	margin-bottom: 0px;
-        	padding-right: 10px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #B5E8E0;
-        	background: #161320;
-        }
-
-        #custom-launcher {
-        	font-size: 24px;
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	padding-right: 5px;
-        	border-radius: 10px;
-        	transition: none;
-            color: #89DCEB;
-            background: #161320;
+          background: #${palette.base};
+          padding: 0 10px;
+          border: 0;
         }
 
         #custom-power {
-        	font-size: 20px;
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	margin-right: 8px;
-        	padding-left: 10px;
-        	padding-right: 5px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #F28FAD;
+          color: #${palette.teal};
         }
 
-        #custom-wallpaper {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	padding-right: 10px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #C9CBFF;
+        #tray {
+          border-radius: 12px;
+          margin-right: 4px;
+        }
+        
+        #window {
+          border-radius: 12px;
         }
 
-        #custom-updates {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	padding-right: 10px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #E8A2AF;
+        #temperature {
+          border-radius: 12px 0 0 12px;
+        }
+        
+        /* close left side of bar */
+        #battery {
+          border-radius: 0 12px 12px 0;
         }
 
-        #custom-media {
-        	margin-top: 6px;
-        	margin-left: 8px;
-        	padding-left: 10px;
-        	padding-right: 10px;
-        	margin-bottom: 0px;
-        	border-radius: 10px;
-        	transition: none;
-        	color: #161320;
-        	background: #F2CDCD;
-        }
+
       '';
     };
   };

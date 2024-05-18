@@ -18,6 +18,7 @@ in
       anki-bin
       bat
       ffmpeg
+      catppuccin-sddm
       fzf
       git
       gnupg

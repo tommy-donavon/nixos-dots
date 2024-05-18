@@ -60,6 +60,9 @@ in {
         rebuild = "doas nixos-rebuild switch --flake $NIXOS_CONFIG_DIR --fast; notify-send 'Rebuild complete\!'";
       };
 
+      profileExtra = ''
+        start
+      '';
       # Source all plugins, nix-style
       # plugins = [
       # {            }

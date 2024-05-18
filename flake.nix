@@ -20,15 +20,16 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "stable";
     };
+
   };
 
   # All outputs for the system (configs)
   outputs = { home-manager, nixpkgs, nur, fenix, ... }@inputs:
     let
-      system = "x86_64-linux"; #current system
-      pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-      fenix = inputs.fenix.x86_64-linux;
-      lib = nixpkgs.lib;
+      # system = "x86_64-linux"; #current system
+      # pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+      # fenix = inputs.fenix.x86_64-linux;
+      # lib = nixpkgs.lib;
 
       # This lets us reuse the code to "create" a system
       # Credits go to sioodmy on this one!

@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  services.xserver.desktopManager.xterm.enable = false;
   programs.zsh.enable = true;
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
@@ -15,21 +14,27 @@
     tlp
     git
     adobe-reader
+
   ];
+
+
 
   fonts = {
     packages = with pkgs; [
       jetbrains-mono
       roboto
       openmoji-color
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      unifont
+      noto-fonts-monochrome-emoji
+
+      (nerdfonts.override { fonts = [ "JetBrainsMono" "SpaceMono" ]; })
     ];
 
     fontconfig = {
       enable = true;
       hinting.autohint = true;
       defaultFonts = {
-        emoji = [ "OpenMoji Color" ];
+        emoji = [ "OpenMoji Color" "Noto Color Emoji" "Unifont" "Noto Monochrome Emoji"];
       };
     };
   };
@@ -171,11 +176,16 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
-  services.xserver.desktopManager.gnome.enable = false;
-  # Disable bluetooth, enable pulseaudio, enable opengl (for Wayland)
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver = {
+    desktopManager.gnome.enable = false;
+    videoDrivers = [ "nvidia" ];
+
+    desktopManager.xterm.enable = false;
+  };
+
   hardware = {
     bluetooth.enable = true;
     pulseaudio.enable = true;
@@ -195,14 +205,9 @@
       powerManagement.enable = false;
       open = false;
 
-      # Enable the Nvidia settings menu,
-      # accessible via `nvidia-settings`.
       nvidiaSettings = true;
     };
   };
-
-
-
 
   # Do not touch
   system.stateVersion = "20.09";
