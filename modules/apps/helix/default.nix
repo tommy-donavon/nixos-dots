@@ -3,6 +3,7 @@ with lib;
 let cfg = config.modules.apps.helix;
 in {
   imports = [
+    ./elixir.nix
     ./lua.nix
     ./nix.nix
     ./prettier.nix
@@ -12,8 +13,9 @@ in {
   options.modules.apps.helix = { enable = mkEnableOption "helix"; };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.helix
+    home.packages = with pkgs; [
+      helix
+      nodePackages.bash-language-server
     ];
 
     programs.helix = {

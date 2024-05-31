@@ -14,10 +14,12 @@
     tlp
     git
     adobe-reader
-
   ];
 
+  virtualisation.docker.enable = true;
 
+  services.fprintd.enable = true;
+  services.blueman.enable = true;
 
   fonts = {
     packages = with pkgs; [

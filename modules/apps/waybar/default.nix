@@ -118,8 +118,8 @@ in
 
         pulseaudio = {
           format = "{volume}% {icon} ";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
+          format-bluetooth = "{volume}% {icon}  {format_source}";
+          format-bluetooth-muted = " {icon}  {format_source}";
           format-muted = "0% {icon} ";
           format-source = "{volume}% ";
           format-source-muted = "";
@@ -137,7 +137,6 @@ in
         "custom/power" = {
           "format" = "";
           "on-click" = "powermenu";
-          # "on-click" = "swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Restart' 'shutdown -r now' -b 'Shutdown'  'shutdown -h now' --background=#005566 --button-background=#009999 --button-border=#002b33 --border-bottom=#002b33";
         };
 
         "custom/playerctl#play" = {

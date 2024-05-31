@@ -4,7 +4,10 @@ with lib;
 let
   cfg = config.modules.langs.r;
   myRPackages = with pkgs.rPackages; [
+    caret
+    kernlab
     languageserver
+    pacman
     snakecase
     tidyverse
   ];

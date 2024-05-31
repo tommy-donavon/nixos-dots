@@ -24,11 +24,13 @@
       enable = true;
       foot.enable = true;
       xdg.enable = true;
+      # stylix.enable = true;
     };
 
     langs = {
       r.enable = true;
       rust.enable = true;
+      elixir.enable = true;
     };
 
     shells.zsh.enable = true;

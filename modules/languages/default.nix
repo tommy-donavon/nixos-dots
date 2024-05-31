@@ -1,6 +1,7 @@
 {
   imports = [
-    ./rust.nix
+    ./elixir.nix
     ./r.nix
+    ./rust.nix
   ];
 }
