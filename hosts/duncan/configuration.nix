@@ -36,7 +36,7 @@
       enable = true;
       hinting.autohint = true;
       defaultFonts = {
-        emoji = [ "OpenMoji Color" "Noto Color Emoji" "Unifont" "Noto Monochrome Emoji"];
+        emoji = [ "OpenMoji Color" "Noto Color Emoji" "Unifont" "Noto Monochrome Emoji" ];
       };
     };
   };
@@ -47,11 +47,13 @@
       xdgOpenUsePortal = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-wlr
+        xdg-desktop-portal-hyprland
       ];
       config.common.default = "*";
     };
   };
+
+  programs.xwayland.enable = true;
 
   environment.variables = {
     ANKI_WAYLAND = "1";
@@ -174,7 +176,7 @@
   security.rtkit.enable = true;
 
   services.pipewire = {
-    enable = false;
+    enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -190,7 +192,7 @@
 
   hardware = {
     bluetooth.enable = true;
-    pulseaudio.enable = true;
+    pulseaudio.enable = false;
     opengl = {
       enable = true;
       driSupport = true;
