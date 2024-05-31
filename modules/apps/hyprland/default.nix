@@ -17,6 +17,7 @@ in
       wl-clipboard
       wlsunset
       wofi
+      xdg-utils
     ];
 
     home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;

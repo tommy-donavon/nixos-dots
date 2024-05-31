@@ -25,8 +25,6 @@ in
       ffmpeg
       fzf
       git
-      powermenu
-      screenshare
       gnupg
       grim
       htop
@@ -39,10 +37,13 @@ in
       mpv
       neofetch
       obsidian
+      obs-studio
       pass
+      powermenu
       pqiv
       python3
       ripgrep
+      screenshare
       slop
       slurp
       tealdeer
@@ -50,6 +51,7 @@ in
       tidal-hifi
       unzip
       upower
+      vesktop
       wf-recorder
       zig
       zk
