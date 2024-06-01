@@ -59,6 +59,7 @@
       nixosConfigurations = {
         # Now, defining a new system is can be done in one line
         #                                Architecture   Hostname
+
         duncan = mkSystem inputs.nixpkgs "x86_64-linux" "duncan";
       };
     };
