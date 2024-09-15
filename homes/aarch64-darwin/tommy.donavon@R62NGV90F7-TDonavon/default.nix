@@ -29,6 +29,7 @@ in
     suites = {
       development = {
         enable = true;
+        opsEnable = true;
 
         # nixEnable = true;
       };
@@ -37,7 +38,6 @@ in
     # theme.catppuccin = enabled;
   };
   home.sessionPath = [ "$HOME/.nix-profile/bin" ];
-
 
   home.stateVersion = "21.11";
 }

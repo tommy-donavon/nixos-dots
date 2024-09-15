@@ -22,7 +22,7 @@ in
 
     suites = {
       # art = enabled;
-      # common = enabled;
+      common = enabled;
       # desktop = enabled;
       development = enabled;
       # games = enabled;

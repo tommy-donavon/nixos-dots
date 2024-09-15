@@ -28,13 +28,14 @@
     nur = {
       url = "github:nix-community/NUR";
     };
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
 
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # stylix.url = "github:SomeGuyNamedMay/stylix/wallpaper-refactor";
+    stylix.url = "github:danth/stylix";
+    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
+    zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
 
   };
 
@@ -61,9 +62,11 @@
         allowUnfree = true;
 
       };
+      home.modules = with inputs; [ stylix.homeManagerModules.stylix ];
       overlays = with inputs; [
         nur.overlay
         rust-overlay.overlays.default
+        alacritty-theme.overlays.default
       ];
 
       # deploy = lib.mkDeploy { inherit (inputs) self; };

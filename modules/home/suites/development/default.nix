@@ -14,76 +14,48 @@ in
 {
   options.${namespace}.suites.development = {
     enable = mkBoolOpt false "Whether or not to enable common development configuration.";
+    opsEnable = mkBoolOpt false "Whether or not to enable devops related configuration.";
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      # onefetch
-      chafa
-    ];
-    # home = {
-    #   packages =
-    #     with pkgs;
-    #     [
-    #       jqp
-    #       neovide
-    #       onefetch
-    #       postman
-    #     ]
-    #     ++ lib.optionals pkgs.stdenv.isLinux [
-    #       qtcreator
-    #     ]
-    #     ++ lib.optionals cfg.nixEnable [
-    #       nixpkgs-hammering
-    #       nixpkgs-lint-community
-    #       nixpkgs-review
-    #       nix-update
-    #     ]
-    #     ++ lib.optionals cfg.gameEnable [
-    #       godot_4
-    #       # NOTE: removed from nixpkgs
-    #       # ue4
-    #       unityhub
-    #     ]
-    #     ++ lib.optionals cfg.sqlEnable [
-    #       dbeaver-bin
-    #       mysql-workbench
-    #     ];
+    home.packages =
+      with pkgs;
+      [
+        # onefetch
+        chafa
+      ]
+      ++ lib.optionals cfg.opsEnable [ tenv ];
 
-    #   shellAliases = {
-    #     prefetch-sri = "nix store prefetch-file $1";
-    #   };
-    # };
-
-    programs.home-manager.enable = true;
+    programs.home-manager = enabled;
 
     nixdots = {
       languages = {
-        rust.enable = true;
+        rust = enabled;
       };
+      theme = enabled;
       programs = {
-        # graphical = {
-        #   editors = {
-        #     vscode = enabled;
-        #   };
-        # };
 
         terminal = {
           editors = {
-            nvim.enable = true;
+            nvim = enabled;
+          };
+          emulators = {
+            alacritty = enabled;
           };
           shells = {
-            zsh.enable = true;
+            zsh = enabled;
           };
 
           tools = {
             # git-crypt = enabled;
-            # go.enable = cfg.goEnable;
-            # k9s.enable = cfg.kubernetesEnable;
-            # lazydocker.enable = cfg.dockerEnable;
-            lazygit.enable = true;
-            starship.enable = true;
-            xplr.enable = true;
+            # go = cfg.goEnable;
+            k8s.enable = cfg.opsEnable;
+            # lazydocker = cfg.dockerEnable;
+            lazygit = enabled;
+            starship = enabled;
+            xplr = enabled;
+            direnv = enabled;
+            ripgrep = enabled;
           };
         };
       };
