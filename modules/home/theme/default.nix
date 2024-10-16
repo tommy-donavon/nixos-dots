@@ -1,10 +1,9 @@
-{
-  config,
-  lib,
-  pkgs,
-  namespace,
-  inputs,
-  ...
+{ config
+, lib
+, pkgs
+, namespace
+, inputs
+, ...
 }:
 let
   inherit (lib) mkEnableOption mkIf;
@@ -20,6 +19,7 @@ in
     stylix = {
       enable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+      #image = "$NIXOS_CONFIG_DIR/pics/wallpaper.png";
 
       fonts = {
         sizes = {

@@ -1,23 +1,16 @@
-{
-  options,
-  config,
-  pkgs,
-  lib,
-  namespace,
-  ...
-}:
-with lib;
-with lib.${namespace};
+{ config, lib, pkgs, namespace, ... }:
 let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.${namespace}.nix;
 in
 {
-  options.${namespace}.nix = with types; {
-    enable = mkBoolOpt true "Whether or not to manage nix configuration.";
-    package = mkOpt package pkgs.lix "Which nix package to use.";
+  options.${namespace}.nix = {
+    enable = mkEnableOption "nix";
   };
 
   config = mkIf cfg.enable {
+
     environment.systemPackages = with pkgs; [
       deploy-rs
       nixfmt-rfc-style
@@ -25,12 +18,15 @@ in
       nix-prefetch-git
     ];
 
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.permittedInsecurePackages = [
+      "adobe-reader-9.5.5"
+    ];
+
     nix =
       let
         users = [
           "root"
-          "@wheel"
-          "nix-builder"
           config.${namespace}.user.name
         ];
       in
@@ -42,7 +38,12 @@ in
           http-connections = 50;
           warn-dirty = false;
           log-lines = 50;
-          auto-optimise-store = true;
+
+          # Large builds apparently fail due to an issue with darwin:
+          # https://github.com/NixOS/nix/issues/4119
+          sandbox = false;
+
+          auto-optimise-store = false;
 
           allow-import-from-derivation = true;
 
@@ -61,11 +62,8 @@ in
 
         gc = {
           automatic = true;
-          interval = {
-            Day = 7;
-          };
+          dates = "weekly";
           options = "--delete-older-than 30d";
-          user = config.${namespace}.user.name;
         };
 
         # flake-utils-plus
@@ -74,4 +72,5 @@ in
         linkInputs = true;
       };
   };
+
 }

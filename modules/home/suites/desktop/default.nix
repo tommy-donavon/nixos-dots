@@ -14,20 +14,14 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.xserver = {
-      desktopManager.gnome.enable = false;
-      videoDrivers = [ "nvidia" ];
-
-      desktopManager.xterm.enable = false;
-    };
-    programs.xwayland.enable = true;
     nixdots = {
       programs = {
         graphical = {
-          apps = {
-            _1password = enabled;
-            thunar = enabled;
-          };
+        wofi = enabled;
+        waybar = enabled;
+        };
+        wms = {
+        hyprland = enabled;
         };
       };
     };

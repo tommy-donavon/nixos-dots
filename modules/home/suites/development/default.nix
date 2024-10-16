@@ -32,7 +32,7 @@ in
       languages = {
         rust = enabled;
       };
-      theme = enabled;
+      
       programs = {
 
         terminal = {
@@ -41,6 +41,7 @@ in
           };
           emulators = {
             alacritty = enabled;
+            foot = enabled;
           };
           shells = {
             zsh = enabled;
@@ -52,6 +53,7 @@ in
             k8s.enable = cfg.opsEnable;
             # lazydocker = cfg.dockerEnable;
             lazygit = enabled;
+            git = enabled;
             starship = enabled;
             xplr = enabled;
             direnv = enabled;
@@ -59,6 +61,7 @@ in
           };
         };
       };
+      system.xdg = enabled;
     };
   };
 }

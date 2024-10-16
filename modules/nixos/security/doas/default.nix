@@ -20,6 +20,8 @@ in
       sudo = "doas";
     };
 
+    security.rtkit.enable = true;
+
     # Disable sudo
     security.sudo.enable = false;
 
