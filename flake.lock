@@ -623,6 +623,7 @@
         "snowfall-flake": "snowfall-flake",
         "snowfall-lib": "snowfall-lib_2",
         "stylix": "stylix",
+        "unstable": "unstable",
         "zen-browser": "zen-browser"
       }
     },
