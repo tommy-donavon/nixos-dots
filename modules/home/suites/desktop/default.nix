@@ -38,6 +38,8 @@ in
         graphical = {
           wofi = enabled;
           waybar = enabled;
+          dunst = enabled;
+          ags = enabled;
         };
         wms = {
           hyprland = enabled;

@@ -16,5 +16,10 @@ in
     enable = mkEnableOption "common";
   };
 
-  config = mkIf cfg.enable { home.packages = with pkgs; [ obsidian ]; };
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [ obsidian ];
+    nixdots = {
+      theme = enabled;
+    };
+  };
 }

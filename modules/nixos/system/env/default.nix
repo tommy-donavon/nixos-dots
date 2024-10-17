@@ -19,9 +19,18 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       acpi
+      dconf
       git
+      libnotify
+      libnotify
+      libreoffice-qt
+      lowdown
+      obs-studio
+      tidal-hifi
       tlp
       unzip
+      vesktop
+      zk
     ];
 
     environment.variables = {

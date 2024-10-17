@@ -1,4 +1,9 @@
-{ lib, namespace, config, ... }:
+{
+  lib,
+  namespace,
+  config,
+  ...
+}:
 let
   inherit (lib.${namespace}) enabled;
 in
@@ -10,11 +15,10 @@ in
       inherit (config.snowfallorg.user) name;
     };
     suites = {
+      common = enabled;
       desktop = enabled;
       development = enabled;
     };
-    #    common = enabled;
-    #    desktop = enabled;
   };
   home.stateVersion = "21.11";
 }
