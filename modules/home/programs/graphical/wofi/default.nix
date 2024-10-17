@@ -1,8 +1,9 @@
-{ config
-, lib
-, pkgs
-, namespace
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  namespace,
+  ...
 }:
 let
   inherit (lib) mkIf mkEnableOption;
@@ -15,9 +16,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      wofi
-    ];
-#    home.file.".config/wofi.css".source = ./wofi.css;
+    home.packages = with pkgs; [ wofi ];
+    home.file.".config/wofi.css".source = ./wofi.css;
   };
 }

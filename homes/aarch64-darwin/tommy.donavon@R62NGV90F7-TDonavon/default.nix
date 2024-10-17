@@ -1,14 +1,4 @@
-{
-  config,
-  lib,
-  namespace,
-  pkgs,
-  ...
-}:
-let
-  inherit (lib) mkForce;
-  inherit (lib.${namespace}) enabled disabled;
-in
+{ config, ... }:
 {
   nixdots = {
     user = {
@@ -16,26 +6,12 @@ in
       inherit (config.snowfallorg.user) name;
     };
 
-    # programs = {
-    #   terminal = {
-    #     tools = {
-    #       lazygit.enable = true;
-    #     };
-    #     shells = {
-    #       zsh.enable = true;
-    #     };
-    #   };
-    # };
     suites = {
       development = {
         enable = true;
         opsEnable = true;
-
-        # nixEnable = true;
       };
     };
-
-    # theme.catppuccin = enabled;
   };
   home.sessionPath = [ "$HOME/.nix-profile/bin" ];
 

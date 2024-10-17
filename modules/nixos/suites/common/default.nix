@@ -1,7 +1,8 @@
-{ config
-, lib
-, namespace
-, ...
+{
+  config,
+  lib,
+  namespace,
+  ...
 }:
 let
   inherit (lib.${namespace}) mkBoolOpt enabled;
@@ -19,7 +20,6 @@ in
         doas = enabled;
       };
 
-
       hardware = {
         audio = enabled;
         bluetooth = enabled;
@@ -34,6 +34,7 @@ in
         boot = enabled;
         env = enabled;
         fonts = enabled;
+        locale = enabled;
         networking = enabled;
       };
     };

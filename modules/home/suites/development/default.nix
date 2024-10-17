@@ -23,6 +23,10 @@ in
       [
         # onefetch
         chafa
+        libgccjit
+        pkg-config
+        gcc
+        openssl
       ]
       ++ lib.optionals cfg.opsEnable [ tenv ];
 
@@ -31,8 +35,10 @@ in
     nixdots = {
       languages = {
         rust = enabled;
+        lua = enabled;
+        node = enabled;
       };
-      
+
       programs = {
 
         terminal = {

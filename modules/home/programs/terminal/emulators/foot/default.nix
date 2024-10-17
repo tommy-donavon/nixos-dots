@@ -1,16 +1,26 @@
-{ lib, config, namespace, ... }:
+{
+  lib,
+  config,
+  namespace,
+  pkgs,
+  ...
+}:
 
 with lib;
-let cfg = config.${namespace}.programs.terminal.emulators.foot;
+let
+  cfg = config.${namespace}.programs.terminal.emulators.foot;
 
-in {
-  options.${namespace}.programs.terminal.emulators.foot = { enable = mkEnableOption "foot"; };
+in
+{
+  options.${namespace}.programs.terminal.emulators.foot = {
+    enable = mkEnableOption "foot";
+  };
   config = mkIf cfg.enable {
     programs.foot = {
       enable = true;
       settings = {
         main = {
-          font = "JetBrainsMono Nerdfont:size=7:line-height=16px";
+          font = "JetBrainsMono Nerdfont:size=12:line-height=16px";
           pad = "12x12";
         };
         colors = {
@@ -37,5 +47,9 @@ in {
         };
       };
     };
+    home.sessionVariables = {
+      Terminal = "foot";
+    };
+    home.packages = with pkgs; [ neofetch ];
   };
 }

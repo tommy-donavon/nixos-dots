@@ -78,6 +78,10 @@ in
           eval "$(direnv hook zsh)"
         '';
 
+      profileExtra = lib.optionalString config.${namespace}.programs.wms.hyprland.enable ''
+        start
+      '';
+
       # Tweak settings for history
       history = {
         save = 1000;

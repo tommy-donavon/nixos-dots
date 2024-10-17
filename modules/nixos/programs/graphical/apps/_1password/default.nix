@@ -33,5 +33,13 @@ in
           ${lib.optionalString cfg.enableSshSocket "IdentityAgent ~/.1password/agent.sock"}
       '';
     };
+    environment.etc = {
+      "1password/custom_allowed_browsers" = {
+        text = ''
+          firefox
+        '';
+        mode = "0755";
+      };
+    };
   };
 }

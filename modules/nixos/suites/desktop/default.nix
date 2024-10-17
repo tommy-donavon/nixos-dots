@@ -1,7 +1,8 @@
-{ config
-, lib
-, namespace
-, ...
+{
+  config,
+  lib,
+  namespace,
+  ...
 }:
 let
   inherit (lib.${namespace}) mkBoolOpt enabled;
@@ -25,7 +26,10 @@ in
       programs = {
         graphical = {
           apps = {
-            _1password = enabled;
+            _1password = {
+              enable = true;
+              enableSshSocket = true;
+            };
             thunar = enabled;
           };
         };
