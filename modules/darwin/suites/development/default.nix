@@ -22,8 +22,16 @@ in
         "bash"
         "gh"
         "git"
+        "gmp"
         "jq"
+        "libyaml"
+        "readline"
+        "webkitgtk"
         "yq"
+        "openssl@3"
+        "llvm"
+        "libpq"
+        "mysql"
       ];
       casks = [ "cutter" ];
       taps = [ "pulumi/tap" ];

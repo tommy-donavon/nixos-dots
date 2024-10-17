@@ -28,7 +28,10 @@ in
         gcc
         openssl
       ]
-      ++ lib.optionals cfg.opsEnable [ tenv ];
+      ++ lib.optionals cfg.opsEnable [
+        tenv
+        kind
+      ];
 
     programs.home-manager = enabled;
 

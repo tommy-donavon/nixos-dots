@@ -53,6 +53,9 @@ in
           ddir() { age -d $1 | tar -xz && rm -rf $1 &>/dev/null && echo "$1 decrypted" }
 
           export PATH="/usr/local/bin:$PATH"
+          export PATH="$HOME/.local/share/nvim/mason/bin/:$PATH"
+
+          export DOTS_DIR="$HOME/dots"
 
         ''
         + lib.optionalString pkgs.stdenv.isDarwin ''
@@ -76,6 +79,9 @@ in
         + ''
           eval "$(starship init zsh)"
           eval "$(direnv hook zsh)"
+        ''
+        + lib.optionalString config.${namespace}.languages.go.enable ''
+          export PATH="$(go env GOPATH)/bin:$PATH" 
         '';
 
       profileExtra = lib.optionalString config.${namespace}.programs.wms.hyprland.enable ''
@@ -93,7 +99,7 @@ in
       shellAliases = {
         c = "clear";
         mkdir = "mkdir -vp";
-        rm = "rm -rifv";
+        rm = "rm -rif";
         mv = "mv -iv";
         cp = "cp -riv";
         nd = "nix develop -c $SHELL";

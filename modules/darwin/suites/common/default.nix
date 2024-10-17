@@ -24,7 +24,10 @@ in
     };
 
     homebrew = {
-      casks = [ "font-fira-code-nerd-font" ];
+      casks = [
+        "font-fira-code-nerd-font"
+        "obsidian"
+      ];
       taps = [ "1password/tap" ];
       brews = [
         "bashdb"
