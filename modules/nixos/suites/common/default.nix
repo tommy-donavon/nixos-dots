@@ -15,6 +15,13 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      wireplumber.enable = true;
+    };
     nixdots = {
       security = {
         doas = enabled;

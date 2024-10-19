@@ -21,6 +21,7 @@ in
 
       desktopManager.xterm.enable = false;
     };
+    programs.dconf.enable = true;
     programs.xwayland.enable = true;
     nixdots = {
       programs = {

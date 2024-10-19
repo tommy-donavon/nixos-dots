@@ -4,6 +4,7 @@
   namespace,
   pkgs,
   inputs,
+  system,
   ...
 }:
 with lib;
@@ -21,6 +22,15 @@ in
       enable = true;
 
       extraPackages = with pkgs; [
+        inputs.ags.packages.${system}.auth
+        inputs.ags.packages.${system}.battery
+        inputs.ags.packages.${system}.bluetooth
+        inputs.ags.packages.${system}.hyprland
+        inputs.ags.packages.${system}.mpris
+        inputs.ags.packages.${system}.network
+        inputs.ags.packages.${system}.notifd
+        inputs.ags.packages.${system}.tray
+        inputs.ags.packages.${system}.wireplumber
         gtksourceview
         webkitgtk
         accountsservice

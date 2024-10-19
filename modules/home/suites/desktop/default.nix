@@ -32,6 +32,7 @@ in
     home.packages = with pkgs; [
       inputs.zen-browser.packages."${system}".default
       zoom-us
+      obs-studio
     ];
     nixdots = {
       programs = {

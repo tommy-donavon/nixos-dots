@@ -1,4 +1,10 @@
-{ lib, config, pkgs, namespace, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  namespace,
+  ...
+}:
 
 let
   inherit (lib) mkEnableOption mkIf;
@@ -10,6 +16,10 @@ in
     enable = mkEnableOption "xdg";
   };
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
     xdg = {
       enable = true;
       cacheHome = config.home.homeDirectory + "/.local/cache";
@@ -27,7 +37,14 @@ in
           xdg-desktop-portal-gtk
           xdg-desktop-portal-hyprland
         ];
-        config.common.default = "*";
+        #config.common.default = "*";
+        config = {
+          common.default = [ "gtk" ];
+          hyprland.default = [
+            "gtk"
+            "hyprland"
+          ];
+        };
       };
     };
   };

@@ -1,4 +1,9 @@
-{ config, lib, namespace, ... }:
+{
+  config,
+  lib,
+  namespace,
+  ...
+}:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.${namespace}.hardware.audio;
@@ -10,6 +15,6 @@ in
 
   config = mkIf cfg.enable {
     sound.enable = true;
-    hardware.pulseaudio.enable = true;
+    hardware.pulseaudio.enable = false;
   };
 }
