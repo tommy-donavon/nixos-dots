@@ -1,66 +1,76 @@
 {
-  description = "NixOS configuration";
+  description = "dots";
 
-  # All inputs for the system
   inputs = {
-    stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    snowfall-lib = {
+      url = "github:snowfallorg/lib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    snowfall-flake = {
+      url = "github:snowfallorg/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur = {
       url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "stable";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:SomeGuyNamedMay/stylix/wallpaper-refactor";
+    stylix.url = "github:danth/stylix";
+    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
+    zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
+    ags.url = "github:Aylur/ags";
 
   };
 
-  outputs = { home-manager, nixpkgs, nur, fenix, stylix, ... }@inputs:
+  outputs =
+    inputs:
     let
+      inherit (inputs) snowfall-lib;
 
-      # This lets us reuse the code to "create" a system
-      # Credits go to sioodmy on this one!
-      # https://github.com/sioodmy/dotfiles/blob/main/flake.nix
-      mkSystem = pkgs: system: hostname:
-        pkgs.lib.nixosSystem {
-          system = system;
-          modules = [
-            { networking.hostName = hostname; }
-            # General configuration (users, networking, sound, etc)
-            (./. + "/hosts/${hostname}/configuration.nix")
-            # Hardware config (bootloader, kernel modules, filesystems, etc)
-            # DO NOT USE MY HARDWARE CONFIG!! USE YOUR OWN!!
-            (./. + "/hosts/${hostname}/hardware-configuration.nix")
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useUserPackages = true;
-                useGlobalPkgs = true;
-                extraSpecialArgs = { inherit inputs; };
-                # Home manager config (configures programs like firefox, zsh, eww, etc)
-                users.tommy = (./. + "/hosts/${hostname}/user.nix");
-              };
-            }
-          ];
-          specialArgs = { inherit inputs; };
+      lib = snowfall-lib.mkLib {
+        inherit inputs;
+        src = ./.;
+
+        snowfall = {
+          meta = {
+            name = "nixdots";
+            title = "nixDots";
+          };
+          namespace = "nixdots";
         };
-
-    in
-    {
-      nixosConfigurations = {
-        # Now, defining a new system is can be done in one line
-        #                                Architecture   Hostname
-
-        duncan = mkSystem inputs.nixpkgs "x86_64-linux" "duncan";
       };
+    in
+    lib.mkFlake {
+      channels-config = {
+        allowUnfree = true;
+
+      };
+      home.modules = with inputs; [ stylix.homeManagerModules.stylix ];
+      overlays = with inputs; [
+        nur.overlay
+        rust-overlay.overlays.default
+        alacritty-theme.overlays.default
+      ];
+
+      # deploy = lib.mkDeploy { inherit (inputs) self; };
+      # outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
     };
 }
