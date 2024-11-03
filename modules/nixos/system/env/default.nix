@@ -28,6 +28,7 @@ in
       obs-studio
       tidal-hifi
       tlp
+      zip
       unzip
       vesktop
       zk

@@ -22,6 +22,8 @@ in
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
       image = ./wallpaper.png;
 
+      targets.waybar.enable = false;
+
       fonts = {
         sizes = {
           terminal = 12;
