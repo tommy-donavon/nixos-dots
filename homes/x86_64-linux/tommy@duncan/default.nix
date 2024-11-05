@@ -17,7 +17,10 @@ in
     suites = {
       common = enabled;
       desktop = enabled;
-      development = enabled;
+      development = {
+        enable = true;
+        dataEnable = true;
+      };
     };
   };
   home.stateVersion = "21.11";

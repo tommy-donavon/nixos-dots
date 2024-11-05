@@ -15,6 +15,7 @@ in
   options.${namespace}.suites.development = {
     enable = mkBoolOpt false "Whether or not to enable common development configuration.";
     opsEnable = mkBoolOpt false "Whether or not to enable devops related configuration.";
+    dataEnable = mkBoolOpt false "Whether or not to enable database related configuration";
   };
 
   config = mkIf cfg.enable {
@@ -27,10 +28,17 @@ in
         pkg-config
         gcc
         openssl
+        postman
       ]
       ++ lib.optionals cfg.opsEnable [
         tenv
         kind
+      ]
+      ++ lib.optionals cfg.dataEnable [
+        dbeaver-bin
+        pgadmin4
+        redisinsight
+
       ];
 
     programs.home-manager = enabled;
@@ -58,7 +66,6 @@ in
 
           tools = {
             # git-crypt = enabled;
-            # go = cfg.goEnable;
             k8s.enable = cfg.opsEnable;
             # lazydocker = cfg.dockerEnable;
             lazygit = enabled;

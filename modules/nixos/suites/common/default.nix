@@ -22,6 +22,7 @@ in
       pulse.enable = true;
       wireplumber.enable = true;
     };
+
     nixdots = {
       security = {
         doas = enabled;

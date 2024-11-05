@@ -1,9 +1,9 @@
-{lib, namespace, ...}:
+{ lib, namespace, ... }:
 let
   inherit (lib.${namespace}) enabled;
 in
 {
-  imports = [./hardware-configuration.nix];
+  imports = [ ./hardware-configuration.nix ];
 
   nixdots = {
     suites = {
@@ -12,6 +12,7 @@ in
     };
   };
 
+  virtualisation.docker = enabled;
 
   system.stateVersion = "21.11"; # Did you read the comment?
 }

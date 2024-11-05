@@ -19,8 +19,10 @@ in
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
       image = ./wallpaper.png;
+
+      targets.waybar.enable = false;
 
       fonts = {
         sizes = {

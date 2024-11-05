@@ -52,6 +52,7 @@ in
         "tss"
         "power"
         "nix"
+        "docker"
       ] ++ cfg.extraGroups;
 
       group = "users";

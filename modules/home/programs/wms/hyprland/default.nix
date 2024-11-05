@@ -1,25 +1,37 @@
-{ pkgs, lib, config, namespace, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  namespace,
+  ...
+}:
 
 with lib;
 let
   cfg = config.${namespace}.programs.wms.hyprland;
-  start = pkgs.writeShellScriptBin "start" "${builtins.readFile ./start}";
-
 in
 {
-  options.${namespace}.programs.wms.hyprland = { enable = mkEnableOption "hyprland"; };
+  options.${namespace}.programs.wms.hyprland = {
+    enable = mkEnableOption "hyprland";
+  };
+
+  imports = lib.snowfall.fs.get-non-default-nix-files ./.;
+
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       hyprland
       hyprlock
-      start
       swaybg
       wl-clipboard
       wlsunset
       xdg-utils
     ];
+    wayland.windowManager.hyprland = {
+      enable = true;
+      systemd.variables = [ "--all" ];
+    };
 
-    home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
+    #home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
     home.file.".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
   };
 }

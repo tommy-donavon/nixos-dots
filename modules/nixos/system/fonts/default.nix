@@ -1,4 +1,10 @@
-{ pkgs, lib, config, namespace, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  namespace,
+  ...
+}:
 
 let
   inherit (lib) mkEnableOption mkIf;
@@ -11,6 +17,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = [ pkgs.${namespace}.fontcharlist ];
     fonts = {
       packages = with pkgs; [
         jetbrains-mono
@@ -19,14 +26,24 @@ in
         unifont
         noto-fonts-monochrome-emoji
 
-        (nerdfonts.override { fonts = [ "JetBrainsMono" "SpaceMono" ]; })
+        (nerdfonts.override {
+          fonts = [
+            "JetBrainsMono"
+            "SpaceMono"
+          ];
+        })
       ];
 
       fontconfig = {
         enable = true;
         hinting.autohint = true;
         defaultFonts = {
-          emoji = [ "OpenMoji Color" "Noto Color Emoji" "Unifont" "Noto Monochrome Emoji" ];
+          emoji = [
+            "OpenMoji Color"
+            "Noto Color Emoji"
+            "Unifont"
+            "Noto Monochrome Emoji"
+          ];
         };
       };
     };

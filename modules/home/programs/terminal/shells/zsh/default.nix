@@ -85,7 +85,8 @@ in
         '';
 
       profileExtra = lib.optionalString config.${namespace}.programs.wms.hyprland.enable ''
-        start
+        cd ~
+        exec Hyprland
       '';
 
       # Tweak settings for history

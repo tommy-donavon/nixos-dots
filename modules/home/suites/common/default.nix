@@ -23,6 +23,15 @@ in
     ];
     nixdots = {
       theme = enabled;
+
+      programs = {
+        terminal = {
+          tools = {
+            btop = enabled;
+            bat = enabled;
+          };
+        };
+      };
     };
   };
 }
