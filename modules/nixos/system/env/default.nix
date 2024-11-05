@@ -35,7 +35,6 @@ in
     ];
 
     environment.variables = {
-      ANKI_WAYLAND = "1";
       DIRENV_LOG_FORMAT = "";
       DISABLE_QT5_COMPAT = "0";
       DOTS_DIR = "$HOME/dots";

@@ -28,6 +28,7 @@ in
         terminal = {
           tools = {
             btop = enabled;
+            bat = enabled;
           };
         };
       };
