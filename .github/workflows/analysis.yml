@@ -10,7 +10,7 @@ on:
 
 jobs:
   check-inputs:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - name: Check Nix flake inputs
@@ -20,7 +20,7 @@ jobs:
           fail-mode: true
 
   lint:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v30
@@ -32,7 +32,7 @@ jobs:
       - uses: jocelynthode/statix-action@master
 
   deadnix:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       pull-requests: write
       contents: write
