@@ -32,9 +32,8 @@ jobs:
       - uses: jocelynthode/statix-action@master
 
   deadnix:
-    runs-on:
-      ubuntu-latest
-      #if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-22.04
+    #if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v30
