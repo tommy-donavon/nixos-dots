@@ -7,8 +7,6 @@
 }:
 let
   inherit (lib)
-    getExe
-    mkForce
     mkIf
     mkEnableOption
     ;

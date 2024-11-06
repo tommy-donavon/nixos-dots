@@ -7,9 +7,6 @@
 }:
 with lib;
 with lib.${namespace};
-let
-  cfg = config.${namespace}.home;
-in
 {
   # imports = with inputs; [
   #   home-manager.darwinModules.home-manager

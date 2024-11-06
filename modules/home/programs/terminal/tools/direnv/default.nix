@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkIf mkEnableOption;
-  inherit (lib.${namespace}) mkBoolOpt enabled;
+  inherit (lib.${namespace}) enabled;
 
   cfg = config.${namespace}.programs.terminal.tools.direnv;
 in
