@@ -58,7 +58,7 @@ in
           };
           emulators = {
             alacritty = enabled;
-            foot = enabled;
+            foot = mkIf pkgs.stdenv.isLinux enabled;
           };
           shells = {
             zsh = enabled;

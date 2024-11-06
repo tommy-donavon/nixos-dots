@@ -13,7 +13,9 @@ in
 {
   options.${namespace}.nix = with types; {
     enable = mkBoolOpt true "Whether or not to manage nix configuration.";
-    package = mkOpt package pkgs.lix "Which nix package to use.";
+
+    # switch back to lix when aarch64-darwin builds are working again
+    package = mkOpt package pkgs.nix "Which nix package to use.";
   };
 
   config = mkIf cfg.enable {
