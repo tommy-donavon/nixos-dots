@@ -33,6 +33,7 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     stylix.url = "github:danth/stylix";
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
@@ -69,7 +70,6 @@
         alacritty-theme.overlays.default
       ];
 
-      # deploy = lib.mkDeploy { inherit (inputs) self; };
-      # outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
+      outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
     };
 }

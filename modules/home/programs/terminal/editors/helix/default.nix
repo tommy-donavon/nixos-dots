@@ -1,19 +1,21 @@
-{  
+{
   lib,
-  namespace, 
+  namespace,
   pkgs,
   config,
-  ...}:
+  ...
+}:
 let
   inherit (lib) mkIf;
   inherit (lib.${namespace}) mkBoolOpt;
 
   cfg = config.${namespace}.programs.terminal.editors.helix;
-in {
+in
+{
   imports = lib.snowfall.fs.get-non-default-nix-files ./.;
 
-  options.${namespace}.programs.terminal.editors.helix = { 
-  enable = mkBoolOpt false "helix"; 
+  options.${namespace}.programs.terminal.editors.helix = {
+    enable = mkBoolOpt false "helix";
   };
 
   config = mkIf cfg.enable {
@@ -36,9 +38,6 @@ in {
           line-number = "absolute";
           soft-wrap.enable = true;
 
-          # FIXME: remove once https://github.com/helix-editor/helix/issues/1475 is fixed
-          # auto-info = false;
-
           cursor-shape = {
             insert = "bar";
             normal = "block";
@@ -51,11 +50,18 @@ in {
           };
 
           statusline = {
-            mode.normal = "";
-            mode.insert = "";
-            mode.select = "";
+            mode = {
+              normal = "";
+              insert = "";
+              select = "";
+            };
 
-            left = [ "mode" "spacer" "spinner" "file-name" ];
+            left = [
+              "mode"
+              "spacer"
+              "spinner"
+              "file-name"
+            ];
             right = [
               "diagnostics"
               "position"

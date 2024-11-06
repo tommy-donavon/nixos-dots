@@ -1,13 +1,10 @@
 {
   lib,
-  config,
   namespace,
   ...
 }:
 let
   inherit (lib.${namespace}) enabled;
-
-  cfg = config.${namespace}.user;
 in
 {
   nixdots = {

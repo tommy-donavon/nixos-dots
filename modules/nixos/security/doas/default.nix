@@ -20,22 +20,25 @@ in
       sudo = "doas";
     };
 
-    security.rtkit.enable = true;
+    security = {
+      rtkit.enable = true;
 
-    # Disable sudo
-    security.sudo.enable = false;
+      # Disable sudo
+      sudo.enable = false;
 
-    # Enable and configure `doas`.
-    security.doas = {
-      enable = true;
+      # Enable and configure `doas`.
+      doas = {
+        enable = true;
 
-      extraRules = [
-        {
-          keepEnv = true;
-          noPass = true;
-          users = [ config.${namespace}.user.name ];
-        }
-      ];
+        extraRules = [
+          {
+            keepEnv = true;
+            noPass = true;
+            users = [ config.${namespace}.user.name ];
+          }
+        ];
+      };
     };
+
   };
 }

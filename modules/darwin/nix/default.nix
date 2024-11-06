@@ -1,5 +1,4 @@
 {
-  options,
   config,
   pkgs,
   lib,
@@ -35,7 +34,7 @@ in
         ];
       in
       {
-        package = cfg.package;
+        inherit (cfg) package;
 
         settings = {
           experimental-features = "nix-command flakes";

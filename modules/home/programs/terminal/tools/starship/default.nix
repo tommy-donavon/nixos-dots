@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf importTOML;
+  inherit (lib) mkEnableOption mkIf;
 
   cfg = config.${namespace}.programs.terminal.tools.starship;
 in

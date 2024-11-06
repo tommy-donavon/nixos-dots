@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  inherit (lib.${namespace}) mkBoolOpt enabled;
+  inherit (lib.${namespace}) mkBoolOpt;
 
   cfg = config.${namespace}.suites.development;
 in
