@@ -1,4 +1,10 @@
-{ config, lib, pkgs, namespace, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  namespace,
+  ...
+}:
 let
   inherit (lib) mkEnableOption mkIf;
 
@@ -19,9 +25,7 @@ in
     ];
 
     nixpkgs.config.allowUnfree = true;
-    nixpkgs.config.permittedInsecurePackages = [
-      "adobe-reader-9.5.5"
-    ];
+    nixpkgs.config.permittedInsecurePackages = [ "adobe-reader-9.5.5" ];
 
     nix =
       let
@@ -31,7 +35,7 @@ in
         ];
       in
       {
-        package = cfg.package;
+        inherit (cfg) package;
 
         settings = {
           experimental-features = "nix-command flakes";

@@ -37,14 +37,14 @@ in
           xdg-desktop-portal-gtk
           xdg-desktop-portal-hyprland
         ];
-        #config.common.default = "*";
-        config = {
-          common.default = [ "gtk" ];
-          hyprland.default = [
-            "gtk"
-            "hyprland"
-          ];
-        };
+        config.common.default = "*";
+        # config = {
+        #   common.default = [ "gtk" ];
+        #   hyprland.default = [
+        #     "gtk"
+        #     "hyprland"
+        #   ];
+        # };
       };
     };
   };

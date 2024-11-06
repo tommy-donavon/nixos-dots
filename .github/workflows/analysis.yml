@@ -33,6 +33,10 @@ jobs:
 
   deadnix:
     runs-on: ubuntu-22.04
+    permissions:
+      pull-requests: write
+      contents: write
+
     #if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
