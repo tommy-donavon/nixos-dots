@@ -29,6 +29,7 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.variables = [ "--all" ];
+      xwayland.enable = true;
     };
 
     #home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;

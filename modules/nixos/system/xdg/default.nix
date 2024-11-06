@@ -16,20 +16,20 @@ in
     enable = mkEnableOption "xdg";
   };
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
     ];
     xdg = {
-      enable = true;
-      cacheHome = config.home.homeDirectory + "/.local/cache";
-      userDirs = {
-        enable = true;
-        createDirectories = true;
-        extraConfig = {
-          XDG_BIN_HOME = config.home.homeDirectory + "/bin";
-        };
-      };
+      #enable = true;
+      #cacheHome = config.home.homeDirectory + "/.local/cache";
+      # userDirs = {
+      #   enable = true;
+      #   createDirectories = true;
+      #   extraConfig = {
+      #     #    XDG_BIN_HOME = config.home.homeDirectory + "/bin";
+      #   };
+      # };
       portal = {
         enable = true;
         xdgOpenUsePortal = true;
