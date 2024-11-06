@@ -7,6 +7,7 @@
     };
 
     suites = {
+      common.enable = true;
       development = {
         enable = true;
         opsEnable = true;
