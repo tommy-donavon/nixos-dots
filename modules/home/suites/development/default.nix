@@ -77,7 +77,6 @@ in
           };
         };
       };
-      system.xdg = enabled;
     };
   };
 }
