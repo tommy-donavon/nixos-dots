@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) types mkIf mkDefault;
+  inherit (lib) types mkIf;
   inherit (lib.${namespace}) mkOpt mkBoolOpt;
 
   cfg = config.${namespace}.user;

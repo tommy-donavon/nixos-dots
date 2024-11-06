@@ -7,7 +7,6 @@
 }:
 let
   inherit (lib) types mkEnableOption mkIf;
-  inherit (lib.${namespace}) mkBoolOpt mkOpt;
 
   cfg = config.${namespace}.programs.terminal.emulators.alacritty;
 in
