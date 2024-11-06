@@ -26,7 +26,7 @@ in
 
       fonts = {
         sizes = {
-          terminal = 12;
+          terminal = 16;
           applications = 12;
           popups = 12;
         };
