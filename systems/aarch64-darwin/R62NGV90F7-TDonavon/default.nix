@@ -1,8 +1,4 @@
-{
-  lib,
-  namespace,
-  ...
-}:
+{ lib, namespace, ... }:
 let
   inherit (lib.${namespace}) enabled;
 in
@@ -12,7 +8,6 @@ in
       common = enabled;
       development = enabled;
     };
-
   };
 
   environment.systemPath = [ "/opt/homebrew/bin" ];

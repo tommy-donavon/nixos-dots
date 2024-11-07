@@ -10,7 +10,6 @@ let
 
   cfg = config.${namespace}.programs.terminal.emulators.alacritty;
 in
-# font = "FiraCode Nerd Font Mono";
 {
   options.${namespace}.programs.terminal.emulators.alacritty = with types; {
     enable = mkEnableOption "alacritty";
