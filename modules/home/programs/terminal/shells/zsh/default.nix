@@ -25,13 +25,11 @@ in
     programs.zsh = {
       enable = true;
 
-      # directory to put config files in
       dotDir = ".config/zsh";
 
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      # .zshrc
       initExtra =
         ''
           PROMPT="%F{blue}%m %~%b "$'\n'"%(?.%F{green}%Bλ%b |.%F{red}?) %f"
@@ -89,14 +87,12 @@ in
         exec Hyprland
       '';
 
-      # Tweak settings for history
       history = {
         save = 1000;
         size = 1000;
         path = "$HOME/.cache/zsh_history";
       };
 
-      # Set some aliases
       shellAliases = {
         c = "clear";
         mkdir = "mkdir -vp";
@@ -123,7 +119,6 @@ in
         vdir = "${getExe' pkgs.coreutils "vdir"} --color=auto";
 
         # Misc
-        # clear = "clear && ${getExe config.programs.fastfetch.package}";
         clr = "clear";
         pls = "sudo";
         usage = "${getExe' pkgs.coreutils "du"} -ah -d1 | sort -rn 2>/dev/null";

@@ -32,7 +32,12 @@ in
       xwayland.enable = true;
     };
 
-    #home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
-    home.file.".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
+    nixdots = {
+      programs = {
+        graphical = {
+          hyprlock.enable = true;
+        };
+      };
+    };
   };
 }
