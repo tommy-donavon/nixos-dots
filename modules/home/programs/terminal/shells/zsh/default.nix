@@ -37,7 +37,9 @@ in
           export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store";
           export ZK_NOTEBOOK_DIR="~/stuff/notes";
           export DIRENV_LOG_FORMAT="";
-          bindkey '^I' autosuggest-accept
+
+          bindkey '^I' complete-word
+          bindkey '^[[Z' autosuggest-accept
 
           bindkey "\e[1;3D" backward-word
           bindkey "\e[1;3C" forward-word
