@@ -22,7 +22,6 @@ in
     home.packages =
       with pkgs;
       [
-        # onefetch
         chafa
         libgccjit
         pkg-config
@@ -38,7 +37,6 @@ in
         dbeaver-bin
         pgadmin4
         redisinsight
-
       ];
 
     programs.home-manager = enabled;
@@ -51,7 +49,6 @@ in
       };
 
       programs = {
-
         terminal = {
           editors = {
             nvim = enabled;
@@ -74,6 +71,7 @@ in
             xplr = enabled;
             direnv = enabled;
             ripgrep = enabled;
+            tmux = enabled;
           };
         };
       };
