@@ -37,7 +37,6 @@
     stylix.url = "github:danth/stylix";
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
-    ags.url = "github:Aylur/ags/v2";
   };
 
   outputs =
