@@ -20,6 +20,7 @@ in
     home.packages = with pkgs; [
       obsidian
       killall
+      tree
     ];
     nixdots = {
       theme = enabled;
