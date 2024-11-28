@@ -25,6 +25,8 @@ mkShell {
     nixpkgs-lint
     nixfmt-rfc-style
     snowfall-flake.packages.${system}.flake
+    snowfallorg.frost
+    # Adds all the packages required for the pre-commit checks
   ];
 
   shellHook = ''

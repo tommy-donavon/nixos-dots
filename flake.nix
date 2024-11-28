@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    snowfall-frost = {
+      url = "github:snowfallorg/frost";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,6 +75,7 @@
         rust-overlay.overlays.default
         alacritty-theme.overlays.default
         (_final: prev: { inherit (inputs.ghostscript.legacyPackages.${prev.system}) ghostscript; })
+        snowfall-frost.overlays."package/frost"
       ];
 
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
