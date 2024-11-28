@@ -69,7 +69,7 @@
         nur.overlay
         rust-overlay.overlays.default
         alacritty-theme.overlays.default
-        (final: prev: { ghostscript = inputs.ghostscript.legacyPackages.${prev.system}.ghostscript; })
+        (_final: prev: { inherit (inputs.ghostscript.legacyPackages.${prev.system}) ghostscript; })
       ];
 
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
