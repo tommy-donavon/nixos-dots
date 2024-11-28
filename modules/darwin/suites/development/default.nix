@@ -33,7 +33,10 @@ in
         "libpq"
         "mysql"
       ];
-      casks = [ "cutter" ];
+      casks = [
+        "cutter"
+        "teleport-connect"
+      ];
       taps = [ "pulumi/tap" ];
     };
   };

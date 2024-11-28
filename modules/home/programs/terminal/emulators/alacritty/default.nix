@@ -6,12 +6,12 @@
   ...
 }:
 let
-  inherit (lib) types mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf;
 
   cfg = config.${namespace}.programs.terminal.emulators.alacritty;
 in
 {
-  options.${namespace}.programs.terminal.emulators.alacritty = with types; {
+  options.${namespace}.programs.terminal.emulators.alacritty = {
     enable = mkEnableOption "alacritty";
   };
 
@@ -46,22 +46,6 @@ in
               x = 0;
               y = 0;
             };
-
-            #  normal = {
-            #    family = font;
-            #  };
-            #  bold = {
-            #    family = font;
-            #    style = "Bold";
-            #  };
-            #  italic = {
-            #    family = font;
-            #    style = "italic";
-            #  };
-            #  bold_italic = {
-            #    family = font;
-            #    style = "bold_italic";
-            #  };
           };
 
           keyboard = {
