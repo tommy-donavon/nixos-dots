@@ -43,7 +43,6 @@ in
           http-connections = 50;
           warn-dirty = false;
           log-lines = 50;
-          auto-optimise-store = true;
 
           allow-import-from-derivation = true;
 
@@ -59,7 +58,7 @@ in
         #  keep-outputs = true;
         #  keep-derivations = true;
         #});
-
+        optimise.automatic = true;
         gc = {
           automatic = true;
           interval = {
