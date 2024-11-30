@@ -10,7 +10,7 @@
     <a href="https://tommy-donavon.github.io/nixos-dots/" target="_blank"><img alt="Frost Documentation" src="https://img.shields.io/static/v1?logoColor=d8dee9&label=Frost&labelColor=5e81ac&message=Documentation&color=d8dee9&style=for-the-badge"></a>
     <a href="" target="_blank" src="https://img.shields.io/github/actions/workflow/status/tommy-donavon/nixos-dots/analysis.yml"></a>
     <a href="https://github.com/tommy-donavon/nixos-dots/actions/workflows/analysis.yml">
-        <img src="https://img.shields.io/github/actions/workflow/status/tommy-donavon/nixos-dots/analysis.yml?label=analysis&logoColor=d8dee9&labelColor=5e81ac&color=d8dee9&style=for-the-badge"/>
+        <img src="https://img.shields.io/github/actions/workflow/status/tommy-donavon/nixos-dots/analysis.yml?label=analysis&logoColor=2c6681&labelColor=5e81ac&color=306884&style=for-the-badge"/>
     </a>
 </p>
 
