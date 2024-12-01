@@ -2,7 +2,7 @@
   description = "dots";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # TODO remove once https://github.com/NixOS/nixpkgs/issues/355377 is resolved
     ghostscript.url = "github:nixos/nixpkgs/aecd17c0dbd112d6df343827d9324f071ef9c502";
