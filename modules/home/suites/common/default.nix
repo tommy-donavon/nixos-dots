@@ -20,6 +20,7 @@ in
     home.packages = with pkgs; [
       obsidian
       killall
+      gnumake
       tree
     ];
     nixdots = {
