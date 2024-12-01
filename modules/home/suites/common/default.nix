@@ -21,6 +21,7 @@ in
       obsidian
       killall
       gnumake
+      tree
     ];
     nixdots = {
       theme = enabled;

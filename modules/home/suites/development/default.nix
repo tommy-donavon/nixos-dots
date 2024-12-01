@@ -32,6 +32,7 @@ in
       ++ lib.optionals cfg.opsEnable [
         tenv
         kind
+        teleport_15
       ]
       ++ lib.optionals cfg.dataEnable [
         dbeaver-bin

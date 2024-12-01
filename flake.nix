@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # TODO remove once https://github.com/NixOS/nixpkgs/issues/355377 is resolved
+    ghostscript.url = "github:nixos/nixpkgs/aecd17c0dbd112d6df343827d9324f071ef9c502";
 
     snowfall-lib = {
       url = "github:snowfallorg/lib";
@@ -12,6 +14,11 @@
 
     snowfall-flake = {
       url = "github:snowfallorg/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    snowfall-frost = {
+      url = "github:snowfallorg/frost";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -67,6 +74,8 @@
         nur.overlay
         rust-overlay.overlays.default
         alacritty-theme.overlays.default
+        (_final: prev: { inherit (inputs.ghostscript.legacyPackages.${prev.system}) ghostscript; })
+        snowfall-frost.overlays."package/frost"
       ];
 
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
