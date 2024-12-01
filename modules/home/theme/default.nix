@@ -23,6 +23,7 @@ in
       image = ./wallpaper.png;
 
       targets.waybar.enable = false;
+      targets.hyprlock.enable = false;
 
       fonts = {
         sizes = {

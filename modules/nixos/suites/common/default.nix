@@ -34,7 +34,7 @@ in
         fingerprint = enabled;
         logitech = enabled;
         nvidia = enabled;
-        opengl = enabled;
+        graphics = enabled;
         power = enabled;
       };
 
