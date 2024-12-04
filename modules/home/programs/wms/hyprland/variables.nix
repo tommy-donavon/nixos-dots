@@ -27,6 +27,7 @@ in
         input = {
           follow_mouse = 0;
           touchpad.natural_scroll = true;
+          sensitivity = 1;
         };
 
         monitor = [
@@ -37,7 +38,6 @@ in
         cursor.no_hardware_cursors = true;
 
         general = {
-          sensitivity = 1;
           gaps_in = 6;
           gaps_out = 12;
           border_size = 4;
@@ -47,8 +47,9 @@ in
 
         decoration = {
           rounding = 8;
-          drop_shadow = 0;
-          shadow_range = 60;
+          shadow = {
+            range = 60;
+          };
           #"col.shadow" = "0x66000000";
         };
 
