@@ -36,6 +36,9 @@ in
     };
 
     nixdots = {
+      services = {
+        aerospace = enabled;
+      };
       tools = {
         homebrew = enabled;
       };
