@@ -73,7 +73,7 @@
       };
       home.modules = with inputs; [ stylix.homeManagerModules.stylix ];
       overlays = with inputs; [
-        nur.overlay
+        nur.overlays.default
         rust-overlay.overlays.default
         alacritty-theme.overlays.default
         snowfall-frost.overlays."package/frost"
