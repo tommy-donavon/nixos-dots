@@ -57,6 +57,7 @@ in
           emulators = {
             alacritty = enabled;
             foot = mkIf pkgs.stdenv.isLinux enabled;
+            ghostty = enabled;
           };
           shells = {
             zsh = enabled;
