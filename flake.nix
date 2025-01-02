@@ -77,7 +77,7 @@
         rust-overlay.overlays.default
         alacritty-theme.overlays.default
         snowfall-frost.overlays."package/frost"
-        (final: prev: {
+        (_final: prev: {
           ghostty = inputs.ghostty.packages.${prev.system}.default;
         })
       ];
