@@ -32,6 +32,7 @@ in
               enableSshSocket = true;
             };
             thunar = enabled;
+            steam = enabled;
           };
         };
       };

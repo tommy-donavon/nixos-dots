@@ -42,6 +42,10 @@
     stylix.url = "github:danth/stylix";
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
+
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs =
@@ -73,6 +77,9 @@
         rust-overlay.overlays.default
         alacritty-theme.overlays.default
         snowfall-frost.overlays."package/frost"
+        (final: prev: {
+          ghostty = inputs.ghostty.packages.${prev.system}.default;
+        })
       ];
 
       outputs-builder = channels: { formatter = channels.nixpkgs.nixfmt-rfc-style; };
