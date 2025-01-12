@@ -30,6 +30,7 @@ in
         postman
       ]
       ++ lib.optionals cfg.opsEnable [
+        argocd
         tenv
         kind
         teleport_15

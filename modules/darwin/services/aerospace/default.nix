@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) types mkIf;
+  inherit (lib) types mkIf importTOML;
   inherit (lib.${namespace}) mkOpt;
 
   cfg = config.${namespace}.services.aerospace;
@@ -18,6 +18,7 @@ in
   config = mkIf cfg.enable {
     services.aerospace = {
       enable = true;
+      settings = importTOML ./aerospace.toml;
     };
   };
 }
