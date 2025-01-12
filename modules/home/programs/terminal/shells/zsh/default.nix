@@ -61,6 +61,7 @@ in
         + lib.optionalString pkgs.stdenv.isDarwin ''
           if [ -f /opt/homebrew/bin/brew ]; then
             	eval "$("/opt/homebrew/bin/brew" shellenv)"
+                export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
           fi
 
           # Nix

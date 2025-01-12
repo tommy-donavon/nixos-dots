@@ -30,6 +30,7 @@ in
         postman
       ]
       ++ lib.optionals cfg.opsEnable [
+        argocd
         tenv
         kind
         teleport_15
@@ -57,7 +58,7 @@ in
           emulators = {
             alacritty = enabled;
             foot = mkIf pkgs.stdenv.isLinux enabled;
-            ghostty = enabled;
+            ghostty = mkIf pkgs.stdenv.isLinux enabled;
           };
           shells = {
             zsh = enabled;

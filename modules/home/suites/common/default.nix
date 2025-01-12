@@ -34,6 +34,9 @@ in
             eza = enabled;
           };
         };
+        wms = {
+          aerospace = mkIf pkgs.stdenv.isDarwin enabled;
+        };
       };
     };
   };

@@ -31,11 +31,10 @@ in
         "openssl@3"
         "llvm"
         "libpq"
-        "mysql"
+        "mysql@8.0"
       ];
       casks = [
         "cutter"
-        "teleport-connect"
       ];
       taps = [ "pulumi/tap" ];
     };
