@@ -64,16 +64,14 @@ in
           };
 
           tools = {
-            # git-crypt = enabled;
-            k8s.enable = cfg.opsEnable;
-            # lazydocker = cfg.dockerEnable;
-            lazygit = enabled;
-            git = enabled;
-            starship = enabled;
-            xplr = enabled;
             direnv = enabled;
+            git = enabled;
+            k8s.enable = cfg.opsEnable;
+            lazygit = enabled;
             ripgrep = enabled;
+            starship = enabled;
             tmux = enabled;
+            xplr = enabled;
           };
         };
       };
