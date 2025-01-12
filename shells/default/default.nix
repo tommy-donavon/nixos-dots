@@ -28,9 +28,11 @@ mkShell {
     snowfallorg.frost
     just
     nh
+    cocogitto
   ];
 
   shellHook = ''
+    cog install-hook --all -o
     echo 🔨 Welcome to ${namespace}
   '';
 }
