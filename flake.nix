@@ -78,6 +78,9 @@
         alacritty-theme.overlays.default
         snowfall-frost.overlays."package/frost"
         (_final: prev: {
+          unstable = import inputs.unstable {
+            inherit (prev) system;
+          };
           ghostty = inputs.ghostty.packages.${prev.system}.default;
         })
       ];

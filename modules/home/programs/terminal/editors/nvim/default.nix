@@ -19,7 +19,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ neovim ];
+    home.packages = with pkgs.unstable; [ neovim ];
     home.sessionVariables = {
       EDITOR = "nvim";
     };
