@@ -31,6 +31,7 @@ in
           tools = {
             btop = enabled;
             bat = enabled;
+            eza = enabled;
           };
         };
       };

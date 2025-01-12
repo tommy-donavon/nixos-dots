@@ -102,7 +102,6 @@ in
         mv = "mv -iv";
         cp = "cp -riv";
         nd = "nix develop -c $SHELL";
-        l = "ls -lah";
 
         # Navigation shortcuts
         home = "cd ~";
