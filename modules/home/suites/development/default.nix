@@ -23,10 +23,11 @@ in
       with pkgs;
       [
         chafa
-        libgccjit
-        pkg-config
         gcc
+        grex
+        libgccjit
         openssl
+        pkg-config
         postman
       ]
       ++ lib.optionals cfg.opsEnable [
@@ -71,6 +72,7 @@ in
             lazygit = enabled;
             ripgrep = enabled;
             starship = enabled;
+            tealdeer = enabled;
             tmux = enabled;
             xplr = enabled;
           };
