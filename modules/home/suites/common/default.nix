@@ -18,9 +18,10 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      obsidian
-      killall
+      bandwhich
       gnumake
+      killall
+      obsidian
       tree
     ];
     nixdots = {
@@ -29,9 +30,10 @@ in
       programs = {
         terminal = {
           tools = {
-            btop = enabled;
             bat = enabled;
+            btop = enabled;
             eza = enabled;
+            zoxide = enabled;
           };
         };
         wms = {

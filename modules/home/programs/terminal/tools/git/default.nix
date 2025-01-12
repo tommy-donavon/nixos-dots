@@ -7,6 +7,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
+  inherit (lib.${namespace}) enabled;
 
   cfg = config.${namespace}.programs.terminal.tools.git;
 
@@ -24,6 +25,7 @@ in
       enable = true;
       userName = "tommy-donavon";
       userEmail = "donavontommy@gmail.com";
+      delta = enabled;
 
       aliases = {
         gone = ''
