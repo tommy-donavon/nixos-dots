@@ -22,6 +22,7 @@ in
     home.packages =
       with pkgs;
       [
+        atac
         chafa
         gcc
         grex
@@ -29,6 +30,7 @@ in
         openssl
         pkg-config
         postman
+        charm-freeze
       ]
       ++ lib.optionals cfg.opsEnable [
         argocd
@@ -39,6 +41,7 @@ in
       ++ lib.optionals cfg.dataEnable [
         dbeaver-bin
         pgadmin4
+        rainfrog
         redisinsight
       ];
 
