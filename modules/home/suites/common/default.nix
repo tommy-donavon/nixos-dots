@@ -23,6 +23,7 @@ in
       killall
       obsidian
       tree
+      tui-journal
     ];
     nixdots = {
       theme = enabled;
