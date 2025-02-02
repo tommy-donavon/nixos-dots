@@ -22,6 +22,18 @@ in
       zoom-us
       obs-studio
     ];
+    gtk = {
+      enable = true;
+      cursorTheme = {
+        name = "Nordzy-white-cursors";
+        package = pkgs.nordzy-cursor-theme;
+      };
+      iconTheme = {
+        name = "Papirus";
+        package = pkgs.papirus-icon-theme;
+
+      };
+    };
     nixdots = {
       programs = {
         graphical = {

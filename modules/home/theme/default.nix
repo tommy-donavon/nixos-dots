@@ -19,10 +19,9 @@ in
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
-      image = ./wallpaper.png;
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
+      image = ./../../../assets/wallpapers/dark_cave.jpg;
 
-      targets.waybar.enable = false;
       targets.hyprlock.enable = false;
 
       fonts = {
@@ -43,14 +42,15 @@ in
         };
 
         monospace = {
-          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
           name = "JetBrainsMono Nerd Font";
+          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
         };
 
         emoji = {
-          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-          name = "JetBrainsMono Nerd Font";
+          name = "Noto Color Emoji";
+          package = pkgs.noto-fonts-emoji;
         };
+
       };
     };
 

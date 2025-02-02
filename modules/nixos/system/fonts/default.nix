@@ -17,7 +17,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.${namespace}.fontcharlist ];
     fonts = {
       packages = with pkgs; [
         jetbrains-mono
@@ -33,9 +32,9 @@ in
           ];
         })
       ];
-
       fontconfig = {
         enable = true;
+        useEmbeddedBitmaps = true;
         hinting.autohint = true;
         defaultFonts = {
           emoji = [

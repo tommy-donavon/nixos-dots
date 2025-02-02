@@ -25,15 +25,38 @@ in
     programs.hyprpanel = {
       enable = true;
 
-      systemd.enable = true;
-
       hyprland.enable = true;
       overwrite.enable = true;
-      theme = "catppuccin_frappe";
-      settings = {
+      theme = "tokyo_night";
 
+      layout = {
+        "bar.layouts" = {
+          "*" = {
+            left = [
+              "dashboard"
+              "workspaces"
+              "notifications"
+              "systray"
+            ];
+
+            middle = [ "media" ];
+            right = [
+              "volume"
+              "clock"
+              "network"
+              "bluetooth"
+              "battery"
+            ];
+          };
+        };
+      };
+
+      settings = {
         bar = {
-          clock.format = "%a %b %d  %I:%M %p";
+          clock = {
+            format = "%I:%M %p";
+            icon = "";
+          };
           launcher.autoDetectIcon = true;
           media.show_active_only = true;
           notifications.hideCountWhenZero = true;
