@@ -18,7 +18,6 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       wofi
-      pkgs.${namespace}.powermenu
     ];
     home.file.".config/wofi.css".source = ./wofi.css;
   };

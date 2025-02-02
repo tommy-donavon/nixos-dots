@@ -10,6 +10,8 @@ in
       common = enabled;
       desktop = enabled;
     };
+    services.greetd = enabled;
+    #dms.tuigreet = enabled;
   };
 
   virtualisation.docker = enabled;

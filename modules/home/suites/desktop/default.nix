@@ -25,9 +25,9 @@ in
     nixdots = {
       programs = {
         graphical = {
-          wofi = enabled;
-          waybar = enabled;
           dunst = enabled;
+          hyprpanel = enabled;
+          wofi = enabled;
         };
         wms = {
           hyprland = enabled;

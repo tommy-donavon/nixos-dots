@@ -9,6 +9,11 @@
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.${namespace}.theme;
+
+  font = {
+    package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+    name = "JetBrainsMono Nerd Font";
+  };
 in
 {
   imports = with inputs; [ stylix.homeManagerModules.stylix ];
@@ -43,13 +48,13 @@ in
         };
 
         monospace = {
-          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
-          name = "FiraCode Nerd Font";
+          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+          name = "JetBrainsMono Nerd Font";
         };
 
         emoji = {
-          package = pkgs.noto-fonts-emoji;
-          name = "Noto Color Emoji";
+          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+          name = "JetBrainsMono Nerd Font";
         };
       };
     };

@@ -39,6 +39,7 @@ in
         hinting.autohint = true;
         defaultFonts = {
           emoji = [
+            "JetBrainsMono"
             "OpenMoji Color"
             "Noto Color Emoji"
             "Unifont"

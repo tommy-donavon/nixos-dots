@@ -1,4 +1,9 @@
-{ config, lib, namespace, ... }:
+{
+  config,
+  lib,
+  namespace,
+  ...
+}:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.${namespace}.system.boot;
@@ -11,6 +16,7 @@ in
   config = mkIf cfg.enable {
     boot = {
       tmp.cleanOnBoot = true;
+      kernelParams = [ "console=tty1" ];
       loader = {
         systemd-boot.enable = true;
         systemd-boot.editor = false;

@@ -46,6 +46,16 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -71,12 +81,16 @@
         allowUnfree = true;
 
       };
-      home.modules = with inputs; [ stylix.homeManagerModules.stylix ];
+      home.modules = with inputs; [
+        stylix.homeManagerModules.stylix
+        hyprpanel.homeManagerModules.hyprpanel
+      ];
       overlays = with inputs; [
         nur.overlays.default
         rust-overlay.overlays.default
         alacritty-theme.overlays.default
         snowfall-frost.overlays."package/frost"
+        hyprpanel.overlay
         (_final: prev: {
           unstable = import inputs.unstable {
             inherit (prev) system;

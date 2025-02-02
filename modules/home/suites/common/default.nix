@@ -25,6 +25,7 @@ in
       obsidian
       tree
       tui-journal
+      nix-search-cli
     ];
     nixdots = {
       theme = enabled;
