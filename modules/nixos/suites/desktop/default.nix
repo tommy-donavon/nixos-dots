@@ -15,12 +15,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.xserver = {
-      desktopManager.gnome.enable = false;
-      videoDrivers = [ "nvidia" ];
-
-      desktopManager.xterm.enable = false;
-    };
     programs.dconf.enable = true;
     programs.xwayland.enable = true;
     nixdots = {

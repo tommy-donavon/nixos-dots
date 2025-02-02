@@ -11,7 +11,7 @@ in
       desktop = enabled;
     };
     services.greetd = enabled;
-    #dms.tuigreet = enabled;
+    services.xserver = enabled;
   };
 
   virtualisation.docker = enabled;
