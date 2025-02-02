@@ -31,7 +31,7 @@ in
         background = [
           {
             monitor = "";
-            path = "$NIXOS_CONFIG_DIR/pics/wallpaper.png";
+            path = "$NIXOS_CONFIG_DIR/assets/wallpaper.png";
             blur_passes = 3;
             contrast = 0.8916;
             brightness = 0.8172;
@@ -96,6 +96,12 @@ in
 
       };
 
+    };
+
+    wayland.windowManager.hyprland = {
+      settings.exec-once = [
+        "hyprlock"
+      ];
     };
   };
 }

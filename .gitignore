@@ -1,4 +1,5 @@
 .direnv
+result/
 
 ### Linux ###
 *~
@@ -43,3 +44,4 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+result

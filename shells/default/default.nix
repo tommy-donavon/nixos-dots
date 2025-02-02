@@ -29,6 +29,7 @@ mkShell {
     just
     nh
     cocogitto
+    nil
   ];
 
   shellHook = ''

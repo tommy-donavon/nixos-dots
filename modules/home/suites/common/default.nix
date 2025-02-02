@@ -19,11 +19,13 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       bandwhich
+      fd
       gnumake
       killall
       obsidian
       tree
       tui-journal
+      nix-search-cli
     ];
     nixdots = {
       theme = enabled;
