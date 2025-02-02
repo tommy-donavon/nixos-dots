@@ -12,18 +12,20 @@ in
   };
 
   nix.enable = true;
-  services.openssh.enable = true;
+  services = {
+    openssh.enable = true;
 
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "nixos";
-  };
-
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome = {
+    displayManager.autoLogin = {
       enable = true;
+      user = "nixos";
+    };
+
+    xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome = {
+        enable = true;
+      };
     };
   };
 
