@@ -9,11 +9,6 @@
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.${namespace}.theme;
-
-  font = {
-    package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-    name = "JetBrainsMono Nerd Font";
-  };
 in
 {
   imports = with inputs; [ stylix.homeManagerModules.stylix ];
