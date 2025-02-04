@@ -32,6 +32,11 @@ in
             "SUPER_SHIFT,k,movewindow,u"
             "SUPER_SHIFT,j,movewindow,d"
 
+            # screenshot monitor
+            "CTRL SHIFT,M,exec,${getExe pkgs.hyprshot} -m output -o $HOME/Pictures/Screenshots"
+            # screenshot region
+            "CTRL SHIFT,R,exec,${getExe pkgs.hyprshot} -m region -o $HOME/Pictures/Screenshots"
+
             ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
             ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
             ",XF86AudioRaiseVolume,exec,pamixer -i 5"

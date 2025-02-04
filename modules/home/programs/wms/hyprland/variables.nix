@@ -41,8 +41,7 @@ in
           gaps_in = 6;
           gaps_out = 12;
           border_size = 4;
-          #"col.active_border" = "0xffb072d1";
-          #"col.inactive_border" = "0xff292a37";
+          resize_on_border = true;
         };
 
         decoration = {
@@ -50,7 +49,6 @@ in
           shadow = {
             range = 60;
           };
-          #"col.shadow" = "0x66000000";
         };
 
         xwayland.force_zero_scaling = true;

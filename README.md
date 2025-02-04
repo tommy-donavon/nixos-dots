@@ -24,7 +24,8 @@ This repository contains my personal Nix configs, managed using the Snowfall lib
 2. [Getting Started](#getting-started)
 3. [Project Structure](#project-structure)
 4. [Resources](#resources)
-5. [Acknowledgements](#acknowledgements) 
+5. [Acknowledgements](#acknowledgements)
+6. [Screenshots](#screenshots)
 
 ## Features
 
@@ -58,17 +59,15 @@ flake switch
 
 ## Project Structure
 
-
 ```
 .
 ├── homes          # user specific configuration
 ├── lib            # custom functions to merge into lib
 ├── modules
-│   ├── darwin     # macOS specific configurations
-│   ├── home       # cross platform Home Manager configurations
-│   ├── nixos      # NixOS specific configurations
-├── overlays       # custom package overlays
-├── packages       # custom packages exposed to entire flake
+│   ├── darwin     # macOS specific configurations
+│   ├── home       # cross platform Home Manager configurations
+│   ├── nixos      # NixOS specific configurations
+│   └── shared
 ├── shells         # exposed development shells
 └── systems        # system specific configuration
 ```
@@ -83,3 +82,9 @@ Other user configurations that I used and referenced
 
 - [khaneliman/khanelinix](https://github.com/khaneliman/khanelinix) My main reference material and inspiration
 - [JakeHamilton/config](https://github.com/jakehamilton/config)
+
+## Screenshots
+
+![Workflow](./assets/workflow.png)
+
+![Desktop](./assets/desktop.png)

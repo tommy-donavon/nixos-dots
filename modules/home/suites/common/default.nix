@@ -20,12 +20,13 @@ in
     home.packages = with pkgs; [
       bandwhich
       fd
+      feh
       gnumake
       killall
+      nix-search-cli
       obsidian
       tree
       tui-journal
-      nix-search-cli
     ];
     nixdots = {
       theme = enabled;

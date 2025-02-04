@@ -20,6 +20,7 @@ in
     home.packages = with pkgs; [
       cliphist
       hyprpanel
+      hyprshot
     ];
 
     programs.hyprpanel = {
