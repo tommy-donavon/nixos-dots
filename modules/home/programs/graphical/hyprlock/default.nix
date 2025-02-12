@@ -31,7 +31,7 @@ in
         background = [
           {
             monitor = "";
-            path = "$HOME/dots/assets/wallpapers/dark_cave.jpg";
+            path = "$HOME/dots/assets/wallpapers/ghibli.jpg";
             blur_passes = 3;
             contrast = 0.8916;
             brightness = 0.8172;

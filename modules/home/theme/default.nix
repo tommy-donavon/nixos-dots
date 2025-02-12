@@ -19,8 +19,8 @@ in
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/ocean.yaml";
-      image = ./../../../assets/wallpapers/dark_cave.jpg;
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+      image = ./../../../assets/wallpapers/ghibli.jpg;
 
       targets.hyprlock.enable = false;
 
