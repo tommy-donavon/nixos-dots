@@ -19,7 +19,7 @@ in
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/ocean.yaml";
       image = ./../../../assets/wallpapers/dark_cave.jpg;
 
       targets.hyprlock.enable = false;

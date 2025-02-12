@@ -28,7 +28,7 @@ in
 
       hyprland.enable = true;
       overwrite.enable = true;
-      theme = "tokyo_night";
+      theme = "everforest";
 
       layout = {
         "bar.layouts" = {
@@ -42,6 +42,7 @@ in
 
             middle = [ "media" ];
             right = [
+              "hypridle"
               "volume"
               "clock"
               "network"

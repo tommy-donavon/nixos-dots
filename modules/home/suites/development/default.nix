@@ -31,6 +31,7 @@ in
         pkg-config
         postman
         charm-freeze
+        typos-lsp
       ]
       ++ lib.optionals cfg.opsEnable [
         argocd

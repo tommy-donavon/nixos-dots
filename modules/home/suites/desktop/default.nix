@@ -29,15 +29,13 @@ in
         package = pkgs.nordzy-cursor-theme;
       };
       iconTheme = {
-        name = "Papirus";
-        package = pkgs.papirus-icon-theme;
-
+        name = "kora";
+        package = pkgs.kora-icon-theme;
       };
     };
     nixdots = {
       programs = {
         graphical = {
-          dunst = enabled;
           hyprpanel = enabled;
           wofi = enabled;
         };
