@@ -7,19 +7,20 @@ let
       unit = "\t";
     };
     auto-format = true;
-
     language-servers = [
       "typescript-language-server"
       "eslint"
     ];
   };
 
-  lspBinPath = lang:
+  lspBinPath =
+    lang:
     with pkgs.nodePackages;
 
-    if lang == "typescript"
-    then "${typescript-language-server}/bin/typescript-language-server"
-    else "${vscode-langservers-extracted}/bin/vscode-${lang}-language-server";
+    if lang == "typescript" then
+      "${typescript-language-server}/bin/typescript-language-server"
+    else
+      "${vscode-langservers-extracted}/bin/vscode-${lang}-language-server";
 in
 
 {
@@ -30,22 +31,34 @@ in
 
   programs.helix.languages = {
     language = [
-      (cfg // {
-        name = "html";
-        language-servers = [ "vscode-html-language-server" ];
-      })
-      (cfg // {
-        name = "css";
-        language-servers = [ "vscode-css-language-server" ];
-      })
-      (cfg // {
-        name = "scss";
-        language-servers = [ "vscode-css-language-server" ];
-      })
-      (cfg // {
-        name = "json";
-        language-servers = [ "vscode-json-language-server" ];
-      })
+      (
+        cfg
+        // {
+          name = "html";
+          language-servers = [ "vscode-html-language-server" ];
+        }
+      )
+      (
+        cfg
+        // {
+          name = "css";
+          language-servers = [ "vscode-css-language-server" ];
+        }
+      )
+      (
+        cfg
+        // {
+          name = "scss";
+          language-servers = [ "vscode-css-language-server" ];
+        }
+      )
+      (
+        cfg
+        // {
+          name = "json";
+          language-servers = [ "vscode-json-language-server" ];
+        }
+      )
       (cfg // { name = "tsx"; })
       (cfg // { name = "typescript"; })
       (cfg // { name = "jsx"; })
