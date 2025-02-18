@@ -50,9 +50,11 @@ in
 
     nixdots = {
       languages = {
-        rust = enabled;
+        go = enabled;
         lua = enabled;
         node = enabled;
+        ruby = enabled;
+        rust = enabled;
       };
 
       programs = {
