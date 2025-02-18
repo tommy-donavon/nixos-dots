@@ -10,11 +10,12 @@ in
       common = enabled;
       desktop = enabled;
     };
-    services.greetd = enabled;
-    services.xserver = enabled;
+    services = {
+      greetd = enabled;
+      xserver = enabled;
+      tlp = enabled;
+    };
   };
-
-  virtualisation.docker = enabled;
 
   system.stateVersion = "21.11"; # Did you read the comment?
 }

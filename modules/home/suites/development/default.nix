@@ -57,9 +57,8 @@ in
 
       programs = {
         terminal = {
-          editors = {
-            nvim = enabled;
-          };
+          editors.lunavim = enabled;
+
           emulators = {
             alacritty = enabled;
             foot = mkIf pkgs.stdenv.isLinux enabled;

@@ -56,6 +56,10 @@
       url = "github:Jas-SinghFSU/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    lunavim = {
+      url = "github:tommy-donavon/lunavim";
+    };
   };
 
   outputs =
@@ -95,6 +99,7 @@
           unstable = import inputs.unstable {
             inherit (prev) system;
           };
+          lunavim = inputs.lunavim.packages.${prev.system}.default;
           ghostty = inputs.ghostty.packages.${prev.system}.default;
         })
       ];

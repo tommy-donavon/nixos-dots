@@ -21,6 +21,7 @@ in
       inputs.zen-browser.packages."${system}".default
       zoom-us
       obs-studio
+      spotify
     ];
     gtk = {
       enable = true;

@@ -19,6 +19,7 @@ in
     environment.systemPackages = with pkgs; [
       steamcmd
       steam-tui
+      adwsteamgtk
     ];
     programs.steam = {
       enable = true;

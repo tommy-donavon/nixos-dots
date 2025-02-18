@@ -15,8 +15,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.dconf.enable = true;
-    programs.xwayland.enable = true;
+    programs = {
+      dconf.enable = true;
+      xwayland.enable = true;
+    };
     nixdots = {
       programs = {
         graphical = {
