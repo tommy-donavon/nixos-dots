@@ -35,6 +35,7 @@ in
       ];
       casks = [
         "cutter"
+        "ghostty"
       ];
       taps = [ "pulumi/tap" ];
     };

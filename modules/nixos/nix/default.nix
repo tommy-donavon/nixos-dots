@@ -14,7 +14,6 @@ in
   options.${namespace}.nix = {
     enable = mkEnableOption "nix";
   };
-
   config = mkIf cfg.enable {
 
     environment.systemPackages = with pkgs; [

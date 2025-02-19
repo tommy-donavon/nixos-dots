@@ -1,4 +1,3 @@
-
 {
   lib,
   inputs,
@@ -59,4 +58,3 @@ rec {
       inherit nodes;
     };
 }
-

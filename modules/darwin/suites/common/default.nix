@@ -37,7 +37,7 @@ in
 
     nixdots = {
       services = {
-        aerospace = enabled;
+        #aerospace = enabled;
       };
       tools = {
         homebrew = enabled;
