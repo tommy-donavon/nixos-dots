@@ -8,6 +8,7 @@ in
       common = enabled;
       development = enabled;
     };
+    nix = enabled;
   };
 
   environment.systemPath = [ "/opt/homebrew/bin" ];

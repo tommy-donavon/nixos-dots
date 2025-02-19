@@ -15,6 +15,7 @@ in
       xserver = enabled;
       tlp = enabled;
     };
+    nix = enabled;
   };
 
   system.stateVersion = "21.11"; # Did you read the comment?

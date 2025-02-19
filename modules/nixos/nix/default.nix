@@ -35,8 +35,7 @@ in
         ];
       in
       {
-        inherit (cfg) package;
-
+        package = pkgs.nixVersions.latest;
         settings = {
           experimental-features = "nix-command flakes";
           http-connections = 50;

@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib.${namespace}) enabled;
+  inherit (lib.${namespace}) enabled disabled;
 in
 {
 
@@ -14,6 +14,7 @@ in
       enable = true;
       inherit (config.snowfallorg.user) name;
     };
+    languages.node = lib.mkForce disabled;
     suites = {
       common = enabled;
       desktop = enabled;
