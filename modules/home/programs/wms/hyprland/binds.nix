@@ -16,7 +16,7 @@ in
         bind =
           [
 
-            "SUPER,D,exec,${getExe pkgs.wofi} --show run --style=$HOME/.config/wofi.css --term=footclient"
+            "SUPER,D,exec,${getExe pkgs.nwg-drawer} --term=ghostty --nofs"
             "SUPER,Return,exec,ghostty"
             "SUPER_SHIFT,Q,killactive,"
             "SUPER,V,togglefloating,"

@@ -6,6 +6,7 @@
 }:
 let
   inherit (lib) mkIf;
+  blurRule = "opacity 0.85 override 0.85 override";
   cfg = config.${namespace}.programs.wms.hyprland;
 in
 {
@@ -31,8 +32,7 @@ in
         };
 
         monitor = [
-          "desc:Chimei Innolux Corporation 0x150C,preferred,auto,1"
-          "desc:HP Inc. HP 24ec 3CM0270DJS, preferred, auto, 1"
+          ", preferred, auto, 1"
         ];
 
         cursor.no_hardware_cursors = true;
@@ -40,7 +40,7 @@ in
         general = {
           gaps_in = 6;
           gaps_out = 12;
-          border_size = 4;
+          border_size = 3;
           resize_on_border = true;
         };
 
@@ -49,7 +49,30 @@ in
           shadow = {
             range = 60;
           };
+          blur = {
+            enabled = true;
+            xray = false;
+            size = 13;
+            vibrancy_darkness = 2.0;
+            passes = 3;
+            vibrancy = 0.1696;
+          };
         };
+
+        misc = {
+          disable_hyprland_logo = true;
+          animate_manual_resizes = true;
+          animate_mouse_windowdragging = true;
+        };
+
+        windowrulev2 = [
+          "${blurRule},class:com.mitchellh.ghostty"
+          "${blurRule},class:zen-alpha"
+        ];
+
+        layerrule = [
+          "blur, nwg-drawer"
+        ];
 
         xwayland.force_zero_scaling = true;
         dwindle.pseudotile = 0;
