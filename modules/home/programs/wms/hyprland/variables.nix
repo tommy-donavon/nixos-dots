@@ -68,6 +68,7 @@ in
         windowrulev2 = [
           "${blurRule},class:com.mitchellh.ghostty"
           "${blurRule},class:zen-alpha"
+          "${blurRule},class:vesktop"
         ];
 
         layerrule = [

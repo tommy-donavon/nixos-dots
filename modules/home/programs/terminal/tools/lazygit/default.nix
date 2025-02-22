@@ -16,7 +16,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [lazygit];
+    home.packages = with pkgs; [ lazygit ];
     programs.lazygit = {
       enable = true;
 
@@ -27,6 +27,7 @@ in
             "dependabot[bot]" = "#eed49f";
           };
           showBottomLine = false;
+          nerdFontsVersion = "3";
         };
       };
     };
