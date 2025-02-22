@@ -18,6 +18,11 @@ check:
 update *input:
     @nix flake update {{ input }} --refresh
 
+# upon repl shell with loaded flake
+[group('dev')]
+repl:
+    nix repl -f flake.nix
+
 [private]
 verify *args:
     @nix-store --verify {{ args }}
@@ -27,7 +32,12 @@ verify *args:
 repair: (verify "--check-contents --repair")
 alias fix := repair
 
-# switch to the new system configuration
+# switch to new system configuration
 [group('rebuild')]
 switch:
     @flake switch
+
+# switch to new system configuration with more logging
+[group('rebuild')]
+debug:
+    @flake switch --debug --show-trace

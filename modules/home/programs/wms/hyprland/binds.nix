@@ -17,7 +17,7 @@ in
           [
 
             "SUPER,D,exec,${getExe pkgs.wofi} --show run --style=$HOME/.config/wofi.css --term=footclient"
-            "SUPER,Return,exec,footclient"
+            "SUPER,Return,exec,ghostty"
             "SUPER_SHIFT,Q,killactive,"
             "SUPER,V,togglefloating,"
             "SUPER,F,fullscreen,0"

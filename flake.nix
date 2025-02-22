@@ -83,7 +83,6 @@
     lib.mkFlake {
       channels-config = {
         allowUnfree = true;
-
       };
       home.modules = with inputs; [
         stylix.homeManagerModules.stylix

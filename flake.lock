@@ -723,11 +723,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1740004891,
-        "narHash": "sha256-gsKCE0WGKYq8qNmLN60uKpH2f5zdYJ7CAI0hF/rULCk=",
+        "lastModified": 1740202988,
+        "narHash": "sha256-76EKv/R0YpF+hfwCChLBkXmZ1H2cu2qIOoSkbQAG6LE=",
         "owner": "tommy-donavon",
         "repo": "lunavim",
-        "rev": "e896c59e785c1d2f288c84850ec89ba3a2cf07d1",
+        "rev": "8370b96337a647a32c4522732f01aba076ecc47f",
         "type": "github"
       },
       "original": {
