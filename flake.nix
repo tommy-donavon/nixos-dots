@@ -94,11 +94,11 @@
         alacritty-theme.overlays.default
         snowfall-frost.overlays."package/frost"
         hyprpanel.overlay
+        lunavim.overlays.default
         (_final: prev: {
           unstable = import inputs.unstable {
             inherit (prev) system;
           };
-          lunavim = inputs.lunavim.packages.${prev.system}.default;
           ghostty = inputs.ghostty.packages.${prev.system}.default;
         })
       ];
