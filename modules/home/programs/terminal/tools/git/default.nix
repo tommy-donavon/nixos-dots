@@ -36,14 +36,54 @@ in
       };
 
       extraConfig = {
+        column = {
+          ui = "auto";
+        };
+        branch = {
+          sort = "-committerdate";
+        };
+        tag = {
+          sort = "version:refname";
+        };
+        diff = {
+          algorithm = "histogram";
+          coloreMoved = "plain";
+          mnemonicPrefix = true;
+          renames = true;
+        };
         init = {
           defaultBranch = "main";
         };
         push = {
+          default = "simple";
           autoSetupRemote = true;
+          followTags = true;
+        };
+        fetch = {
+          prune = true;
+          pruneTags = true;
+          all = true;
+        };
+        help = {
+          autocorrect = "prompt";
+        };
+        rerere = {
+          enabled = true;
+          autoupdate = true;
+        };
+        core = {
+          excludesfile = "~/.gitignore";
+        };
+        rebase = {
+          autoSquash = true;
+          autoStash = true;
+          updateRefs = true;
+        };
+        commit = {
+          verbose = true;
         };
         pull = {
-          rebase = false;
+          rebase = true;
         };
 
       };
