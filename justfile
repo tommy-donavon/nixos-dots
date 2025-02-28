@@ -23,6 +23,12 @@ update *input:
 repl:
     nix repl -f flake.nix
 
+# fetch sha256 for github ref
+[group('dev')]
+[positional-arguments]
+fetch-sha *input:
+    nix-shell -p nix-prefetch-git jq --run "nix hash convert sha256:\$(nix-prefetch-git --url ${1} --quiet --rev ${2} | jq -r '.sha256')"
+
 [private]
 verify *args:
     @nix-store --verify {{ args }}

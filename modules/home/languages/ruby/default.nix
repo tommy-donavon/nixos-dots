@@ -28,8 +28,8 @@ in
           src = pkgs.fetchFromGitHub {
             owner = "rbenv";
             repo = "ruby-build";
-            rev = "v20221225";
-            hash = "sha256-Kuq0Z1kh2mvq7rHEgwVG9XwzR5ZUtU/h8SQ7W4/mBU0=";
+            rev = "v20250215";
+            hash = "sha256-muVto9QYC9kYVrjt1NhDg+RZ6xcrNLkuoqFLZlOvmM4=";
           };
         }
       ];
