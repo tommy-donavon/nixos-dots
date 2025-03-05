@@ -22,6 +22,7 @@ in
       blanket
       dconf
       git
+      zulu8
       libnotify
       libnotify
       libreoffice-qt
