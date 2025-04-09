@@ -43,10 +43,6 @@
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     zen-browser.url = "github:heywoodlh/flakes/0dd7b48a11af1c4c14632c56c2dc3a4e547f0ed6?dir=zen-browser";
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
-
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -99,7 +95,6 @@
           unstable = import inputs.unstable {
             inherit (prev) system;
           };
-          ghostty = inputs.ghostty.packages.${prev.system}.default;
         })
       ];
 
