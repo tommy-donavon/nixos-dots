@@ -54,7 +54,6 @@ in
         lua = enabled;
         node = enabled;
         ruby = enabled;
-        rust = enabled;
       };
 
       programs = {

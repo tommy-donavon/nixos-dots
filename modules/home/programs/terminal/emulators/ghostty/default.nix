@@ -2,24 +2,33 @@
   lib,
   config,
   namespace,
+  pkgs,
   ...
 }:
 
 let
   cfg = config.${namespace}.programs.terminal.emulators.ghostty;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf mkMerge;
 
 in
 {
   options.${namespace}.programs.terminal.emulators.ghostty = {
     enable = mkEnableOption "ghostty";
   };
-  config = mkIf cfg.enable {
-    programs.ghostty = {
-      enable = true;
+  config = mkIf cfg.enable (mkMerge [
+    {
 
-      installVimSyntax = true;
-      installBatSyntax = true;
-    };
-  };
+      programs.ghostty = {
+        enable = true;
+
+        installVimSyntax = true;
+        installBatSyntax = true;
+      };
+    }
+    # TODO remove this gross hack after repository refactor is done.
+    (mkIf pkgs.stdenv.isDarwin {
+      programs.ghostty.package = pkgs.runCommand "dummy-ghostty" { } "mkdir -p $out";
+    })
+
+  ]);
 }
