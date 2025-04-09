@@ -20,7 +20,7 @@ in
     stylix = {
       enable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
-      image = ./../../../assets/wallpapers/ghibli.jpg;
+      image = ./../../../assets/wallpapers/pixel_desk.png;
 
       targets.hyprlock.enable = false;
 

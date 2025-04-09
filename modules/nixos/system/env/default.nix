@@ -22,6 +22,7 @@ in
       blanket
       dconf
       git
+      gimp
       zulu8
       libnotify
       libnotify
