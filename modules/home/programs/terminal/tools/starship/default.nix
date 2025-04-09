@@ -26,7 +26,7 @@ in
 
         character = {
           success_symbol = "[λ](bold green)";
-          error_symbol = "[✖](bold red)";
+          error_symbol = "[](bold red)";
         };
         terraform = {
           format = "[$symbol$version]($style) ";
@@ -46,7 +46,6 @@ in
           ];
         };
       };
-      # settings = importTOML ./starship.toml;
     };
   };
 }
