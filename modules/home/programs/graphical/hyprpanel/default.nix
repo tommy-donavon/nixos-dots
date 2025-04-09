@@ -28,32 +28,32 @@ in
 
       hyprland.enable = true;
       overwrite.enable = true;
-      theme = "everforest";
-
-      layout = {
-        "bar.layouts" = {
-          "*" = {
-            left = [
-              "dashboard"
-              "workspaces"
-              "notifications"
-              "systray"
-            ];
-
-            middle = [ "media" ];
-            right = [
-              "hypridle"
-              "volume"
-              "clock"
-              "network"
-              "bluetooth"
-              "battery"
-            ];
-          };
-        };
-      };
 
       settings = {
+        theme.name = "everforest";
+
+        layout = {
+          "bar.layouts" = {
+            "*" = {
+              left = [
+                "dashboard"
+                "workspaces"
+                "notifications"
+                "systray"
+              ];
+
+              middle = [ "media" ];
+              right = [
+                "hypridle"
+                "volume"
+                "clock"
+                "network"
+                "bluetooth"
+                "battery"
+              ];
+            };
+          };
+        };
         bar = {
           clock = {
             format = "%I:%M %p";
