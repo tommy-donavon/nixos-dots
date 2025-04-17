@@ -36,6 +36,7 @@
             nh
             cocogitto
             nil
+            home-manager
           ];
           shellHook = ''
             cog install-hook --all -o

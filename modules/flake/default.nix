@@ -28,8 +28,16 @@ in
 
       formatter = pkgs.nixfmt-rfc-style;
     };
-
+  debug = true;
   flake = {
+    nixosModules = {
+      dots = mkModule {
+        name = "dots";
+        class = "nixos";
+        inherit (self) outPath;
+        modules = [ ];
+      };
+    };
     homeManagerModules = {
       dots = mkModule {
         name = "dots";
