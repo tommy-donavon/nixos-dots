@@ -11,7 +11,7 @@
     {
       devShells = {
         default = pkgs.mkShellNoCC {
-          name = "dots";
+          name = "nest";
           meta.description = "dev shell for this config";
 
           env = {
@@ -40,7 +40,7 @@
           ];
           shellHook = ''
             cog install-hook --all -o
-            echo 🔨 Welcome to dots 
+            echo 🔨 Welcome to nest 
           '';
         };
       };

@@ -29,23 +29,30 @@ in
       formatter = pkgs.nixfmt-rfc-style;
     };
   debug = true;
-  flake = {
-    nixosModules = {
-      dots = mkModule {
-        name = "dots";
-        class = "nixos";
-        inherit (self) outPath;
-        modules = [ ];
+  flake =
+    let
+      name = "nest";
+      inherit (self) outPath;
+    in
+    {
+      nixosModules = {
+        nest = mkModule {
+          inherit name outPath;
+          class = "nixos";
+          modules = [
+            (self + /modules/shared/default.nix)
+            (self + /modules/nixos/default.nix)
+          ];
+        };
+        default = throw "no default for this module";
+      };
+      homeManagerModules = {
+        nest = mkModule {
+          inherit name outPath;
+          class = "homeManager";
+          modules = [ (self + /modules/home/default.nix) ];
+        };
+        default = throw "no default for this module";
       };
     };
-    homeManagerModules = {
-      dots = mkModule {
-        name = "dots";
-        class = "homeManager";
-        inherit (self) outPath;
-        modules = [ (self + /modules/home/default.nix) ];
-      };
-      default = throw "no default for this module";
-    };
-  };
 }

@@ -6,10 +6,10 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf getExe;
-  cfg = config.dots.programs.terminal.tools.bat;
+  cfg = config.nest.programs.terminal.tools.bat;
 in
 {
-  options.dots.programs.terminal.tools.bat = {
+  options.nest.programs.terminal.tools.bat = {
     enable = mkEnableOption "bat";
   };
 

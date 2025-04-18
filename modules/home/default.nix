@@ -1,9 +1,6 @@
 { osConfig, ... }:
 {
-  imports = [
-    ./programs
-  ];
-  home.stateVersion = osConfig.dots.system.stateVersion;
+  home.stateVersion = osConfig.nest.system.stateVersion;
 
   programs.home-manager.enable = true;
 }
