@@ -1,7 +1,7 @@
 { pkgs }:
 let
   inherit (builtins) throw;
-  ldTernary =
+  systemTernary =
     pkgs: l: d:
     if pkgs.stdenv.hostPlatform.isLinux then
       l
@@ -11,5 +11,5 @@ let
       throw "unsupported system: ${pkgs.stdenv.system}";
 in
 {
-  inherit ldTernary;
+  inherit systemTernary;
 }

@@ -8,17 +8,17 @@
 let
   inherit (lib.modules) mkDefault;
   inherit (lib.attrsets) genAttrs;
-  inherit (self.lib.system) ldTernary;
+  inherit (self.lib.system) systemTernary;
 
 in
 {
   users.users = genAttrs config.nest.system.users (
     name:
     {
-      home = "/" + (ldTernary pkgs "home" "Users") + "/" + name;
+      home = "/" + (systemTernary pkgs "home" "Users") + "/" + name;
       shell = pkgs.zsh;
     }
-    // (ldTernary pkgs {
+    // (systemTernary pkgs {
       uid = mkDefault 1000;
       isNormalUser = true;
       initialPassword = mkDefault "temp";

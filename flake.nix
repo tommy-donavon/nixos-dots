@@ -56,6 +56,7 @@
       repo = "HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser.url = "github:heywoodlh/flakes/0dd7b48a11af1c4c14632c56c2dc3a4e547f0ed6?dir=zen-browser";
 
     systems = {
       type = "github";
