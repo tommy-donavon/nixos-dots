@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  namespace,
+  self,
   ...
 }:
 let
-  inherit (lib.nest) mkBoolOpt enabled;
+  inherit (self.lib.module) mkBoolOpt enabled;
 
   cfg = config.nest.suites.common;
 in
@@ -15,7 +15,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixdots = {
+    nest = {
       security = {
         doas = enabled;
       };

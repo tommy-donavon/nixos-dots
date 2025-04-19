@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  namespace,
+  self,
   ...
 }:
 let
-  inherit (lib.nest) mkBoolOpt enabled;
+  inherit (self.lib.module) mkBoolOpt enabled;
 
   cfg = config.nest.suites.desktop;
 in
@@ -19,7 +19,7 @@ in
       dconf.enable = true;
       xwayland.enable = true;
     };
-    nixdots = {
+    nest = {
       programs = {
         graphical = {
           apps = {
