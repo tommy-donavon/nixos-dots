@@ -37,6 +37,26 @@
       repo = "easy-hosts";
     };
 
+    stylix = {
+      type = "github";
+      owner = "danth";
+      repo = "stylix";
+      ref = "release-24.11";
+    };
+
+    lunavim = {
+      type = "github";
+      owner = "tommy-donavon";
+      repo = "lunavim";
+    };
+
+    hyprpanel = {
+      type = "github";
+      owner = "Jas-SinghFSU";
+      repo = "HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     systems = {
       type = "github";
       owner = "nix-systems";
