@@ -1,0 +1,44 @@
+{
+  config,
+  lib,
+  namespace,
+  ...
+}:
+let
+  inherit (lib.nest) mkBoolOpt enabled;
+
+  cfg = config.nest.suites.common;
+in
+{
+  options.nest.suites.common = {
+    enable = mkBoolOpt false "Whether or not to enable common configuration";
+  };
+
+  config = lib.mkIf cfg.enable {
+    nixdots = {
+      security = {
+        doas = enabled;
+      };
+
+      hardware = {
+        audio = enabled;
+        bluetooth = enabled;
+        fingerprint = enabled;
+        logitech = enabled;
+        nvidia = enabled;
+        graphics = enabled;
+        pipewire = enabled;
+        power = enabled;
+      };
+
+      system = {
+        boot = enabled;
+        env = enabled;
+        fonts = enabled;
+        locale = enabled;
+        networking = enabled;
+        xdg = enabled;
+      };
+    };
+  };
+}

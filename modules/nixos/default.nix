@@ -9,7 +9,7 @@
 let
   inherit (lib.options) mkOption;
   inherit (lib.modules) mkDefault;
-  inherit (self.lib.system) ldTernary;
+  inherit (self.lib.system) systemTernary;
 
   cfg = config.nest.system;
 in
@@ -23,7 +23,7 @@ in
   };
 
   config.system = {
-    stateVersion = mkDefault (ldTernary pkgs cfg.stateVersion 6);
+    stateVersion = mkDefault (systemTernary pkgs cfg.stateVersion 6);
 
   };
 }
