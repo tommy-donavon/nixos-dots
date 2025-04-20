@@ -1,6 +1,7 @@
 {
   imports = [
     ./terminal
+    ./graphical
     ./wms
   ];
 }

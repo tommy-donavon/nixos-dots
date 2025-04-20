@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  namespace,
   ...
 }:
 let
@@ -30,7 +29,7 @@ in
       let
         users = [
           "root"
-          config.nest.user.name
+          config.nest.system.mainUser
         ];
       in
       {
@@ -69,9 +68,9 @@ in
         };
 
         # flake-utils-plus
-        generateRegistryFromInputs = true;
-        generateNixPathFromInputs = true;
-        linkInputs = true;
+        # generateRegistryFromInputs = true;
+        # generateNixPathFromInputs = true;
+        # linkInputs = true;
       };
   };
 

@@ -10,10 +10,10 @@ let
   inherit (lib) mkIf;
   inherit (self.lib.module) mkBoolOpt enabled;
 
-  cfg = config.nest.suites.development;
+  cfg = config.nest.aspects.development;
 in
 {
-  options.nest.suites.development = {
+  options.nest.aspects.development = {
     enable = mkBoolOpt false "Whether or not to enable common development configuration.";
     opsEnable = mkBoolOpt false "Whether or not to enable devops related configuration.";
     dataEnable = mkBoolOpt false "Whether or not to enable database related configuration";

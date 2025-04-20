@@ -40,7 +40,7 @@
           ];
           shellHook = ''
             cog install-hook --all -o
-            echo 🔨 Welcome to nest 
+            echo Welcome to the nest 🐦
           '';
         };
       };

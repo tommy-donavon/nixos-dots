@@ -2,11 +2,14 @@
   pkgs,
   lib,
   config,
+  self,
   ...
 }:
 
-with lib;
 let
+  inherit (lib) mkEnableOption mkIf;
+  inherit (self.lib.helpers) nixFilesIn;
+
   cfg = config.nest.programs.wms.hyprland;
 in
 {
@@ -14,7 +17,7 @@ in
     enable = mkEnableOption "hyprland";
   };
 
-  imports = lib.snowfall.fs.get-non-default-nix-files ./.;
+  imports = nixFilesIn ./.;
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -31,7 +34,7 @@ in
       xwayland.enable = true;
     };
 
-    nixdots = {
+    nest = {
       programs = {
         graphical = {
           hyprlock.enable = true;

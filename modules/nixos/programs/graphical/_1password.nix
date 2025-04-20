@@ -2,12 +2,12 @@
   config,
   lib,
   pkgs,
-  namespace,
+  self,
   ...
 }:
 let
   inherit (lib) mkIf;
-  inherit (lib.nest) mkBoolOpt enabled;
+  inherit (self.lib.module) mkBoolOpt enabled;
 
   cfg = config.nest.programs.graphical.apps._1password;
 in
@@ -24,7 +24,7 @@ in
         enable = true;
         package = pkgs._1password-gui;
 
-        polkitPolicyOwners = [ config.nest.user.name ];
+        polkitPolicyOwners = [ config.nest.system.mainUser ];
       };
 
       ssh.extraConfig = ''

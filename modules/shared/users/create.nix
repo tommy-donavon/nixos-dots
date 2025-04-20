@@ -12,10 +12,12 @@ let
 
 in
 {
+  programs.zsh.enable = true;
   users.users = genAttrs config.nest.system.users (
     name:
     {
       home = "/" + (systemTernary pkgs "home" "Users") + "/" + name;
+      # todo make dynamic
       shell = pkgs.zsh;
     }
     // (systemTernary pkgs {

@@ -2,18 +2,18 @@
 {
   config,
   lib,
-  namespace,
   pkgs,
+  self,
   ...
 }:
 let
   inherit (lib) mkIf mkEnableOption;
-  inherit (lib.nest) enabled;
+  inherit (self.lib.module) enabled;
 
-  cfg = config.nest.suites.common;
+  cfg = config.nest.aspects.common;
 in
 {
-  options.nest.suites.common = {
+  options.nest.aspects.common = {
     enable = mkEnableOption "common";
   };
 

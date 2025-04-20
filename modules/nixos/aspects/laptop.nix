@@ -7,10 +7,10 @@
 let
   inherit (self.lib.module) mkBoolOpt enabled;
 
-  cfg = config.nest.suites.common;
+  cfg = config.nest.aspects.laptop;
 in
 {
-  options.nest.suites.common = {
+  options.nest.aspects.laptop = {
     enable = mkBoolOpt false "Whether or not to enable common configuration";
   };
 

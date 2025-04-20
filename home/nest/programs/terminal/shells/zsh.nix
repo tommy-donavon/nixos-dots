@@ -15,7 +15,9 @@ let
 in
 {
   options.nest.programs.terminal.shells.zsh = {
-    enable = mkEnableOption "zsh";
+    enable = mkEnableOption "zsh" // {
+      default = true;
+    };
   };
 
   config = mkIf cfg.enable {

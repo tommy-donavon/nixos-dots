@@ -1,11 +1,11 @@
 {
   config,
   lib,
-  namespace,
+  self,
   ...
 }:
 let
-  inherit (lib.nest) mkBoolOpt;
+  inherit (self.lib.module) mkBoolOpt;
 
   cfg = config.nest.security.doas;
 in
@@ -34,7 +34,7 @@ in
           {
             keepEnv = true;
             noPass = true;
-            users = [ config.nest.user.name ];
+            users = [ config.nest.system.mainUser ];
           }
         ];
       };

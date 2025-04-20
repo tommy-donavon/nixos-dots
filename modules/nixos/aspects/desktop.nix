@@ -7,10 +7,10 @@
 let
   inherit (self.lib.module) mkBoolOpt enabled;
 
-  cfg = config.nest.suites.desktop;
+  cfg = config.nest.aspects.desktop;
 in
 {
-  options.nest.suites.desktop = {
+  options.nest.aspects.desktop = {
     enable = mkBoolOpt false "Whether or not to enable common desktop configuration.";
   };
 

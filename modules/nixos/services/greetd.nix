@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  namespace,
+  self,
   ...
 }:
 let
@@ -12,7 +12,7 @@ let
     types
     ;
 
-  inherit (lib.nest) mkOpt;
+  inherit (self.lib.module) mkOpt;
   cfg = config.nest.services.greetd;
 in
 {
@@ -31,7 +31,7 @@ in
       settings = rec {
         initial_session = {
           inherit (cfg) command;
-          user = config.nest.user.name;
+          user = config.nest.system.mainUser;
         };
         default_session = initial_session;
       };
