@@ -16,6 +16,7 @@
 
           env = {
             DIRENV_LOG_FORMAT = "";
+            NH_SKIP_ROOT_CHECK = true;
           };
 
           packages = with pkgs; [
@@ -33,7 +34,7 @@
             nixpkgs-lint
             nixfmt-rfc-style
             just
-            nh
+            unstable.nh
             cocogitto
             nil
             home-manager

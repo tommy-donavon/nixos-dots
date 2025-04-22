@@ -37,7 +37,6 @@ in
         fonts = enabled;
         locale = enabled;
         networking = enabled;
-        xdg = enabled;
       };
     };
   };

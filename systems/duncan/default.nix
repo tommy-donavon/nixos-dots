@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, pkgs, ... }:
 let
   inherit (self.lib.module) enabled;
 in
@@ -7,6 +7,7 @@ in
     ./hardware.nix
     ./users.nix
   ];
+  environment.systemPackages = [ (pkgs.writeShellScriptBin "sudo" "doas $@") ];
   nest = {
     aspects = {
       desktop = enabled;
@@ -17,6 +18,5 @@ in
       xserver = enabled;
       tlp = enabled;
     };
-    nix = enabled;
   };
 }

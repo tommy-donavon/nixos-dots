@@ -2,6 +2,7 @@
   config,
   lib,
   self,
+  pkgs,
   ...
 }:
 let
@@ -19,6 +20,17 @@ in
       dconf.enable = true;
       xwayland.enable = true;
     };
+
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+      ];
+      config.common.default = "*";
+    };
+
     nest = {
       programs = {
         graphical = {

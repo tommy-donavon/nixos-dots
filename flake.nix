@@ -37,6 +37,18 @@
       repo = "easy-hosts";
     };
 
+    nh = {
+      type = "github";
+      owner = "nix-community";
+      repo = "nh";
+    };
+
+    nur = {
+      type = "github";
+      owner = "nix-community";
+      repo = "NUR";
+    };
+
     stylix = {
       type = "github";
       owner = "danth";

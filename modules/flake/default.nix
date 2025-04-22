@@ -24,6 +24,13 @@ in
         config = {
           allowUnfree = true;
         };
+        overlays = [
+          (_: prev: {
+            unstable = import inputs.unstable {
+              inherit (prev) system;
+            };
+          })
+        ];
       };
 
       formatter = pkgs.nixfmt-rfc-style;

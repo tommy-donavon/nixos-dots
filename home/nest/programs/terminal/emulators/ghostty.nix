@@ -21,7 +21,7 @@ in
 
       # ghostty is broken on darwin currently so the package
       # installation needs to come from a different source
-      package = systemTernary pkgs.ghostty null;
+      package = systemTernary pkgs pkgs.ghostty null;
 
       installVimSyntax = true;
       installBatSyntax = true;

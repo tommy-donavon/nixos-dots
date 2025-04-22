@@ -1,8 +1,9 @@
 {
   imports = [
+    ./aspects
+    ./environment
     ./programs
     ./services
-    ./aspects
     ./theme.nix
   ];
 }
