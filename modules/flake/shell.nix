@@ -1,10 +1,7 @@
 {
   perSystem =
     {
-      lib,
       pkgs,
-      self',
-      config,
       inputs',
       ...
     }:
@@ -34,7 +31,6 @@
             nixpkgs-lint
             nixfmt-rfc-style
             just
-            #            unstable.nh
             inputs'.nh.packages.default
             cocogitto
             nil

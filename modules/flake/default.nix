@@ -1,5 +1,4 @@
 {
-  lib,
   inputs,
   self,
   ...
@@ -11,8 +10,9 @@ in
 {
   imports = [
     ../../systems
-    ./shell.nix
+    ./formatter.nix
     ./lib
+    ./shell.nix
   ];
   systems = import inputs.systems;
 
@@ -32,8 +32,7 @@ in
           })
         ];
       };
-
-      formatter = pkgs.nixfmt-rfc-style;
+      treefmt.flakeCheck = true;
     };
   debug = true;
   flake =

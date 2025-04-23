@@ -64,6 +64,12 @@
       ref = "release-24.11";
     };
 
+    treefmt-nix = {
+      type = "github";
+      owner = "numtide";
+      repo = "treefmt-nix";
+    };
+
     lunavim = {
       type = "github";
       owner = "tommy-donavon";

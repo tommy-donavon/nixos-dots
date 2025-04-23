@@ -39,15 +39,15 @@ let
     - [dir] directory path
   */
   filesIn =
-    dir: collect isString (mapAttrsRecursive (path: type: concatStringsSep "/" path) (fetchDir dir));
+    dir: collect isString (mapAttrsRecursive (path: _type: concatStringsSep "/" path) (fetchDir dir));
 
   get-files =
     path:
     let
       entries = if pathExists path then readDir path else { };
-      filtered-entries = filterAttrs (name: kind: kind == "regular") entries;
+      filtered-entries = filterAttrs (_name: kind: kind == "regular") entries;
     in
-    mapAttrsToList (name: kind: "${path}/${name}") filtered-entries;
+    mapAttrsToList (name: _kind: "${path}/${name}") filtered-entries;
 
   /**
     collect all non default nix files in given directory
