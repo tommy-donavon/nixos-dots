@@ -5,8 +5,11 @@
 
     gc = {
       automatic = true;
-      dates = "weekly";
       options = "--delete-older-than 7d";
+      interval = {
+        Hour = 3;
+        Minute = 15;
+      };
     };
   };
 }

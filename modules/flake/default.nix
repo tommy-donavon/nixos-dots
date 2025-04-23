@@ -53,6 +53,19 @@ in
         };
         default = throw "no default for this module";
       };
+
+      darwinModules = {
+        nest = mkModule {
+          inherit name outPath;
+          class = "darwin";
+          modules = [
+            (self + /modules/shared/default.nix)
+            (self + /modules/darwin/default.nix)
+          ];
+        };
+        default = throw "no default for this module";
+      };
+
       homeManagerModules = {
         nest = mkModule {
           inherit name outPath;

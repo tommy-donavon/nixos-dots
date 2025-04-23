@@ -34,7 +34,8 @@
             nixpkgs-lint
             nixfmt-rfc-style
             just
-            unstable.nh
+            #            unstable.nh
+            inputs'.nh.packages.default
             cocogitto
             nil
             home-manager

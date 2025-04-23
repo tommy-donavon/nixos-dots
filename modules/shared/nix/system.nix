@@ -19,7 +19,7 @@ in
   };
 
   config.system = {
-    stateVersion = mkDefault (systemTernary pkgs cfg.stateVersion 6);
+    stateVersion = mkDefault (systemTernary pkgs cfg.stateVersion 4);
 
   };
 

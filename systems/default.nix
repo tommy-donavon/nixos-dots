@@ -18,6 +18,12 @@
 
       # personal machine
       duncan = { };
+
+      # work stuffs
+      R62NGV90F7-TDonavon = {
+        arch = "aarch64";
+        class = "darwin";
+      };
     };
   };
 

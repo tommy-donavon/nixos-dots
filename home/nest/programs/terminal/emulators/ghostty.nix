@@ -9,6 +9,8 @@ let
   inherit (lib) mkEnableOption mkIf;
   inherit (self.lib.system) systemTernary;
 
+  darwinCommand = pkgs.runCommand "dummy-ghostty" { } "mkdir -p $out";
+
   cfg = config.nest.programs.terminal.emulators.ghostty;
 in
 {
@@ -21,7 +23,7 @@ in
 
       # ghostty is broken on darwin currently so the package
       # installation needs to come from a different source
-      package = systemTernary pkgs pkgs.ghostty null;
+      package = systemTernary pkgs pkgs.ghostty darwinCommand;
 
       installVimSyntax = true;
       installBatSyntax = true;

@@ -37,6 +37,14 @@
       repo = "easy-hosts";
     };
 
+    darwin = {
+      type = "github";
+      owner = "lnl7";
+      repo = "nix-darwin";
+      ref = "nix-darwin-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nh = {
       type = "github";
       owner = "nix-community";
