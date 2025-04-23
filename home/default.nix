@@ -23,7 +23,7 @@ in
       useGlobalPkgs = true;
 
       # home-manager users
-      users = genAttrs config.nest.system.users (name: { });
+      users = genAttrs config.nest.system.users (_name: { });
 
       extraSpecialArgs = {
         inherit

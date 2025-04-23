@@ -3,44 +3,49 @@
     {
       pkgs,
       inputs',
+      config,
       ...
     }:
     {
       devShells = {
-        default = pkgs.mkShellNoCC {
-          name = "nest";
-          meta.description = "dev shell for this config";
+        default =
+          pkgs.mkShellNoCC {
+            name = "nest";
+            meta.description = "dev shell for this config";
 
-          env = {
-            DIRENV_LOG_FORMAT = "";
-            NH_SKIP_ROOT_CHECK = true;
-          };
+            treefmt = config.treefmt.build.wrapper;
 
-          packages = with pkgs; [
-            hydra-check
-            nix-inspect
-            nix-bisect
-            nix-diff
-            nix-health
-            nix-index
-            nix-melt
-            nix-prefetch-git
-            nix-search-cli
-            nix-tree
-            nixpkgs-hammering
-            nixpkgs-lint
-            nixfmt-rfc-style
-            just
-            inputs'.nh.packages.default
-            cocogitto
-            nil
-            home-manager
-          ];
-          shellHook = ''
-            cog install-hook --all -o
-            echo Welcome to the nest 🐦
-          '';
-        };
+            env = {
+              DIRENV_LOG_FORMAT = "";
+              NH_SKIP_ROOT_CHECK = true;
+            };
+
+            packages = with pkgs; [
+              hydra-check
+              nix-inspect
+              nix-bisect
+              nix-diff
+              nix-health
+              nix-index
+              nix-melt
+              nix-prefetch-git
+              nix-search-cli
+              nix-tree
+              nixpkgs-hammering
+              nixpkgs-lint
+              nixfmt-rfc-style
+              just
+              inputs'.nh.packages.default
+              cocogitto
+              nil
+              home-manager
+            ];
+            shellHook = ''
+              cog install-hook --all -o
+              echo Welcome to the nest 🐦
+            '';
+          }
+          // config.treefmt.build.programs;
       };
     };
 }

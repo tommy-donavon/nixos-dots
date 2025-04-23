@@ -36,6 +36,7 @@ verify *args:
 # repair the nix store
 [group('dev')]
 repair: (verify "--check-contents --repair")
+
 alias fix := repair
 
 # switch to new system configuration
