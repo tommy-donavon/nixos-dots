@@ -2,23 +2,19 @@
 
 <p align="center">
     <a href="https://wiki.nixos.org/wiki/Flakes" target="_blank">
-        <img alt="Nix Flakes Ready" src="https://img.shields.io/static/v1?logo=nixos&logoColor=d8dee9&label=Nix%20Flakes&labelColor=5e81ac&message=Ready&color=d8dee9&style=for-the-badge">
+        <img alt="Nix Flakes Ready" src="https://img.shields.io/static/v1?logo=nixos&logoColor=d8dee9&label=Nix%20Flakes&labelColor=7A8478&message=Ready&color=d8dee9&style=for-the-badge">
     </a>
-    <a href="https://github.com/snowfallorg/lib" target="_blank">
-        <img alt="Built With Snowfall" src="https://img.shields.io/static/v1?logoColor=d8dee9&label=Built%20With&labelColor=5e81ac&message=Snowfall&color=d8dee9&style=for-the-badge">
-    </a>
-    <a href="https://tommy-donavon.github.io/nixos-dots/" target="_blank">
-        <img alt="Frost Documentation" src="https://img.shields.io/static/v1?logoColor=d8dee9&label=Frost&labelColor=5e81ac&message=Documentation&color=d8dee9&style=for-the-badge">
-        </a>
-    <a href="" target="_blank" src="https://img.shields.io/github/actions/workflow/status/tommy-donavon/nixos-dots/analysis.yml"></a>
     <a href="https://github.com/tommy-donavon/nixos-dots/actions/workflows/analysis.yml">
-        <img src="https://img.shields.io/github/actions/workflow/status/tommy-donavon/nixos-dots/analysis.yml?label=analysis&logoColor=d8dee9&labelColor=5e81ac&color=d8dee9&style=for-the-badge"/>
+        <img src="https://img.shields.io/github/actions/workflow/status/tommy-donavon/nixos-dots/analysis.yml?logo=github&label=analysis&logoColor=83C092&labelColor=7A8478&color=83C092&style=for-the-badge"/>
+    </a>
+    <a href="https://github.com/tommy-donavon/nixos-dots/commits">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/tommy-donavon/nixos-dots?style=for-the-badge&logo=github&logoColor=83C092&labelColor=7A8478&color=BB8568"/>
     </a>
 </p>
 
 ## Overview
 
-This repository contains my personal Nix configs, managed using the Snowfall library, which provides a structured approach to organizing NixOS and macOS system configurations across multiple machines.
+This repository contains my personal Nix configs, managed using [flake-parts](https://flake.parts/), which provides a structured approach to organizing NixOS and macOS system configurations across multiple machines.
 
 ## Table of Contents
 
@@ -55,34 +51,33 @@ sudo nixos-rebuild switch --flake .
 # macOS
 darwin-rebuild switch --flake .
 
-# snowfallorg/flake installed via direnv
-flake switch
+# using nh (recommended)
+nh os switch . --ask     # linux
+nh darwin switch . --ask # macOS
 ```
 
 ## Project Structure
 
 ```
 .
-├── homes          # user specific configuration
-├── lib            # custom functions to merge into lib
+├── assets         # static misc files
+├── home           # home manager configurations
+│   └── nest       # shared configs all users can enable
 ├── modules
-│   ├── darwin     # macOS specific configurations
-│   ├── home       # cross platform Home Manager configurations
-│   ├── nixos      # NixOS specific configurations
-│   └── shared
-├── shells         # exposed development shells
-└── systems        # system specific configuration
+│   ├── darwin     # darwin specific configurations
+│   ├── flake      # configuration for this flake
+│   ├── home       # home manager settings and global configs
+│   ├── nixos      # nixos specific configurations
+│   └── shared     # shared system configurations
+└── systems        # system specific configurations
 ```
-
-## Resources
-
-- [Snowfall Lib](https://github.com/snowfallorg/lib)
 
 ## Acknowledgements
 
 Other user configurations that I used and referenced
 
-- [khaneliman/khanelinix](https://github.com/khaneliman/khanelinix) My main reference material and inspiration
+- [isabelroses/dotfiles](https://github.com/isabelroses/dotfiles) main reference for project structure
+- [khaneliman/khanelinix](https://github.com/khaneliman/khanelinix)
 - [JakeHamilton/config](https://github.com/jakehamilton/config)
 
 ## Screenshots
