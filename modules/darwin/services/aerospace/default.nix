@@ -1,18 +1,18 @@
 {
   lib,
   config,
-  namespace,
+  self,
   ...
 }:
 let
   inherit (lib) types mkIf importTOML;
-  inherit (lib.${namespace}) mkOpt;
+  inherit (self.lib.module) mkOpt;
 
-  cfg = config.${namespace}.services.aerospace;
+  cfg = config.nest.services.aerospace;
 in
 {
-  options.${namespace}.services.aerospace = {
-    enable = mkOpt types.bool true "Whether to enable aerospace wm";
+  options.nest.services.aerospace = {
+    enable = mkOpt types.bool false "Whether to enable aerospace wm";
   };
 
   config = mkIf cfg.enable {
