@@ -6,10 +6,10 @@
 let
   inherit (lib) mkIf mkEnableOption;
 
-  cfg = config.nest.programs.graphical.dunst;
+  cfg = config.nest.services.dunst;
 in
 {
-  options.nest.programs.graphical.dunst = {
+  options.nest.services.dunst = {
     enable = mkEnableOption "dunst";
   };
 

@@ -1,3 +1,6 @@
 {
-  imports = [ ./hypridle.nix ];
+  imports = [
+    ./hypridle.nix
+    ./dunst.nix
+  ];
 }
