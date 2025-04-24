@@ -28,7 +28,6 @@ This repository contains my personal Nix configs, managed using [flake-parts](ht
 ## Features
 
 - Cross-platform configuration support (NixOS and macOS)
-- Modular system configuration using Snowfall library
 - Reproducible and declarative system setup
 - Custom modules and home configurations
 
