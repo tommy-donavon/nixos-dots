@@ -25,7 +25,6 @@ in
       };
     };
     home.packages = with pkgs; [
-      inputs'.zen-browser.packages.default
       zoom-us
       obs-studio
       spotify
@@ -39,7 +38,6 @@ in
         graphical = {
           wofi = enabled;
           hyprpanel = enabled;
-          firefox = enabled;
         };
         terminal.editors.nvim.package = inputs'.lunavim.packages.default;
         wms.hyprland = enabled;

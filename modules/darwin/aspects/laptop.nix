@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  inputs',
   self,
   ...
 }:
@@ -17,11 +16,6 @@ in
   };
 
   config = mkIf cfg.enable {
-
-    environment = {
-      systemPackages = [ inputs'.zen-browser.packages.zen-browser ];
-    };
-
     homebrew = {
       casks = [
         "font-fira-code-nerd-font"

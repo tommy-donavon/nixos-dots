@@ -34,6 +34,9 @@ in
       theme = enabled;
 
       programs = {
+        graphical = {
+          firefox = enabled;
+        };
         terminal = {
           emulators.ghostty = enabled;
           tools = {
