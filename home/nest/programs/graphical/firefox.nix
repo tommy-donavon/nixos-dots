@@ -8,6 +8,7 @@
 let
   inherit (lib) mkIf mkEnableOption;
   inherit (self.lib.module) mkBoolOpt;
+  inherit (self.lib.system) systemTernary;
 
   cfg = config.nest.programs.graphical.firefox;
 in
@@ -20,6 +21,8 @@ in
   config = mkIf cfg.enable {
     programs.firefox = {
       enable = true;
+
+      package = systemTernary pkgs pkgs.firefox null;
 
       profiles.${config.home.username} = {
         isDefault = true;
@@ -83,9 +86,13 @@ in
         ];
 
         settings = {
+          "browser.newtabpage.activity-stream.feeds.system.topstories" = false;
           "browser.newtabpage.activity-stream.showSponsored" = false;
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+          "browser.urlbar.suggest.pocket" = false;
           "extensions.autoDisableScopes" = 0;
+          "extensions.pocket.enabled" = false;
+          "extensions.pocket.showHome" = false;
           "sidebar.verticalTabs" = true;
         };
 

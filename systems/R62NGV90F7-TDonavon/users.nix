@@ -20,7 +20,10 @@ in
           opsEnable = true;
         };
       };
-      programs.terminal.editors.nvim.package = inputs'.lunavim.packages.default;
+      programs = {
+        terminal.editors.nvim.package = inputs'.lunavim.packages.default;
+        graphical.firefox.workEnable = true;
+      };
     };
   };
 }

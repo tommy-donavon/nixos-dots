@@ -34,6 +34,7 @@ in
       casks = [
         "cutter"
         "ghostty"
+        "firefox"
       ];
       taps = mkIf cfg.opsEnable [ "pulumi/tap" ];
     };
