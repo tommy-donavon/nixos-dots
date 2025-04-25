@@ -21,6 +21,7 @@ in
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
+      backupFileExtension = "bak";
 
       # home-manager users
       users = genAttrs config.nest.system.users (_name: { });

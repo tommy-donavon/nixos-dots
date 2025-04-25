@@ -48,3 +48,9 @@ switch:
 [group('rebuild')]
 debug:
     @flake switch --debug --show-trace
+
+# check home-manager logs
+[group('rebuild')]
+[linux]
+hm-log:
+    @journalctl -u home-manager-$(echo $USER).service
