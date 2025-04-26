@@ -5,15 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkIf getExe mkEnableOption;
+  inherit (lib) mkIf getExe;
+  cond = pkgs.stdenv.isLinux && config.nest.programs.graphical.hyprlock.enable;
 in
 {
-  options.nest.services.hypridle = {
-    enable = mkEnableOption "hypridle";
-  };
 
-  config = mkIf config.nest.programs.graphical.hyprlock.enable {
-    home.packages = with pkgs; [ brightnessctl ];
+  config = mkIf cond {
     services.hypridle = {
       enable = true;
 

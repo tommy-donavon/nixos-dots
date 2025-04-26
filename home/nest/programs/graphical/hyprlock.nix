@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }:
 let
@@ -31,7 +30,7 @@ in
         background = [
           {
             monitor = "";
-            path = "${inputs.wallpapers}/pixel_desk.png";
+            path = config.stylix.image;
             blur_passes = 3;
             contrast = 0.8916;
             brightness = 0.8172;
