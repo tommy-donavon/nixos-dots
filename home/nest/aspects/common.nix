@@ -31,8 +31,6 @@ in
       tui-journal
     ];
     nest = {
-      theme = enabled;
-
       programs = {
         graphical = {
           firefox = enabled;

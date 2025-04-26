@@ -7,7 +7,6 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
   inherit (self.lib.module) mkOpt;
 
   cfg = config.nest.theme;
@@ -15,19 +14,21 @@ in
 {
   imports = with inputs; [ stylix.homeManagerModules.stylix ];
   options.nest.theme = {
-    enable = mkEnableOption "theme";
     theme =
       mkOpt lib.types.str "everforest"
         "name of theme to apply to system. must be from base16 schemes repo";
+    wallpaper =
+      mkOpt lib.types.str "pixel_desk.png"
+        "name of wallpaper from https://github.com/tommy-donavon/wallpapers";
   };
 
-  config = mkIf cfg.enable {
+  config = {
     stylix = {
       enable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/${cfg.theme}.yaml";
 
       targets.hyprlock.enable = false;
-      image = "${inputs.wallpapers}/pixel_desk.png";
+      image = "${inputs.wallpapers}/${cfg.wallpaper}";
 
       fonts = {
         sizes = {
