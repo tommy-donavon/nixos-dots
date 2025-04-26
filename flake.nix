@@ -88,6 +88,13 @@
       owner = "nix-systems";
       repo = "default";
     };
+
+    wallpapers = {
+      type = "github";
+      owner = "tommy-donavon";
+      repo = "wallpapers";
+      flake = false;
+    };
   };
 
   outputs =

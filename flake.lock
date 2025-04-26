@@ -659,7 +659,8 @@
         "stylix": "stylix",
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix_2",
-        "unstable": "unstable"
+        "unstable": "unstable",
+        "wallpapers": "wallpapers"
       }
     },
     "rust-analyzer-src": {
@@ -859,6 +860,22 @@
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745692386,
+        "narHash": "sha256-361K/m0WG3rHX9sF4MAVhzCSyextxOPaRtHERE/pKaA=",
+        "owner": "tommy-donavon",
+        "repo": "wallpapers",
+        "rev": "5eeeb7f2f381e53a81a16336f0494109eed6ea63",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tommy-donavon",
+        "repo": "wallpapers",
         "type": "github"
       }
     }

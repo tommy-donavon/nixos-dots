@@ -27,7 +27,7 @@ in
       base16Scheme = "${pkgs.base16-schemes}/share/themes/${cfg.theme}.yaml";
 
       targets.hyprlock.enable = false;
-      image = ../../assets/wallpapers/ghibli.jpg;
+      image = "${inputs.wallpapers}/pixel_desk.png";
 
       fonts = {
         sizes = {
