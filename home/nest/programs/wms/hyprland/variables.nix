@@ -70,10 +70,6 @@ in
           "${blurRule},class:vesktop"
         ];
 
-        layerrule = [
-          "blur, nwg-drawer"
-        ];
-
         xwayland.force_zero_scaling = true;
         dwindle.pseudotile = 0;
       };

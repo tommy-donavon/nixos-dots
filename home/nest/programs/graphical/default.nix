@@ -3,5 +3,5 @@ let
   inherit (self.lib.helpers) nixFilesIn;
 in
 {
-  imports = nixFilesIn ./. ++ [ ./wofi ];
+  imports = nixFilesIn ./.;
 }

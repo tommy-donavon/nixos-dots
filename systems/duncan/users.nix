@@ -36,7 +36,7 @@ in
       };
       programs = {
         graphical = {
-          wofi = enabled;
+          rofi = enabled;
           hyprpanel = enabled;
         };
         terminal.editors.nvim.package = inputs'.lunavim.packages.default;
