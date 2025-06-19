@@ -16,10 +16,6 @@ in
 
   config = lib.mkIf cfg.enable {
     nest = {
-      security = {
-        doas = enabled;
-      };
-
       hardware = {
         audio = enabled;
         bluetooth = enabled;

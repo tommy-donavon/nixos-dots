@@ -29,7 +29,7 @@ in
       enableCompletion = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
-      initExtra =
+      initContent =
         ''
           PROMPT="%F{blue}%m %~%b "$'\n'"%(?.%F{green}%Bλ%b |.%F{red}?) %f"
 
