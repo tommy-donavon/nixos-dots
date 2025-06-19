@@ -24,13 +24,8 @@ in
         openmoji-color
         unifont
         noto-fonts-monochrome-emoji
-
-        (nerdfonts.override {
-          fonts = [
-            "JetBrainsMono"
-            "SpaceMono"
-          ];
-        })
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.space-mono
       ];
       fontconfig = {
         enable = true;

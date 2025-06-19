@@ -25,38 +25,42 @@ in
       package = systemTernary pkgs pkgs.firefox null;
 
       profiles.${config.home.username} = {
+        name = config.home.username;
         isDefault = true;
-        bookmarks = [
-          {
-            name = "nix";
-            bookmarks =
-              let
-                tags = [ "nix" ];
-              in
-              [
-                {
-                  name = "nix book";
-                  inherit tags;
-                  url = "https://nixos-and-flakes.thiscute.world/";
-                }
-                {
-                  name = "wiki";
-                  inherit tags;
-                  url = "https://wiki.nixos.org/";
-                }
-                {
-                  name = "nix package search";
-                  inherit tags;
-                  url = "https://search.nixos.org/packages?channel=24.11";
-                }
-                {
-                  name = "home manager option search";
-                  inherit tags;
-                  url = "https://home-manager-options.extranix.com";
-                }
-              ];
-          }
-        ];
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "nix";
+              bookmarks =
+                let
+                  tags = [ "nix" ];
+                in
+                [
+                  {
+                    name = "nix book";
+                    inherit tags;
+                    url = "https://nixos-and-flakes.thiscute.world/";
+                  }
+                  {
+                    name = "wiki";
+                    inherit tags;
+                    url = "https://wiki.nixos.org/";
+                  }
+                  {
+                    name = "nix package search";
+                    inherit tags;
+                    url = "https://search.nixos.org/packages?channel=24.11";
+                  }
+                  {
+                    name = "home manager option search";
+                    inherit tags;
+                    url = "https://home-manager-options.extranix.com";
+                  }
+                ];
+            }
+          ];
+        };
         containers = {
           personal = {
             id = 0;
@@ -78,12 +82,12 @@ in
           };
         };
 
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-          multi-account-containers
-          sidebery
-          theme-nord-polar-night
-          vimium
-        ];
+        # extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        #   multi-account-containers
+        #   sidebery
+        #   theme-nord-polar-night
+        #   vimium
+        # ];
 
         settings = {
           "browser.newtabpage.activity-stream.feeds.system.topstories" = false;
@@ -98,8 +102,8 @@ in
 
         search = {
           force = true;
-          default = "DuckDuckGo";
-          privateDefault = "DuckDuckGo";
+          default = "ddg";
+          privateDefault = "ddg";
           engines = {
             "Nix Packages" = {
               urls = [
@@ -141,14 +145,14 @@ in
 
             "NixOS Wiki" = {
               urls = [ { template = "https://wiki.nixos.org/index.php?search={searchTerms}"; } ];
-              iconUpdateURL = "https://wiki.nixos.org/favicon.png";
+              icon = "https://wiki.nixos.org/favicon.png";
               updateInterval = 24 * 60 * 60 * 1000; # every day
               definedAliases = [ "@nw" ];
             };
 
-            "Bing".metaData.hidden = true;
-            "Google".metaData.alias = "@g";
-            "DuckDuckGo".metaData.alias = "@d";
+            bing.metaData.hidden = true;
+            google.metaData.alias = "@g";
+            duckduckgo.metaData.alias = "@d";
           };
         };
 

@@ -12,10 +12,10 @@ let
   cfg = config.nest.theme;
 in
 {
-  imports = with inputs; [ stylix.homeManagerModules.stylix ];
+  imports = with inputs; [ stylix.homeModules.stylix ];
   options.nest.theme = {
     theme =
-      mkOpt lib.types.str "everforest"
+      mkOpt lib.types.str "rose-pine-moon"
         "name of theme to apply to system. must be from base16 schemes repo";
     wallpaper =
       mkOpt lib.types.str "pixel_desk.png"
@@ -28,6 +28,8 @@ in
       base16Scheme = "${pkgs.base16-schemes}/share/themes/${cfg.theme}.yaml";
 
       targets.hyprlock.enable = false;
+      targets.starship.enable = false;
+      targets.firefox.profileNames = [ config.home.username ];
       image = "${inputs.wallpapers}/${cfg.wallpaper}";
 
       fonts = {
@@ -49,7 +51,7 @@ in
 
         monospace = {
           name = "JetBrainsMono Nerd Font";
-          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+          package = pkgs.nerd-fonts.jetbrains-mono;
         };
 
         emoji = {

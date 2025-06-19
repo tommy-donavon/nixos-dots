@@ -14,6 +14,7 @@ let
 in
 {
   options.nest.system.stateVersion = mkOption {
+    internal = true;
     type = lib.types.str;
     default = "23.11";
   };
