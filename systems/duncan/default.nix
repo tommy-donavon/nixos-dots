@@ -1,14 +1,17 @@
-{ self, pkgs, ... }:
+{ self, ... }:
 let
   inherit (self.lib.module) enabled;
 in
 {
   imports = [
     ./hardware.nix
-    ./users.nix
   ];
-  environment.systemPackages = [ (pkgs.writeShellScriptBin "sudo" "doas $@") ];
+
   nest = {
+    system = {
+      mainUser = "tommy";
+      users = [ "tommy" ];
+    };
     aspects = {
       desktop = enabled;
       laptop = enabled;
