@@ -1,6 +1,7 @@
 { inputs, ... }:
 {
   imports = [
+    ../shared
     ./aspects
     ./services
     ./tools
