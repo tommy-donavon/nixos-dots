@@ -1,6 +1,13 @@
-{ osConfig, ... }:
 {
-  imports = [ ./direnv.nix ];
-  home.stateVersion = osConfig.nest.system.stateVersion;
-  programs.home-manager.enable = true;
+  imports = [
+    ./aspects
+    ./environment
+    ./languages
+    ./programs
+    ./services
+    ./theme.nix
+    ./direnv.nix
+    ./home.nix
+    ./nixpkgs.nix
+  ];
 }

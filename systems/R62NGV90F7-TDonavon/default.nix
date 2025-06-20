@@ -3,10 +3,11 @@ let
   inherit (self.lib.module) enabled;
 in
 {
-  imports = [
-    ./users.nix
-  ];
   nest = {
+    system = {
+      mainUser = "tommy.donavon";
+      users = [ "tommy.donavon" ];
+    };
     aspects = {
       development = enabled;
       laptop = enabled;
