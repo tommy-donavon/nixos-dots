@@ -61,11 +61,10 @@ nh darwin switch . --ask # macOS
 .
 ├── assets         # static misc files
 ├── home           # home manager configurations
-│   └── nest       # shared configs all users can enable
 ├── modules
 │   ├── darwin     # darwin specific configurations
 │   ├── flake      # configuration for this flake
-│   ├── home       # home manager settings and global configs
+│   ├── home       # home manager modules
 │   ├── nixos      # nixos specific configurations
 │   └── shared     # shared system configurations
 └── systems        # system specific configurations
