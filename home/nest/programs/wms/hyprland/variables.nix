@@ -19,11 +19,6 @@ in
     };
     wayland.windowManager.hyprland = {
       settings = {
-        windowrule = [
-          "float,move 0 0,pqiv"
-          "float,foot-notes"
-        ];
-
         input = {
           follow_mouse = 0;
           touchpad.natural_scroll = true;

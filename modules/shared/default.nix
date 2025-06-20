@@ -2,5 +2,6 @@
   imports = [
     ./nix
     ./users
+    ../../home
   ];
 }

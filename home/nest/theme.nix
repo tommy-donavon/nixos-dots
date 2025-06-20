@@ -27,9 +27,12 @@ in
       enable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/${cfg.theme}.yaml";
 
-      targets.hyprlock.enable = false;
-      targets.starship.enable = false;
-      targets.firefox.profileNames = [ config.home.username ];
+      targets = {
+        hyprlock.enable = false;
+        starship.enable = false;
+        firefox.profileNames = [ config.home.username ];
+      };
+
       image = "${inputs.wallpapers}/${cfg.wallpaper}";
 
       fonts = {

@@ -28,7 +28,7 @@ in
       overwrite.enable = true;
 
       settings = {
-        theme.name = "everforest";
+        theme.name = "rose_pine_moon";
 
         layout = {
           "bar.layouts" = {
