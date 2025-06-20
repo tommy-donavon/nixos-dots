@@ -3,7 +3,9 @@
   ...
 }:
 {
+  _class = "nixos";
   imports = [
+    ../shared
     ./aspects
     ./hardware
     ./programs

@@ -82,12 +82,12 @@ in
           };
         };
 
-        # extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
-        #   multi-account-containers
-        #   sidebery
-        #   theme-nord-polar-night
-        #   vimium
-        # ];
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          multi-account-containers
+          sidebery
+          theme-nord-polar-night
+          vimium
+        ];
 
         settings = {
           "browser.newtabpage.activity-stream.feeds.system.topstories" = false;

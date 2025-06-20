@@ -15,10 +15,6 @@ in
   home-manager.users.tommy = {
     gtk = {
       enable = true;
-      cursorTheme = {
-        name = "Nordzy-white-cursors";
-        package = pkgs.nordzy-cursor-theme;
-      };
       iconTheme = {
         name = "kora";
         package = pkgs.kora-icon-theme;
@@ -43,6 +39,7 @@ in
         wms.hyprland = enabled;
 
       };
+      theme.wallpaper = "angel.png";
     };
   };
 }
