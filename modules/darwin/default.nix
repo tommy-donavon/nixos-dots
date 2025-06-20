@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 {
   imports = [
     ../shared
@@ -8,4 +8,6 @@
     ./nix.nix
     inputs.home-manager.darwinModules.home-manager
   ];
+
+  system.primaryUser = config.nest.system.mainUser;
 }
