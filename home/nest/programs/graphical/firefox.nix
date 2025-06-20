@@ -85,8 +85,9 @@ in
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           multi-account-containers
           sidebery
-          theme-nord-polar-night
           vimium
+          catppuccin-mocha-mauve
+          catppuccin-web-file-icons
         ];
 
         settings = {

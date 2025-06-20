@@ -37,7 +37,7 @@ in
         argocd
         tenv
         kind
-        teleport_15
+        teleport_16
       ]
       ++ lib.optionals cfg.dataEnable [
         dbeaver-bin
