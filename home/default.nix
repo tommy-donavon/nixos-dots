@@ -20,12 +20,14 @@ in
   config = mkIf config.nest.system.useHomeManager {
     home-manager = {
       useUserPackages = true;
-      useGlobalPkgs = true;
+      useGlobalPkgs = false;
       backupFileExtension = "bak";
       verbose = true;
 
       # home-manager users
-      users = genAttrs config.nest.system.users (_name: { });
+      users = genAttrs config.nest.system.users (name: {
+        imports = [ ./${name} ];
+      });
 
       extraSpecialArgs = {
         inherit
@@ -37,10 +39,8 @@ in
       };
 
       sharedModules = [
-        # shared home-manager settings
+        # shared home-manager modules
         (self + /modules/home/default.nix)
-        # shared home-manager configurations
-        (self + /home/nest/default.nix)
       ];
 
     };
