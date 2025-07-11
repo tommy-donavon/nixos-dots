@@ -37,7 +37,7 @@
               just
               inputs'.nh.packages.default
               cocogitto
-              nil
+              unstable.nil
               home-manager
             ];
             shellHook = ''

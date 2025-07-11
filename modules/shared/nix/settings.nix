@@ -7,8 +7,9 @@ in
 {
   nix.settings = {
     experimental-features = [
-      "nix-command"
       "flakes"
+      "nix-command"
+      "pipe-operators"
     ];
     http-connections = 50;
     log-lines = 50;

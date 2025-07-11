@@ -11,8 +11,6 @@ let
   inherit (lib)
     collect
     isString
-    mapAttrsRecursive
-    concatStringsSep
     hasSuffix
     mapAttrsToList
     filterAttrs
@@ -27,9 +25,9 @@ let
   */
   fetchDir =
     dir:
-    mapAttrs (file: type: if type == "directory" then fetchDir "${dir}/${file}" else type) (
-      readDir dir
-    );
+    dir
+    |> readDir
+    |> mapAttrs (file: type: if type == "directory" then fetchDir "${dir}/${file}" else type);
 
   /**
     collect all files of a directory as a list of paths
@@ -39,15 +37,14 @@ let
     - [dir] directory path
   */
   filesIn =
-    dir: collect isString (mapAttrsRecursive (path: _type: concatStringsSep "/" path) (fetchDir dir));
+    dir: dir |> fetchDir |> collect (file: path: if isString path then path else "${dir}/${file}");
 
   get-files =
     path:
-    let
-      entries = if pathExists path then readDir path else { };
-      filtered-entries = filterAttrs (_name: kind: kind == "regular") entries;
-    in
-    mapAttrsToList (name: _kind: "${path}/${name}") filtered-entries;
+    path
+    |> (p: if pathExists p then readDir p else { })
+    |> filterAttrs (_: kind: kind == "regular")
+    |> mapAttrsToList (name: _: "${path}/${name}");
 
   /**
     collect all non default nix files in given directory
@@ -57,7 +54,8 @@ let
     - [dir] directory path
   */
   nixFilesIn =
-    path: filter (file: (hasSuffix ".nix" file) && (baseNameOf file != "default.nix")) (get-files path);
+    path:
+    path |> get-files |> filter (file: hasSuffix ".nix" file && (baseNameOf file != "default.nix"));
 in
 {
   inherit fetchDir filesIn nixFilesIn;
