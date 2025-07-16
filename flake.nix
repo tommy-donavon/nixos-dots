@@ -76,13 +76,6 @@
       repo = "lunavim";
     };
 
-    hyprpanel = {
-      type = "github";
-      owner = "Jas-SinghFSU";
-      repo = "HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     systems = {
       type = "github";
       owner = "nix-systems";

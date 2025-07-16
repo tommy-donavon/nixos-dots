@@ -4,7 +4,6 @@
     with inputs;
     [
       nur.overlays.default
-      hyprpanel.overlay
     ]
     ++ [
       (_: prev: {

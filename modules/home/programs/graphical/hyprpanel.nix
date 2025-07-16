@@ -2,7 +2,6 @@
   lib,
   config,
   pkgs,
-  inputs,
   ...
 }:
 let
@@ -10,7 +9,6 @@ let
   cfg = config.nest.programs.graphical.hyprpanel;
 in
 {
-  imports = with inputs; [ hyprpanel.homeManagerModules.hyprpanel ];
   options.nest.programs.graphical.hyprpanel = {
     enable = mkEnableOption "hyprpanel";
   };
@@ -23,9 +21,6 @@ in
 
     programs.hyprpanel = {
       enable = true;
-
-      hyprland.enable = true;
-      overwrite.enable = true;
 
       settings = {
         theme.name = "rose_pine_moon";
