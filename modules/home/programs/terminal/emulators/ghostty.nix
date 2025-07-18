@@ -26,7 +26,7 @@ in
       package = systemTernary pkgs pkgs.ghostty darwinCommand;
 
       installVimSyntax = true;
-      installBatSyntax = true;
+      installBatSyntax = false;
       settings = {
         window-decoration = toString pkgs.stdenv.hostPlatform.isDarwin;
       };
