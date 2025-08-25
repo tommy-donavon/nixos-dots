@@ -55,6 +55,7 @@ in
             lazygit = enabled;
             starship = enabled;
             tealdeer = enabled;
+            tmux = enabled;
           };
         };
       };
