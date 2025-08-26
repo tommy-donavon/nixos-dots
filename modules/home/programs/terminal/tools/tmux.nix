@@ -70,6 +70,15 @@ in
             '';
           }
         ];
+        extraConfig = ''
+          bind-key r source-file ~/.config/tmux/tmux.conf \; \
+            display-message "Config reloaded!"
+
+          set -sg escape-time 1
+
+          set -g set-titles on
+          set -g set-titles-string "#S :: #W | #{pane_title}"
+        '';
       };
     };
 
