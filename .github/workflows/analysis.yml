@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [main]
+   branches: [main]
 
 jobs:
   check-inputs:
@@ -17,7 +17,7 @@ jobs:
           ignore-missing-flake-lock: false
           fail-mode: true
 
-  lint:
+  check:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -26,11 +26,8 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: |
             experimental-features = pipe-operators nix-command flakes
-      - uses: cachix/cachix-action@v16
-        with:
-          name: statix
-      - uses: jocelynthode/statix-action@master
 
+      - run: nix flake check
   deadnix:
     runs-on: ubuntu-24.04
     permissions:
