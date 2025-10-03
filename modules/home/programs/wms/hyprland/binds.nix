@@ -12,51 +12,50 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       settings = {
-        bind =
-          [
+        bind = [
 
-            "SUPER,D,exec,rofi -show drun"
-            "SUPER,Return,exec,ghostty"
-            "SUPER_SHIFT,Q,killactive,"
-            "SUPER,V,togglefloating,"
-            "SUPER,F,fullscreen,0"
+          "SUPER,D,exec,rofi -show drun"
+          "SUPER,Return,exec,ghostty"
+          "SUPER_SHIFT,Q,killactive,"
+          "SUPER,V,togglefloating,"
+          "SUPER,F,fullscreen,0"
 
-            "SUPER,h,movefocus,l"
-            "SUPER,l,movefocus,r"
-            "SUPER,k,movefocus,u"
-            "SUPER,j,movefocus,d"
+          "SUPER,h,movefocus,l"
+          "SUPER,l,movefocus,r"
+          "SUPER,k,movefocus,u"
+          "SUPER,j,movefocus,d"
 
-            "SUPER_SHIFT,h,movewindow,l"
-            "SUPER_SHIFT,l,movewindow,r"
-            "SUPER_SHIFT,k,movewindow,u"
-            "SUPER_SHIFT,j,movewindow,d"
+          "SUPER_SHIFT,h,movewindow,l"
+          "SUPER_SHIFT,l,movewindow,r"
+          "SUPER_SHIFT,k,movewindow,u"
+          "SUPER_SHIFT,j,movewindow,d"
 
-            # screenshot monitor
-            "CTRL SHIFT,M,exec,${getExe pkgs.hyprshot} -m output -o $HOME/Pictures/Screenshots"
-            # screenshot region
-            "CTRL SHIFT,R,exec,${getExe pkgs.hyprshot} -m region -o $HOME/Pictures/Screenshots"
+          # screenshot monitor
+          "CTRL SHIFT,M,exec,${getExe pkgs.hyprshot} -m output -o $HOME/Pictures/Screenshots"
+          # screenshot region
+          "CTRL SHIFT,R,exec,${getExe pkgs.hyprshot} -m region -o $HOME/Pictures/Screenshots"
 
-            ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
-            ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
-            ",XF86AudioRaiseVolume,exec,pamixer -i 5"
-            ",XF86AudioLowerVolume,exec,pamixer -d 5"
-          ]
-          ++ builtins.concatLists (
-            builtins.genList (
-              x:
-              let
-                ws =
-                  let
-                    c = (x + 1) / 10;
-                  in
-                  builtins.toString (x + 1 - (c * 10));
-              in
-              [
-                "SUPER, ${ws}, workspace, ${toString (x + 1)}"
-                "SUPER SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
-              ]
-            ) 10
-          );
+          ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
+          ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
+          ",XF86AudioRaiseVolume,exec,pamixer -i 5"
+          ",XF86AudioLowerVolume,exec,pamixer -d 5"
+        ]
+        ++ builtins.concatLists (
+          builtins.genList (
+            x:
+            let
+              ws =
+                let
+                  c = (x + 1) / 10;
+                in
+                builtins.toString (x + 1 - (c * 10));
+            in
+            [
+              "SUPER, ${ws}, workspace, ${toString (x + 1)}"
+              "SUPER SHIFT, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+            ]
+          ) 10
+        );
 
         bindl = [
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
