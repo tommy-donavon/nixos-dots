@@ -39,15 +39,12 @@ repair: (verify "--check-contents --repair")
 
 alias fix := repair
 
+os := if os() == "macos" { "darwin" } else { "linux" }
+
 # switch to new system configuration
 [group('rebuild')]
-switch:
-    @flake switch
-
-# switch to new system configuration with more logging
-[group('rebuild')]
-debug:
-    @flake switch --debug --show-trace
+switch *args:
+    @nh {{ os }} switch . --ask {{ args }}
 
 # check home-manager logs
 [group('rebuild')]

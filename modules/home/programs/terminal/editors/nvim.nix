@@ -23,6 +23,7 @@ in
     home.packages = [ cfg.package ];
     home.sessionVariables = {
       EDITOR = "nvim";
+      MANPAGER = "nvim +Man!";
     };
   };
 }
