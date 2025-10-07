@@ -48,7 +48,6 @@ in
           tml = "tmux list-sessions";
           tma = "tmux_attach";
           tmat = "tmux attach -t";
-
           tmla = "tmux_fzf_sessions";
         };
       };
@@ -62,12 +61,24 @@ in
         shell = "${pkgs.zsh}/bin/zsh";
         sensibleOnTop = false;
 
-        plugins = [
+        plugins = with pkgs.tmuxPlugins; [
           {
-            plugin = pkgs.tmuxPlugins.tmux-fzf;
+            plugin = tmux-fzf;
             extraConfig = ''
               TMUX_FZF_LAUNCH_KEY="space"
             '';
+          }
+          {
+            plugin = power-theme;
+            extraConfig = ''
+              set -g @tmux_power_theme            'moon'
+              set -g @tmux_power_right_arrow_icon ''
+              set -g @tmux_power_left_arrow_icon  ''
+
+            '';
+          }
+          {
+            plugin = battery;
           }
         ];
         extraConfig = ''
@@ -78,6 +89,12 @@ in
 
           set -g set-titles on
           set -g set-titles-string "#S :: #W | #{pane_title}"
+          set -g visual-activity off
+          set -g visual-bell off
+          set -g visual-silence off
+          setw -g monitor-activity off
+          set -g bell-action none
+
         '';
       };
     };
