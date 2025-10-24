@@ -12,7 +12,7 @@
   systems = import inputs.systems;
 
   perSystem =
-    { pkgs, system, ... }:
+    { system, ... }:
     {
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;

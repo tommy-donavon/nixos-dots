@@ -1,4 +1,4 @@
-{ pkgs }:
+_:
 let
   inherit (builtins) throw;
   systemTernary =
