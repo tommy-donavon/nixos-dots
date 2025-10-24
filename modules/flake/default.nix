@@ -8,6 +8,7 @@
     ./formatter.nix
     ./lib
     ./shell.nix
+    ./templates
   ];
   systems = import inputs.systems;
 

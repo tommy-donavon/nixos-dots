@@ -56,7 +56,57 @@ let
   nixFilesIn =
     path:
     path |> get-files |> filter (file: hasSuffix ".nix" file && (baseNameOf file != "default.nix"));
+
+  /**
+      create a template for new projects
+
+      # Arguments
+
+      - [name] name of the template
+      - [description] description of the template
+      - [path] path to the template
+      - [buildTools] optional list of build tools to include in the template
+  */
+  mkTemplate =
+    {
+      name,
+      description,
+      path,
+      buildTools ? null,
+    }:
+    {
+      inherit path;
+      description = name;
+
+      welcomeText = ''
+        # ${name}
+        ${description}
+
+        ${
+          if buildTools != null then
+            ''
+              ## Build Tools
+
+              - ${builtins.concatStringsSep "\n- " buildTools}
+            ''
+          else
+            ""
+        }
+        ## Other tips
+        If you use direnv run:
+
+        ```
+          echo "use flake" > .envrc
+        ```
+
+      '';
+    };
 in
 {
-  inherit fetchDir filesIn nixFilesIn;
+  inherit
+    fetchDir
+    filesIn
+    nixFilesIn
+    mkTemplate
+    ;
 }
