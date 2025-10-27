@@ -29,6 +29,9 @@ in
         prettybat
       ];
     };
+    home.sessionVariables = {
+      PAGER = "${getExe pkgs.bat} --paging=always --style=plain";
+    };
 
     home.shellAliases = {
       cat = "${getExe pkgs.bat} --style=plain";
