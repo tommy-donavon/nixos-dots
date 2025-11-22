@@ -44,6 +44,7 @@ in
       GTK2_RC_FILES = "$HOME/.local/share/gtk-2.0/gtkrc";
       GTK_RC_FILES = "$HOME/.local/share/gtk-1.0/gtkrc";
       MOZ_ENABLE_WAYLAND = "1";
+      WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_CONFIG = "$HOME/dots/configuration.nix";
       NIXOS_CONFIG_DIR = "$HOME/dots/";
       PASSWORD_STORE_DIR = "$HOME/.local/share/password-store";

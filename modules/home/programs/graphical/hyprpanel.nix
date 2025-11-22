@@ -23,8 +23,6 @@ in
       enable = true;
 
       settings = {
-        theme.name = "rose_pine_moon";
-
         layout = {
           "bar.layouts" = {
             "*" = {
@@ -37,12 +35,12 @@ in
 
               middle = [ "media" ];
               right = [
-                "hypridle"
-                "volume"
-                "clock"
-                "network"
-                "bluetooth"
                 "battery"
+                "bluetooth"
+                "clock"
+                "hypridle"
+                "network"
+                "volume"
               ];
             };
           };

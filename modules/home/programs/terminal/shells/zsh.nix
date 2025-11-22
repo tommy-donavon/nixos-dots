@@ -80,11 +80,6 @@ in
         eval "$(direnv hook zsh)"
       '';
 
-      profileExtra = lib.optionalString config.nest.programs.wms.hyprland.enable ''
-        cd ~
-        exec Hyprland
-      '';
-
       history = {
         save = 1000;
         size = 1000;

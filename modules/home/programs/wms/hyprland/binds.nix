@@ -14,7 +14,7 @@ in
       settings = {
         bind = [
 
-          "SUPER,D,exec,rofi -show drun"
+          # "SUPER,D,exec,rofi -show drun"
           "SUPER,Return,exec,ghostty"
           "SUPER_SHIFT,Q,killactive,"
           "SUPER,V,togglefloating,"

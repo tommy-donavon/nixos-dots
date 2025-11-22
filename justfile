@@ -39,7 +39,7 @@ repair: (verify "--check-contents --repair")
 
 alias fix := repair
 
-os := if os() == "macos" { "darwin" } else { "linux" }
+os := if os() == "macos" { "darwin" } else { "os" }
 
 # switch to new system configuration
 [group('rebuild')]

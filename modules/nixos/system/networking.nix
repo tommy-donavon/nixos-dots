@@ -17,7 +17,10 @@ in
   config = mkIf cfg.enable {
     networking = {
       wireless.iwd.enable = true;
-      networkmanager.enable = true;
+      networkmanager = {
+        enable = true;
+        wifi.powersave = false;
+      };
     };
   };
 }

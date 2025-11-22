@@ -20,7 +20,7 @@ in
     programs = {
       graphical = {
         rofi = enabled;
-        hyprpanel = enabled;
+        caelestia = enabled;
       };
       terminal.editors.nvim.package = inputs'.lunavim.packages.default;
       wms.hyprland = enabled;

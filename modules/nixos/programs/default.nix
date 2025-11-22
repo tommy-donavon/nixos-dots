@@ -1,3 +1,6 @@
 {
-  imports = [ ./graphical ];
+  imports = [
+    ./graphical
+    ./wms
+  ];
 }

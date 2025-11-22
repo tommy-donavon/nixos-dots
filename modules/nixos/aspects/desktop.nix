@@ -43,6 +43,7 @@ in
             steam = enabled;
           };
         };
+        wms.hyprland.enable = true;
       };
     };
   };

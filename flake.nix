@@ -51,6 +51,12 @@
       repo = "nh";
     };
 
+    caelestia-shell = {
+      type = "github";
+      owner = "caelestia-dots";
+      repo = "shell";
+    };
+
     nur = {
       type = "github";
       owner = "nix-community";

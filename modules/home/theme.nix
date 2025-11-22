@@ -35,6 +35,11 @@ in
 
       image = "${inputs.wallpapers}/${cfg.wallpaper}";
 
+      cursor = {
+        name = "capitaine-cursors-white";
+        package = pkgs.capitaine-cursors;
+        size = 14;
+      };
       fonts = {
         sizes = {
           terminal = 12;
