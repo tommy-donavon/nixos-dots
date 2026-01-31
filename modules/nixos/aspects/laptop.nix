@@ -33,7 +33,7 @@ in
         fonts = enabled;
         locale = enabled;
         networking = enabled;
-        # plymouth = enabled;
+        plymouth = enabled;
       };
       services = {
         udisk = enabled;
