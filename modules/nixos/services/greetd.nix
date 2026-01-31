@@ -27,7 +27,6 @@ in
     ];
     services.greetd = {
       enable = true;
-      vt = 2;
       settings = rec {
         initial_session = {
           inherit (cfg) command;

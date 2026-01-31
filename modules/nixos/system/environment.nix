@@ -27,6 +27,8 @@ in
       libnotify
       libnotify
       libreoffice-qt
+      hunspell
+      hunspellDicts.en_US
       lowdown
       obs-studio
       tidal-hifi

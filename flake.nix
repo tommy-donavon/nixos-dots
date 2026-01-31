@@ -6,7 +6,7 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "nixos-25.05";
+      ref = "nixos-25.11";
     };
 
     unstable = {
@@ -86,6 +86,13 @@
       type = "github";
       owner = "nix-systems";
       repo = "default";
+    };
+
+    noctalia = {
+      type = "github";
+      owner = "noctalia-dev";
+      repo = "noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     wallpapers = {
