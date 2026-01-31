@@ -17,7 +17,6 @@ in
   config = mkIf cfg.enable {
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
       extraConfig = {
         modi = "drun,run,filebrowser";
         show-icons = true;
