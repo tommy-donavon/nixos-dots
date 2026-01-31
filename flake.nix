@@ -88,6 +88,13 @@
       repo = "default";
     };
 
+    noctalia = {
+      type = "github";
+      owner = "noctalia-dev";
+      repo = "noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpapers = {
       type = "github";
       owner = "tommy-donavon";
