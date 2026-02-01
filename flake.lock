@@ -396,11 +396,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1766423502,
-        "narHash": "sha256-KftSWGOonLqU/rZ79GxE8x3Ack5efYHRc25nEuIkGas=",
+        "lastModified": 1769904850,
+        "narHash": "sha256-ztRLzi8zoDgvitwIM1TxH7SljGZ04sAroOZALMbmL9c=",
         "owner": "tommy-donavon",
         "repo": "lunavim",
-        "rev": "f679af6efdafe0ecf6f655208d9f054cd270faf1",
+        "rev": "590db3a8b0d270dd6f2a849012b68bd352d05641",
         "type": "github"
       },
       "original": {
