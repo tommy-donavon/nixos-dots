@@ -7,7 +7,6 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  inherit (self.lib.module) enabled;
 
   git = "${pkgs.git}/bin/git";
   awk = "${pkgs.gawk}/bin/awk";
