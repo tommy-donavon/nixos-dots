@@ -21,72 +21,79 @@ in
   };
 
   config = mkIf cfg.enable {
+    programs.delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
     programs.git = {
       enable = true;
-      userName = "tommy-donavon";
-      userEmail = "donavontommy@gmail.com";
-      delta = enabled;
+      settings = {
+        user = {
+          name = "tommy-donavon";
+          email = "donavontommy@gmail.com";
+        };
 
-      aliases = {
-        gone = ''
-          !${git} fetch -p && ${git} for-each-ref --format='%(refname:short) %(upstream:track)' | \
-          ${awk} '$2 == "[gone]" {print $1}' | \
-          ${xargs} -r ${git} branch -D
-        '';
+        aliases = {
+          gone = ''
+            !${git} fetch -p && ${git} for-each-ref --format='%(refname:short) %(upstream:track)' | \
+            ${awk} '$2 == "[gone]" {print $1}' | \
+            ${xargs} -r ${git} branch -D
+          '';
+        };
+        extraConfig = {
+          column = {
+            ui = "auto";
+          };
+          branch = {
+            sort = "-committerdate";
+          };
+          tag = {
+            sort = "version:refname";
+          };
+          diff = {
+            algorithm = "histogram";
+            coloreMoved = "plain";
+            mnemonicPrefix = true;
+            renames = true;
+          };
+          init = {
+            defaultBranch = "main";
+          };
+          push = {
+            default = "simple";
+            autoSetupRemote = true;
+            followTags = true;
+          };
+          fetch = {
+            prune = true;
+            pruneTags = true;
+            all = true;
+          };
+          help = {
+            autocorrect = "prompt";
+          };
+          rerere = {
+            enabled = true;
+            autoupdate = true;
+          };
+          core = {
+            excludesfile = "~/.gitignore";
+          };
+          rebase = {
+            autoSquash = true;
+            autoStash = true;
+            updateRefs = true;
+          };
+          commit = {
+            verbose = true;
+          };
+          pull = {
+            rebase = true;
+          };
+
+        };
       };
 
-      extraConfig = {
-        column = {
-          ui = "auto";
-        };
-        branch = {
-          sort = "-committerdate";
-        };
-        tag = {
-          sort = "version:refname";
-        };
-        diff = {
-          algorithm = "histogram";
-          coloreMoved = "plain";
-          mnemonicPrefix = true;
-          renames = true;
-        };
-        init = {
-          defaultBranch = "main";
-        };
-        push = {
-          default = "simple";
-          autoSetupRemote = true;
-          followTags = true;
-        };
-        fetch = {
-          prune = true;
-          pruneTags = true;
-          all = true;
-        };
-        help = {
-          autocorrect = "prompt";
-        };
-        rerere = {
-          enabled = true;
-          autoupdate = true;
-        };
-        core = {
-          excludesfile = "~/.gitignore";
-        };
-        rebase = {
-          autoSquash = true;
-          autoStash = true;
-          updateRefs = true;
-        };
-        commit = {
-          verbose = true;
-        };
-        pull = {
-          rebase = true;
-        };
-
-      };
     };
   };
 }
