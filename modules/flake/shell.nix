@@ -29,6 +29,7 @@
               nix-index
               nix-melt
               nix-prefetch-git
+              python313Packages.nix-prefetch-github
               nix-search-cli
               nix-tree
               nixpkgs-hammering
