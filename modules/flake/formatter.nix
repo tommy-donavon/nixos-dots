@@ -1,4 +1,7 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
+let
+  inherit (self.lib.module) enabled;
+in
 {
   imports = [ inputs.treefmt-nix.flakeModule ];
 
@@ -11,11 +14,12 @@
         projectRootFile = "flake.nix";
 
         programs = {
-          taplo.enable = true;
-          just.enable = true;
+          taplo = enabled;
+          just = enabled;
 
-          deadnix.enable = true;
-          statix.enable = true;
+          deadnix = enabled;
+          statix = enabled;
+          zizmor = enabled;
           nixfmt = {
             enable = true;
             package = pkgs.nixfmt-rfc-style;
