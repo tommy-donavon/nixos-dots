@@ -3,6 +3,10 @@ name: release
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -11,6 +15,7 @@ jobs:
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Cocogitto release
         id: release
@@ -19,7 +24,9 @@ jobs:
           release: true
 
       - name: Generate Changelog
-        run: cog changelog --at ${{ steps.release.outputs.version }} > CHANGELOG.md
+        run: cog changelog --at $RELEASE_VERSION > CHANGELOG.md
+        env:
+          RELEASE_VERSION: ${{ steps.release.outputs.version }}
 
       - name: Upload github release
         uses: softprops/action-gh-release@6da8fa9354ddfdc4aeace5fc48d7f679b5214090 # v2.4.1
