@@ -3,6 +3,9 @@ let
   inherit (self.lib.module) enabled;
 in
 {
+  imports = [
+    ./home.nix
+  ];
 
   nest = {
     aspects = {

@@ -18,7 +18,7 @@
       duncan = { };
 
       # work stuffs
-      R62NGV90F7-TDonavon = {
+      R62NGV90F7-Donavon = {
         arch = "aarch64";
         class = "darwin";
       };
