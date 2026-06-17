@@ -22,7 +22,7 @@ in
         defaultWallpaper = "${inputs.wallpapers}/${config.nest.theme.wallpaper}";
       };
     };
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
       settings = {
         bar = {

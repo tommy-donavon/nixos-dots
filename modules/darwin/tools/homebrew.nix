@@ -25,8 +25,13 @@ in
 
       onActivation = {
         autoUpdate = true;
-        cleanup = "uninstall";
+        cleanup = "none";
         upgrade = true;
+        extraFlags = [
+          "--zap"
+          "--force-cleanup"
+          "--quiet"
+        ];
       };
 
       taps = [

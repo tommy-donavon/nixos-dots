@@ -63,19 +63,19 @@ in
         };
         containers = {
           personal = {
-            id = 0;
+            id = 1;
             name = "personal";
             icon = "tree";
             color = "turquoise";
           };
           research = {
-            id = 1;
+            id = 2;
             name = "research";
             icon = "fruit";
             color = "red";
           };
           work = mkIf cfg.workEnable {
-            id = 2;
+            id = 3;
             name = "work";
             icon = "briefcase";
             color = "yellow";

@@ -34,7 +34,7 @@
               nix-tree
               nixpkgs-hammering
               nixpkgs-lint
-              nixfmt-rfc-style
+              nixfmt
               just
               inputs'.nh.packages.default
               cocogitto

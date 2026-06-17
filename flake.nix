@@ -6,7 +6,7 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "nixos-25.11";
+      ref = "nixos-26.05";
     };
 
     unstable = {
@@ -20,7 +20,7 @@
       type = "github";
       owner = "nix-community";
       repo = "home-manager";
-      ref = "release-25.11";
+      ref = "release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -41,7 +41,7 @@
       type = "github";
       owner = "lnl7";
       repo = "nix-darwin";
-      ref = "nix-darwin-25.11";
+      ref = "nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -67,7 +67,7 @@
       type = "github";
       owner = "nix-community";
       repo = "stylix";
-      ref = "release-25.11";
+      ref = "release-26.05";
     };
 
     treefmt-nix = {
