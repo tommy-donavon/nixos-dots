@@ -23,13 +23,13 @@ in
         "gh"
         "gmp"
         "jq"
+        "libpq"
         "libyaml"
+        "llvm"
+        "mysql@8.4"
+        "openssl@3"
         "readline"
         "yq"
-        "openssl@3"
-        "llvm"
-        "libpq"
-        "mysql@8.0"
       ];
       casks = [
         "cutter"

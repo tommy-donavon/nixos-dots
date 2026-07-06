@@ -29,7 +29,11 @@ in
       obsidian
       tree
       tui-journal
+      glow
     ];
+    home.sessionVariables = {
+      MANPAGER = "glow";
+    };
     nest = {
       programs = {
         graphical = {

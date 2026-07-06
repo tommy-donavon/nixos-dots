@@ -44,7 +44,7 @@ in
         bindkey "^[[1;9D" beginning-of-line
         bindkey "^[[1;9C" end-of-line
 
-        autoload -Uz compinit && compinit
+        # autoload -Uz compinit && compinit
         zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
         edir() { tar -cz $1 | age -p > $1.tar.gz.age && rm -rf $1 &>/dev/null && echo "$1 encrypted" }

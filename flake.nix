@@ -101,6 +101,13 @@
       repo = "wallpapers";
       flake = false;
     };
+
+    claude-agents = {
+      type = "github";
+      owner = "VoltAgent";
+      repo = "awesome-claude-code-subagents";
+      flake = false;
+    };
   };
 
   outputs =

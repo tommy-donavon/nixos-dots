@@ -133,6 +133,22 @@
         "type": "github"
       }
     },
+    "claude-agents": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781619776,
+        "narHash": "sha256-7XpsETQwB/yVfgZpeUWKPlt8cVCsp6ypj4EVyC1aqZ4=",
+        "owner": "VoltAgent",
+        "repo": "awesome-claude-code-subagents",
+        "rev": "5983fe3b4ea2785335ac1712c4aa1ac4e13a8fa2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "VoltAgent",
+        "repo": "awesome-claude-code-subagents",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -755,6 +771,7 @@
     "root": {
       "inputs": {
         "caelestia-shell": "caelestia-shell",
+        "claude-agents": "claude-agents",
         "darwin": "darwin",
         "easy-hosts": "easy-hosts",
         "flake-parts": "flake-parts",

@@ -20,8 +20,12 @@ in
       node = enabled;
     };
     programs = {
-      terminal.editors.nvim.package = inputs'.lunavim.packages.default;
+      terminal = {
+        editors.nvim.package = inputs'.lunavim.packages.default;
+        tools.claude = enabled;
+      };
       graphical.firefox.workEnable = true;
+
     };
     theme.theme = "rose-pine-moon";
   };

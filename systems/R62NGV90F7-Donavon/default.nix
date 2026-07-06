@@ -14,6 +14,7 @@ in
     };
     system.stateVersion = "24.11";
   };
+  environment.pathsToLink = [ "/share/zsh" ];
   nix.settings.ssl-cert-file = "/Users/tommy.donavon/.netskope/nscacert_combined.pem";
   security.pki.certificates = [
     "/Users/tommy.donavon/.netskope/nscacert_combined.pem"
