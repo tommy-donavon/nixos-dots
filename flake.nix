@@ -95,6 +95,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-generators = {
+      type = "github";
+      owner = "nix-community";
+      repo = "nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpapers = {
       type = "github";
       owner = "tommy-donavon";

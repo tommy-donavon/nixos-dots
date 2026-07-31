@@ -51,3 +51,13 @@ switch *args:
 [linux]
 hm-log:
     @journalctl -u home-manager-$(echo $USER).service
+
+# launch the graphical GNOME NixOS VM
+[group('vm')]
+vm:
+    nix run .#gnome-vm
+
+# reset the VM disk (drops all persisted state)
+[group('vm')]
+vm-reset:
+    rm -f "${XDG_STATE_HOME:-$HOME/.local/state}/gnome-vm/disk.qcow2"

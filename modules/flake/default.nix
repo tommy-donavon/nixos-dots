@@ -6,6 +6,7 @@
   imports = [
     ../../systems
     ./formatter.nix
+    ./gnome-vm.nix
     ./lib
     ./shell.nix
     ./templates
